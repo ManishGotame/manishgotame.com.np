@@ -1,3 +1,3 @@
-import { classNames } from "./format";
+import { classNames } from './format'
 
-export { classNames };
+export { classNames }

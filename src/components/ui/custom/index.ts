@@ -1,4 +1,4 @@
-import Header from "./Header";
-import Sidebar from "./Sidebar";
+import Header from './Header'
+import Sidebar from './Sidebar'
 
-export { Header, Sidebar };
+export { Header, Sidebar }
