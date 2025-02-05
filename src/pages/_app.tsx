@@ -1,14 +1,24 @@
-import Layout from '@/components/Layout'
+import type { AppProps } from 'next/app'
+import type { NextPage } from 'next'
+
+import { MainLayout } from '@/components'
 import { SidebarProvider } from '@/Providers'
 import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
 
-export default function App({ Component, pageProps }: AppProps) {
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: React.ReactNode) => React.ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page: React.ReactNode) => page)
+
   return (
     <SidebarProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <MainLayout>{getLayout(<Component {...pageProps} />)}</MainLayout>
     </SidebarProvider>
   )
 }

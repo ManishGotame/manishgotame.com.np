@@ -1,5 +1,3 @@
-import { HamburgerIcon } from '@/components'
-
 interface HeaderProps {
   title: string
 }
