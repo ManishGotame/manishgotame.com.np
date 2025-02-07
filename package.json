@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "next": "15.1.6",
+    "next-page-layout": "^1.0.3",
     "notion-types": "^7.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
