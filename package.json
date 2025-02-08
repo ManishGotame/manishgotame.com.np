@@ -10,18 +10,21 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "date-fns": "^4.1.0",
     "next": "15.1.6",
     "next-page-layout": "^1.0.3",
     "notion-client": "^7.1.6",
     "notion-types": "^7.1.6",
+    "notion-utils": "^7.1.6",
+    "prismjs": "^1.29.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-notion": "^0.10.0",
     "react-notion-x": "^7.2.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
+    "@types/prismjs": "^1.26.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@typescript-eslint/eslint-plugin": "^8.23.0",

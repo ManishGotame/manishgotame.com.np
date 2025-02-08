@@ -7,6 +7,11 @@
     @apply max-h-screen text-base antialiased;
   }
 
+  html,
+  body {
+    overscroll-behavior: none;
+  }
+
   /* handles safari overscroll background color */
   body:after {
     content: '';
@@ -25,5 +30,4 @@
       color-scheme: dark;
     }
   }
-
 }

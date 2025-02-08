@@ -1,21 +1,29 @@
-import 'react-notion/src/styles.css'
 import 'prismjs/themes/prism-tomorrow.css'
-import { BlockMapType } from 'react-notion'
-import { ListLayout } from '@/components'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import { getTitles } from '@/utils'
 import { NotionRenderer } from 'react-notion-x'
 import { useRouter } from 'next/router'
-
 import { NotionAPI } from 'notion-client'
-// import dynamic from 'next/dynamic'
 import 'react-notion-x/src/styles.css'
-import { ExtendedRecordMap } from 'notion-types'
+import { BlockMap, ExtendedRecordMap } from 'notion-types'
+import { Code } from 'react-notion-x/build/third-party/code'
+import { getBlockTitle } from 'notion-utils'
+import { Collection } from 'react-notion-x/build/third-party/collection'
+import { Equation } from 'react-notion-x/build/third-party/equation'
+import { Modal } from 'react-notion-x/build/third-party/modal'
+import { Pdf } from 'react-notion-x/build/third-party/pdf'
+
+import { ListLayout } from '@/components'
+import { getTitles } from '@/utils'
+import React from 'react'
+
+interface PostProps {
+  blockMap: ExtendedRecordMap
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await fetch(
-    `https://notion-api.splitbee.io/v1/page/${process.env.NOTION_PAGE_ID}`
-  ).then((res) => res.json())
+  const notion = new NotionAPI()
+  const recordMap = await notion.getPage(process.env.NOTION_PAGE_ID as string)
+  const posts = recordMap.block
   const titles = getTitles(posts)
 
   const paths = titles.map((title) => ({
@@ -26,7 +34,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true // or 'blocking' if you want to generate pages on demand
+    fallback: true
   }
 }
 
@@ -34,14 +42,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const notion = new NotionAPI()
     const data = await notion.getPage(params?.slug as string)
-    const posts = await fetch(
-      `https://notion-api.splitbee.io/v1/page/${process.env.NOTION_PAGE_ID}`
-    ).then((res) => res.json())
+    const posts = await notion.getPage(process.env.NOTION_PAGE_ID as string)
 
     return {
       props: {
         blockMap: data,
-        posts
+        posts: posts.block
       },
       revalidate: 10 // Add ISR revalidation time in seconds
     }
@@ -53,9 +59,29 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-export default function Post({ blockMap }: { blockMap: ExtendedRecordMap }) {
+export default function Post({ blockMap }: PostProps) {
   const router = useRouter()
-  console.log(router.isFallback)
+  const keys = Object.keys(blockMap?.block || {})
+  const block = blockMap?.block?.[keys[0]]?.value
+  const title = getBlockTitle(block, blockMap)
+  const [showStickyTitle, setShowStickyTitle] = React.useState(false)
+  const titleRef = React.useRef<HTMLDivElement>(null)
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowStickyTitle(!entry.isIntersecting)
+      },
+      { threshold: 0 }
+    )
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   // Show loading state when the fallback is being generated
   if (router.isFallback) {
     return (
@@ -75,14 +101,38 @@ export default function Post({ blockMap }: { blockMap: ExtendedRecordMap }) {
   }
 
   return (
-    <>
-      <NotionRenderer recordMap={blockMap} darkMode={true} />
-    </>
+    <div className='overflow-y-scroll h-screen'>
+      <div
+        className='flex flex-col justify-center items-center mt-20 mb-10'
+        ref={titleRef}
+      >
+        <h1 className='text-4xl font-bold'>{title}</h1>
+      </div>
+      <div
+        className={`sticky top-0 w-full bg-black z-10 text-ml font-bold p-5 border-b border-gray-800 backdrop-blur-sm bg-black/70 transition-opacity duration-200 ${
+          showStickyTitle ? 'block' : 'hidden'
+        }`}
+      >
+        {title}
+      </div>
+      <NotionRenderer
+        recordMap={blockMap}
+        darkMode={true}
+        disableHeader={true}
+        components={{
+          Code,
+          Collection,
+          Equation,
+          Pdf,
+          Modal
+        }}
+      />
+    </div>
   )
 }
 
 type PageProps = {
-  posts: BlockMapType
+  posts: BlockMap
 }
 
 Post.getLayout = function getLayout(page: React.ReactElement<PageProps>) {
