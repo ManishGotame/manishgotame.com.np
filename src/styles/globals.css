@@ -5,7 +5,11 @@
 @layer {
   html {
     @apply max-h-screen text-base antialiased;
-    /* @apply max-h-screen overflow-hidden text-base antialiased; */
+  }
+
+  html,
+  body {
+    overscroll-behavior: none;
   }
 
   /* handles safari overscroll background color */
@@ -25,11 +29,5 @@
     :root {
       color-scheme: dark;
     }
-  }
-
-    .notion,
-    .notion-text,
-    .notion-page-link {
-      color: white;
   }
 }

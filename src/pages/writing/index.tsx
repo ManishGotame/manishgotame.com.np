@@ -1,29 +1,30 @@
-import 'react-notion/src/styles.css'
-import 'prismjs/themes/prism-tomorrow.css'
+import { NotionAPI } from 'notion-client'
+import { BlockMap } from 'notion-types'
 
-import { BlockMapType } from 'react-notion'
 import { ListLayout } from '@/components'
-import { AppProps } from 'next/app'
 
 export async function getStaticProps() {
-  const data = await fetch(
-    `https://notion-api.splitbee.io/v1/page/${process.env.NOTION_PAGE_ID}`
-  ).then((res) => res.json())
+  const notion = new NotionAPI()
+  const recordMap = await notion.getPage(process.env.NOTION_PAGE_ID as string)
 
   return {
     props: {
-      blockMap: data
+      blockMap: recordMap.block
     }
   }
 }
 
-export default function Writing({ blockMap }: { blockMap: BlockMapType }) {
+export default function Writing() {
   return <>Page here</>
 }
 
 Writing.displayName = 'Writing'
 
-Writing.getLayout = function getLayout(page: AppProps) {
+type PageProps = {
+  blockMap: BlockMap
+}
+
+Writing.getLayout = function getLayout(page: React.ReactElement<PageProps>) {
   return (
     <ListLayout title='Writing' blockMap={page.props.blockMap}>
       {page}
