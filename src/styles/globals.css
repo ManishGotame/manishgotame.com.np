@@ -5,7 +5,6 @@
 @layer {
   html {
     @apply max-h-screen text-base antialiased;
-    /* @apply max-h-screen overflow-hidden text-base antialiased; */
   }
 
   /* handles safari overscroll background color */
@@ -27,9 +26,4 @@
     }
   }
 
-    .notion,
-    .notion-text,
-    .notion-page-link {
-      color: white;
-  }
 }

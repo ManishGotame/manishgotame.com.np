@@ -3,7 +3,7 @@ import 'prismjs/themes/prism-tomorrow.css'
 
 import { BlockMapType } from 'react-notion'
 import { ListLayout } from '@/components'
-import { AppProps } from 'next/app'
+import 'react-notion-x/src/styles.css'
 
 export async function getStaticProps() {
   const data = await fetch(
@@ -17,13 +17,17 @@ export async function getStaticProps() {
   }
 }
 
-export default function Writing({ blockMap }: { blockMap: BlockMapType }) {
+export default function Writing() {
   return <>Page here</>
 }
 
 Writing.displayName = 'Writing'
 
-Writing.getLayout = function getLayout(page: AppProps) {
+type PageProps = {
+  blockMap: BlockMapType
+}
+
+Writing.getLayout = function getLayout(page: React.ReactElement<PageProps>) {
   return (
     <ListLayout title='Writing' blockMap={page.props.blockMap}>
       {page}
