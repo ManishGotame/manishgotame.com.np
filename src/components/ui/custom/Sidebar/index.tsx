@@ -1,11 +1,14 @@
-import { useSidebar } from '@/Providers'
+import { SunIcon, MoonIcon } from 'lucide-react'
 
+import { useSidebar } from '@/Providers'
+import { useTheme } from '@/Providers/ThemeProvider'
 import { SidebarNavigation } from './Navigation'
 import { SidebarOverlay } from './Overlay'
 import { classNames } from '@/utils'
 
 const Sidebar = () => {
   const { openSidebar } = useSidebar()
+  const { theme, toggleTheme } = useTheme()
 
   return (
     <nav
@@ -24,6 +27,18 @@ const Sidebar = () => {
         </div>
       </div>
       <SidebarNavigation />
+      <div className='mt-auto px-3 py-4 border-t border-gray-150 dark:border-gray-800'>
+        <button
+          onClick={toggleTheme}
+          className='w-full p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 flex items-center justify-center'
+        >
+          {theme === 'light' ? (
+            <MoonIcon className='w-4 h-4' />
+          ) : (
+            <SunIcon className='w-4 h-4' />
+          )}
+        </button>
+      </div>
       <SidebarOverlay />
     </nav>
   )

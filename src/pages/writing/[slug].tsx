@@ -11,6 +11,7 @@ import { Collection } from 'react-notion-x/build/third-party/collection'
 import { Equation } from 'react-notion-x/build/third-party/equation'
 import { Modal } from 'react-notion-x/build/third-party/modal'
 import { Pdf } from 'react-notion-x/build/third-party/pdf'
+import { useTheme } from '@/Providers/ThemeProvider'
 
 import { ListLayout } from '@/components'
 import { getTitles } from '@/utils'
@@ -66,6 +67,7 @@ export default function Post({ blockMap }: PostProps) {
   const title = getBlockTitle(block, blockMap)
   const [showStickyTitle, setShowStickyTitle] = React.useState(false)
   const titleRef = React.useRef<HTMLDivElement>(null)
+  const { theme } = useTheme()
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -109,15 +111,19 @@ export default function Post({ blockMap }: PostProps) {
         <h1 className='text-4xl font-bold'>{title}</h1>
       </div>
       <div
-        className={`sticky top-0 w-full bg-black z-10 text-ml font-bold p-5 border-b border-gray-800 backdrop-blur-sm bg-black/70 transition-opacity duration-200 ${
+        className={`sticky top-0 w-full z-10 text-ml font-bold p-5 border-b transition-opacity duration-200 ${
           showStickyTitle ? 'block' : 'hidden'
+        } ${
+          theme === 'dark'
+            ? 'bg-black/70 border-gray-800 backdrop-blur-sm'
+            : 'bg-white/70 border-gray-200 backdrop-blur-sm'
         }`}
       >
         {title}
       </div>
       <NotionRenderer
         recordMap={blockMap}
-        darkMode={true}
+        darkMode={theme === 'dark'}
         disableHeader={true}
         components={{
           Code,

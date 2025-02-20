@@ -7,10 +7,11 @@ export default {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}'
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
+        // background: 'var(--background)',
         foreground: 'var(--foreground)',
         white: '#fff',
         green: emerald,
@@ -26,7 +27,23 @@ export default {
         'hacker-news': '#FF965A',
         twitter: '#479BEA',
         current: 'currentColor',
-        jet: '#37352f'
+        jet: '#37352f',
+        primary: {
+          light: '#000000',
+          dark: '#ffffff'
+        },
+        background: {
+          light: '#ffffff',
+          dark: '#000000'
+        },
+        surface: {
+          light: '#f3f4f6',
+          dark: '#111827'
+        },
+        border: {
+          light: '#e5e7eb',
+          dark: '#374151'
+        }
       }
     }
   },
