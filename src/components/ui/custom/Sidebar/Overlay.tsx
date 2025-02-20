@@ -7,7 +7,9 @@ export function SidebarOverlay() {
   return (
     <div
       className={classNames(
-        'fixed inset-0 z-10 w-full bg-black bg-opacity-10 transition duration-200 ease-in-out dark:bg-opacity-50',
+        'fixed inset-0 z-10 w-full transition duration-200 ease-in-out',
+        'bg-gray-600 dark:bg-black',
+        'bg-opacity-5 dark:bg-opacity-50',
         isOpen
           ? 'pointer-events-auto opacity-100'
           : 'pointer-events-none opacity-0'

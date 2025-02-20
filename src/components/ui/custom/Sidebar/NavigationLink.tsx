@@ -36,8 +36,8 @@ export function NavigationLink({
         className={classNames(
           'flex flex-1 items-center space-x-3 rounded-md px-2 py-1.5 text-sm font-medium',
           isActive
-            ? 'bg-black text-white dark:bg-gray-700 dark:text-white'
-            : 'text-gray-700 dark:text-gray-200 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-200'
+            ? 'bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900'
+            : 'text-gray-700 hover:bg-gray-150 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white'
         )}
       >
         <span className='flex items-center justify-center w-4'>
@@ -45,7 +45,7 @@ export function NavigationLink({
         </span>
         <span className='flex-1'>{label}</span>
         {Accessory && (
-          <span className='flex items-center justify-center w-4 text-black text-opacity-40 dark:text-white'>
+          <span className='flex items-center justify-center w-4 text-gray-500 dark:text-gray-400'>
             <Accessory />
           </span>
         )}
