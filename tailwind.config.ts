@@ -63,6 +63,8 @@ export default {
         'design-details-light': '#EEF3F3',
         'design-details-dark': '#273F3F',
         'hacker-news': '#FF965A',
+        lotion: '#fafafa',
+        erie: '#1C1C1E',
         twitter: '#479BEA',
         current: 'currentColor',
         jet: '#37352f',

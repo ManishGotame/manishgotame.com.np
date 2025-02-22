@@ -28,12 +28,12 @@ const PingText: React.FC<PingTextProps> = ({ children, color }) => {
 
 const Hero = () => {
   return (
-    <div className='px-4 py-32'>
+    <div className='pt-32'>
       <div className=''>
         <AnnoucementBanner
           variant='default'
-          title='New Feature'
-          description='We have a new feature'
+          title='Writing'
+          description='Google Maps to GPX and vice versa.'
           slug='new-feature'
         />
         <h1 className='mt-[12px] text-4xl font-regular mb-[19px]'>
@@ -83,7 +83,7 @@ const Hero = () => {
               >
                 Upwork
               </Link>
-              <span> and other stuffs on weekends.</span>
+              <span> and helping clients all over the world.</span>
             </div>
           </PingText>
         </div>
