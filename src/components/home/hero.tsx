@@ -1,30 +1,6 @@
-import { cn } from '@/lib/utils'
 import { AnnoucementBanner } from '../ui/custom'
 import Link from 'next/link'
-
-interface PingTextProps {
-  children: React.ReactNode
-  color: string
-}
-
-const PingText: React.FC<PingTextProps> = ({ children, color }) => {
-  return (
-    <div className='flex flex-row gap-2 items-center'>
-      <span className='relative flex h-3.5 w-3.5'>
-        <span
-          className={cn(
-            'absolute inline-flex h-full w-full animate-ping rounded-full opacity-75',
-            color
-          )}
-        ></span>
-        <span
-          className={cn('relative inline-flex h-3.5 w-3.5 rounded-full', color)}
-        ></span>
-      </span>
-      <div className='text-regular text-[15px]'>{children}</div>
-    </div>
-  )
-}
+import PingText from './PingText'
 
 const Hero = () => {
   return (

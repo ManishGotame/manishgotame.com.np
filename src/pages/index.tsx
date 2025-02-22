@@ -1,4 +1,4 @@
-import { Hero, SideProjects } from '@/components'
+import { Companies, Hero, SideProjects } from '@/components'
 
 // import Image from "next/image";
 // import { Geist, Geist_Mono } from "next/font/google";
@@ -17,6 +17,7 @@ export default function Home() {
     <div className='flex flex-col gap-[138px] px-4 container max-w-5xl mx-auto bg-white dark:bg-black text-black dark:text-white'>
       <Hero />
       <SideProjects />
+      <Companies />
     </div>
   )
 }

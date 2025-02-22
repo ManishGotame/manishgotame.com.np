@@ -45,10 +45,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
         </div>
         <div>
-          <h3 className='text-[15px] font-semibold text-gray-900 dark:text-white flex items-baseline gap-2'>
+          <h3 className='text-[15px] font-semibold text-gray-900 dark:text-white flex items-center gap-2'>
             {title}
             {active ? (
-              <span className='w-3 h-3 rounded-full bg-green-500'></span>
+              <span className='w-2 h-2 rounded-full bg-green-500'></span>
             ) : null}
           </h3>
           <p className='text-[14px] font-regular text-gray-600 dark:text-gray-400 mt-1'>
