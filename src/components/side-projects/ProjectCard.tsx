@@ -1,0 +1,75 @@
+import { ExternalLink } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+
+export interface ProjectCardProps {
+  title: string
+  description: string
+  image: string
+  link: string
+  externalLink: string
+  active: boolean
+  tags?: string[]
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  title,
+  description,
+  image,
+  link,
+  externalLink,
+  active,
+  tags
+}) => {
+  return (
+    <Link
+      href={link}
+      className='cursor-pointer bg-lotion border border-gray-150 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800 relative group rounded-lg dark:bg-erie overflow-hidden min-h-[210px]'
+    >
+      <div className='p-4 space-y-4'>
+        <div className='flex items-start justify-between mb-[29px]'>
+          <Image
+            src={image}
+            alt={title}
+            className='w-14 h-14 rounded-xl'
+            width={48}
+            height={48}
+          />
+          <div
+            onClick={() =>
+              window.open(externalLink, '_blank', 'noopener,noreferrer')
+            }
+            className='text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-transform hover:scale-[1.2] cursor-pointer'
+          >
+            <ExternalLink className='w-5 h-5' />
+          </div>
+        </div>
+        <div>
+          <h3 className='text-[15px] font-semibold text-gray-900 dark:text-white flex items-center gap-2'>
+            {title}
+            {active ? (
+              <span className='w-2 h-2 rounded-full bg-green-500'></span>
+            ) : null}
+          </h3>
+          <p className='text-[14px] font-regular text-gray-600 dark:text-gray-400 mt-1'>
+            {description}
+          </p>
+          {tags && tags.length > 0 && (
+            <div className='flex gap-2 mt-3'>
+              {tags.map((tag, index) => (
+                <span
+                  key={index}
+                  className='px-2 py-0.5 rounded-md bg-gray-150 dark:bg-[#2C2C2E] text-gray-700 dark:text-gray-300 text-xs'
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </Link>
+  )
+}
+
+export default ProjectCard
