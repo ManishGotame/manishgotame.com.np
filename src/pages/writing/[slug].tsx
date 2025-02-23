@@ -13,8 +13,8 @@ import { Modal } from 'react-notion-x/build/third-party/modal'
 import { Pdf } from 'react-notion-x/build/third-party/pdf'
 import { useTheme } from '@/Providers/ThemeProvider'
 
-import { ListLayout } from '@/components'
-import { getTitles } from '@/lib'
+import { Header, ListLayout } from '@/components'
+import { cn, getTitles } from '@/lib'
 import React from 'react'
 
 interface PostProps {
@@ -65,16 +65,18 @@ export default function Post({ blockMap }: PostProps) {
   const keys = Object.keys(blockMap?.block || {})
   const block = blockMap?.block?.[keys[0]]?.value
   const title = getBlockTitle(block, blockMap)
-  const [showStickyTitle, setShowStickyTitle] = React.useState(false)
+  const [showFixedTitle, setShowFixedTitle] = React.useState(true)
   const titleRef = React.useRef<HTMLDivElement>(null)
   const { theme } = useTheme()
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setShowStickyTitle(!entry.isIntersecting)
+        setShowFixedTitle(!entry.isIntersecting)
       },
-      { threshold: 0 }
+      {
+        threshold: 0
+      }
     )
 
     if (titleRef.current) {
@@ -83,6 +85,11 @@ export default function Post({ blockMap }: PostProps) {
 
     return () => observer.disconnect()
   }, [])
+
+  React.useEffect(() => {
+    // Scroll to top when the route changes
+    window.scrollTo(0, 0)
+  }, [router.asPath])
 
   // Show loading state when the fallback is being generated
   if (router.isFallback) {
@@ -111,15 +118,15 @@ export default function Post({ blockMap }: PostProps) {
         <h1 className='text-4xl font-bold'>{title}</h1>
       </div>
       <div
-        className={`sticky top-0 w-full z-10 text-ml font-bold p-5 border-b transition-opacity duration-200 ${
-          showStickyTitle ? 'block' : 'hidden'
-        } ${
+        className={cn(
+          'fixed w-[100%] top-0 z-10 flex flex-col justify-center transition-opacity duration-200',
+          showFixedTitle ? 'block' : 'hidden',
           theme === 'dark'
             ? 'bg-black/70 border-gray-800 backdrop-blur-sm'
             : 'bg-white/70 border-gray-200 backdrop-blur-sm'
-        }`}
+        )}
       >
-        {title}
+        <Header title={title} />
       </div>
       <NotionRenderer
         recordMap={blockMap}

@@ -4,11 +4,11 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ title }) => {
   return (
-    <div className='p-5 gap-2 border-b border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark'>
-      <div className='flex justify-between items-center'>
-        <span className='text-md font-bold text-primary-light dark:text-primary-dark transform-gpu line-clamp-1'>
+    <div className='z-10 flex flex-col justify-center px-5 py-5 border-b border-gray-150 dark:border-gray-800'>
+      <div className='flex items-center justify-between flex-none'>
+        <h2 className='text-sm font-bold text-primary transform-gpu line-clamp-1'>
           {title}
-        </span>
+        </h2>
       </div>
     </div>
   )

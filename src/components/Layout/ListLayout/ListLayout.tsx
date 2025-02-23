@@ -20,12 +20,12 @@ const ListLayout: React.FC<ListLayoutProps> = ({
   const articleTitles = getTitles(blockMap)
 
   return (
-    <div className='w-full flex flex-row gap-1'>
-      <div className='bg-white dark:bg-black overflow-y-auto w-[25%] h-[100vh] border-r border-gray-150 pb-10 transition duration-200 ease-in-out dark:border-gray-800 w-[100%] lg:translate-x-0'>
-        <div className='sticky top-0 z-10 bg-white dark:bg-black'>
+    <div className='w-full flex flex-row'>
+      <div className='bg-white dark:bg-gray-900 overflow-y-auto w-[25%] h-[100vh] border-r border-gray-150 pb-10 transition duration-200 ease-in-out dark:border-gray-800 lg:translate-x-0 w-90'>
+        <div className='sticky top-0 z-10 bg-lotion dark:bg-gray-900'>
           <Header title={title} />
         </div>
-        <div className='p-5'>
+        <div className='px-3 py-2'>
           {articleTitles.map((each, index) => {
             const item = {
               href: `/writing/${each.id}`,
@@ -41,7 +41,7 @@ const ListLayout: React.FC<ListLayoutProps> = ({
                   'cursor-pointer my-1 gap-1 flex flex-1 flex-col space-x-3 rounded-md px-2 py-3 text-[14px] font-medium',
                   isActive
                     ? 'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-white'
-                    : 'text-gray-900 dark:text-white hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white'
+                    : 'text-gray-900 dark:text-white hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white'
                 )}
               >
                 <div className='flex flex-col'>
