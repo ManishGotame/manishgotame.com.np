@@ -65,7 +65,7 @@ export default function Post({ blockMap }: PostProps) {
   const keys = Object.keys(blockMap?.block || {})
   const block = blockMap?.block?.[keys[0]]?.value
   const title = getBlockTitle(block, blockMap)
-  const [showFixedTitle, setShowFixedTitle] = React.useState(true)
+  const [showFixedTitle, setShowFixedTitle] = React.useState(false)
   const titleRef = React.useRef<HTMLDivElement>(null)
   const { theme } = useTheme()
 
@@ -112,10 +112,10 @@ export default function Post({ blockMap }: PostProps) {
   return (
     <div className='overflow-y-scroll h-screen'>
       <div
-        className='flex flex-col justify-center items-center mt-20 mb-10'
+        className='flex flex-col justify-center items-center mt-20 mb-10 px-[16px]'
         ref={titleRef}
       >
-        <h1 className='text-4xl font-bold'>{title}</h1>
+        <h1 className='text-3xl font-semibold'>{title}</h1>
       </div>
       <div
         className={cn(

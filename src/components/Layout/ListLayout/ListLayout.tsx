@@ -21,7 +21,7 @@ const ListLayout: React.FC<ListLayoutProps> = ({
 
   return (
     <div className='w-full flex flex-row'>
-      <div className='bg-white dark:bg-gray-900 overflow-y-auto w-[25%] h-[100vh] border-r border-gray-150 pb-10 transition duration-200 ease-in-out dark:border-gray-800 lg:translate-x-0 w-90'>
+      <div className='bg-lotion dark:bg-gray-900 overflow-y-auto hidden lg:block min-w-[25%] h-[100vh] border-r border-gray-150 pb-10 transition duration-200 ease-in-out dark:border-gray-800 lg:translate-x-0'>
         <div className='sticky top-0 z-10 bg-lotion dark:bg-gray-900'>
           <Header title={title} />
         </div>
@@ -55,7 +55,7 @@ const ListLayout: React.FC<ListLayoutProps> = ({
           })}
         </div>
       </div>
-      <div className='w-[75%]'>{children}</div>
+      <div className='w-full'>{children}</div>
     </div>
   )
 }
