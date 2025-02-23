@@ -1,4 +1,4 @@
-import { AnnoucementBanner } from '../ui/custom'
+import { AnnoucementBanner } from '../../ui/custom'
 import Link from 'next/link'
 import PingText from './PingText'
 
