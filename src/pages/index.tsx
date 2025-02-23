@@ -1,4 +1,12 @@
-import { Companies, Hero, Portfolio, SideProjects } from '@/components'
+import {
+  Blog,
+  Companies,
+  Hero,
+  Portfolio,
+  SideProjects,
+  Photos,
+  Footer
+} from '@/components'
 
 // import Image from "next/image";
 // import { Geist, Geist_Mono } from "next/font/google";
@@ -19,6 +27,9 @@ export default function Home() {
       <SideProjects />
       <Companies />
       <Portfolio />
+      <Blog />
+      <Photos />
+      <Footer />
     </div>
   )
 }
