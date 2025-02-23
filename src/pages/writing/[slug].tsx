@@ -14,7 +14,7 @@ import { Pdf } from 'react-notion-x/build/third-party/pdf'
 import { useTheme } from '@/Providers/ThemeProvider'
 
 import { ListLayout } from '@/components'
-import { getTitles } from '@/utils'
+import { getTitles } from '@/lib'
 import React from 'react'
 
 interface PostProps {

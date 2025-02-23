@@ -4,7 +4,7 @@ import { useSidebar } from '@/Providers'
 import { useTheme } from '@/Providers/ThemeProvider'
 import { SidebarNavigation } from './Navigation'
 import { SidebarOverlay } from './Overlay'
-import { classNames } from '@/utils'
+import { cn } from '@/lib'
 
 const Sidebar = () => {
   const { openSidebar } = useSidebar()
@@ -12,7 +12,7 @@ const Sidebar = () => {
 
   return (
     <nav
-      className={classNames(
+      className={cn(
         openSidebar
           ? 'absolute translate-x-0 shadow-lg w-72 2xl:w-72 3xl:w-80' // small device
           : 'absolute -translate-x-full w-3/4 sm:w-1/2 md:w-1/3 lg:w-56 2xl:w-72 3xl:w-80', // full page

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 
-import { classNames } from '@/utils'
+import { cn } from '@/lib'
 
 interface NavigationLinkProps {
   link: {
@@ -33,7 +33,7 @@ export function NavigationLink({
         passHref
         target={isExternal ? '_blank' : undefined}
         rel={isExternal ? 'noopener noreferrer' : undefined}
-        className={classNames(
+        className={cn(
           'flex flex-1 items-center space-x-3 rounded-md px-2 py-1.5 text-sm font-medium',
           isActive
             ? 'bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900'

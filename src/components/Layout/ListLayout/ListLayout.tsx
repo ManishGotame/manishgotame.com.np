@@ -1,5 +1,5 @@
 import { Header } from '@/components'
-import { classNames, getTitles } from '@/utils'
+import { cn, getTitles } from '@/lib'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { BlockMap } from 'notion-types'
@@ -37,7 +37,7 @@ const ListLayout: React.FC<ListLayoutProps> = ({
               <Link
                 key={index}
                 href={item.href}
-                className={classNames(
+                className={cn(
                   'cursor-pointer my-1 gap-1 flex flex-1 flex-col space-x-3 rounded-md px-2 py-3 text-[14px] font-medium',
                   isActive
                     ? 'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-white'
