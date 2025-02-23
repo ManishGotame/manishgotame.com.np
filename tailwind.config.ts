@@ -79,9 +79,18 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
+      },
+      animation: {
+        marquee: 'marquee 25s linear infinite'
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' }
+        }
       }
     }
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
-  plugins: [require('tailwindcss-animate')]
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')]
 } satisfies Config
