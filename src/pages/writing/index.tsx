@@ -15,7 +15,7 @@ export async function getStaticProps() {
 }
 
 export default function Writing() {
-  return <>Page here</>
+  return null
 }
 
 Writing.displayName = 'Writing'

@@ -1,4 +1,3 @@
-import { HamburgerIcon } from './HamburgerIcon'
 import { HomeIcon } from './HomeIcon'
 import { WritingIcon } from './WritingIcon'
 import { CritIcon } from './CritIcon'
@@ -10,7 +9,6 @@ import { GitHubIcon } from './GitHubIcon'
 import { ExternalLinkIcon } from './ExternalLinkIcon'
 
 export {
-  HamburgerIcon,
   HomeIcon,
   WritingIcon,
   CritIcon,
