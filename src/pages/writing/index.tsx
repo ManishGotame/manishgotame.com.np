@@ -1,7 +1,7 @@
 import { NotionAPI } from 'notion-client'
 import { BlockMap } from 'notion-types'
 
-import { ListLayout } from '@/components'
+import { ListLayout, MenuButton } from '@/components'
 
 export async function getStaticProps() {
   const notion = new NotionAPI()
@@ -15,7 +15,11 @@ export async function getStaticProps() {
 }
 
 export default function Writing() {
-  return null
+  return (
+    <>
+      <MenuButton />
+    </>
+  )
 }
 
 Writing.displayName = 'Writing'

@@ -13,7 +13,7 @@ import { Modal } from 'react-notion-x/build/third-party/modal'
 import { Pdf } from 'react-notion-x/build/third-party/pdf'
 import { useTheme } from '@/Providers/ThemeProvider'
 
-import { Header, ListLayout } from '@/components'
+import { Header, ListLayout, MenuButton } from '@/components'
 import { cn, getTitles } from '@/lib'
 import React from 'react'
 
@@ -111,6 +111,7 @@ export default function Post({ blockMap }: PostProps) {
 
   return (
     <div className='overflow-y-scroll h-screen'>
+      <MenuButton />
       <div
         className='flex flex-col justify-center items-center mt-20 mb-10 px-[16px]'
         ref={titleRef}
