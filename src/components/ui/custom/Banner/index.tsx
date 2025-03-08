@@ -21,14 +21,14 @@ export default function AnnoucementBanner({
       <Link href={`/changelog`} className='flex items-center'>
         <Badge
           variant={variant}
-          className='bg-blue-500 text-white rounded-xl hover:bg-blue-600'
+          className='bg-blue-500 text-white text-xs rounded-xl hover:bg-blue-600'
         >
           {title}
         </Badge>
       </Link>
       <Link href={`/changelog/${slug}`} className='hover:bg-gray-100'>
         <div className='flex gap-1 items-center'>
-          <p className='text-sm'>{description}</p>
+          <p className='text-xs'>{description}</p>
           <CircleArrowRight className='w-5 h-5' />
         </div>
       </Link>

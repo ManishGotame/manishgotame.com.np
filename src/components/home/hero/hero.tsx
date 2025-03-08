@@ -12,7 +12,7 @@ const Hero = () => {
           description='Google Maps to GPX and vice versa.'
           slug='new-feature'
         />
-        <h1 className='mt-[12px] text-4xl font-regular mb-[19px]'>
+        <h1 className='text-[40px] font-regular mb-[19px]'>
           Hi, I&apos;m{' '}
           <span className='text-black dark:text-white font-bold'>Manish!</span>
         </h1>
@@ -24,7 +24,7 @@ const Hero = () => {
         </p>
       </div>
 
-      <div className='mt-16'>
+      <div className='mt-20'>
         <div className='font-regular text-[15px] mb-[16px]'>Currently</div>
         <div className='flex flex-col gap-[12px]'>
           <PingText color='bg-[#69E5FE]'>
