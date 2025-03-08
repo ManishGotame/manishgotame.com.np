@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import { companiesList } from './constants'
+import Marquee from 'react-fast-marquee'
 
 const Companies = () => {
   return (
@@ -8,14 +9,14 @@ const Companies = () => {
       <div className='font-bold text-[20px] text-center'>
         Trusted by Companies like
       </div>
-      <div className='flex flex-wrap items-center justify-center gap-8 max-w-4xl'>
+      <Marquee>
         {companiesList.map((company, index) => (
           <div
             key={index}
             onClick={() =>
               window.open(company.link, '_blank', 'noopener,noreferrer')
             }
-            className='cursor-pointer hover:opacity-80 transition-opacity'
+            className='cursor-pointer hover:opacity-80 transition-opacity mr-8'
           >
             <Image
               src={company.image}
@@ -30,7 +31,7 @@ const Companies = () => {
             />
           </div>
         ))}
-      </div>
+      </Marquee>
     </div>
   )
 }

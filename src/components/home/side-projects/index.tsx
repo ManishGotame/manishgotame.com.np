@@ -25,22 +25,6 @@ const projects: ProjectCardProps[] = [
     link: '/projects/opp',
     externalLink: 'https://openpastpaper.com',
     active: false
-  },
-  {
-    title: 'Open Past Paper',
-    description: 'AI Study Tool and exam builder',
-    image: '/side-projects/opp/logo.png',
-    link: '/projects/opp',
-    externalLink: 'https://openpastpaper.com',
-    active: false
-  },
-  {
-    title: 'Open Past Paper',
-    description: 'AI Study Tool and exam builder',
-    image: '/side-projects/opp/logo.png',
-    link: '/projects/opp',
-    externalLink: 'https://openpastpaper.com',
-    active: false
   }
 ]
 

@@ -68,6 +68,7 @@ export default {
         twitter: '#479BEA',
         current: 'currentColor',
         jet: '#37352f',
+        antiFlashWhite: '#f1f1f1',
         primary: {
           light: '#000000',
           dark: '#ffffff',
