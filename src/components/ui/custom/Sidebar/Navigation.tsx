@@ -5,11 +5,11 @@ import {
   GitHubIcon,
   HomeIcon,
   StackIcon,
-  TwitterIcon,
-  WritingIcon
+  TwitterIcon
 } from '@/components/Icon'
 
 import { NavigationLink } from './NavigationLink'
+import { Contact, Images, PenLine } from 'lucide-react'
 
 export function SidebarNavigation() {
   const router = useRouter()
@@ -26,23 +26,30 @@ export function SidebarNavigation() {
           trailingAction: null,
           isExternal: false
         },
-
         {
-          href: '/writing',
-          label: 'Writing',
-          icon: WritingIcon,
+          href: '/about',
+          label: 'About',
+          icon: Contact,
           trailingAccessory: null,
-          isActive: router.asPath.indexOf('/writing') >= 0,
+          isActive: router.asPath.indexOf('/about') >= 0,
           trailingAction: null,
           isExternal: false
         },
-
         {
-          href: '/activity',
-          label: 'Activity Heatmap',
+          href: '/portfolio',
+          label: 'Portfolio',
           icon: StackIcon,
           trailingAccessory: null,
-          isActive: router.asPath.indexOf('/activity') >= 0,
+          isActive: router.asPath.indexOf('/portfolio') >= 0,
+          trailingAction: null,
+          isExternal: false
+        },
+        {
+          href: '/writing',
+          label: 'Writing',
+          icon: PenLine,
+          trailingAccessory: null,
+          isActive: router.asPath.indexOf('/writing') >= 0,
           trailingAction: null,
           isExternal: false
         }
@@ -52,22 +59,20 @@ export function SidebarNavigation() {
       label: 'Me',
       items: [
         {
-          href: '/bookmarks',
-          label: 'Bookmarks',
-          icon: GitHubIcon,
+          href: '/activity',
+          label: 'Activity Heatmap',
+          icon: StackIcon,
           trailingAccessory: null,
-          isActive: router.asPath.indexOf('/bookmarks') >= 0,
+          isActive: router.asPath.indexOf('/activity') >= 0,
+          trailingAction: null,
           isExternal: false
         },
-
         {
-          href: '/ama',
-          label: 'AMA',
-          icon: GitHubIcon,
+          href: '/gallery',
+          label: 'Gallery',
+          icon: Images,
           trailingAccessory: null,
-          isActive:
-            router.asPath.indexOf('/ama') >= 0 &&
-            !router.asPath.startsWith('/ama/pending'),
+          isActive: router.asPath.indexOf('/photos') >= 0,
           trailingAction: null,
           isExternal: false
         }

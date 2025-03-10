@@ -15,7 +15,7 @@ import { useTheme } from '@/Providers/ThemeProvider'
 
 import { Header, ListLayout, MenuButton } from '@/components'
 import { cn, getTitles } from '@/lib'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 interface PostProps {
   blockMap: ExtendedRecordMap
@@ -69,7 +69,7 @@ export default function Post({ blockMap }: PostProps) {
   const titleRef = React.useRef<HTMLDivElement>(null)
   const { theme } = useTheme()
 
-  React.useEffect(() => {
+  useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         setShowFixedTitle(!entry.isIntersecting)
@@ -86,7 +86,7 @@ export default function Post({ blockMap }: PostProps) {
     return () => observer.disconnect()
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     // Scroll to top when the route changes
     window.scrollTo(0, 0)
   }, [router.asPath])

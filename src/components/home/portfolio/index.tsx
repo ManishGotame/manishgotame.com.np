@@ -9,16 +9,34 @@ const portfolio: IPortfolio[] = [
     image: '/portfolio/actn.png'
   },
   {
-    title: 'ACTN Sports platform',
-    description: 'AI Study Tool and exam builder',
+    title: 'Million Dollar Vault',
+    description: 'NFT Smart Contract that made over 200K+ in sales.',
     year: '2022',
-    image: '/portfolio/actn.png'
+    image: '/portfolio/mdv.png'
   },
   {
-    title: 'ACTN Sports platform',
-    description: 'AI Study Tool and exam builder',
+    title: 'NFT Fever',
+    description: 'FullStack Study Tool',
     year: '2022',
-    image: '/portfolio/actn.png'
+    image: '/portfolio/nftfever.png'
+  },
+  {
+    title: 'Art Can Die',
+    description: 'FullStack Study Tool',
+    year: '2022',
+    image: '/portfolio/artcandie.png'
+  },
+  {
+    title: 'Research Fund',
+    description: 'FullStack Study Tool',
+    year: '2022',
+    image: '/portfolio/researchfundnft.png'
+  },
+  {
+    title: 'Metanomads',
+    description: 'FullStack Study Tool',
+    year: '2022',
+    image: '/portfolio/metanomads.png'
   }
 ]
 const Portfolio = () => {
@@ -30,7 +48,7 @@ const Portfolio = () => {
           Work I have done for my clients
         </span>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-10'>
         {portfolio.map((project, index) => (
           <PortfolioCard key={index} {...project} />
         ))}

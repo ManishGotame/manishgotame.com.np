@@ -1,18 +1,23 @@
 import { AnnoucementBanner } from '../../ui/custom'
 import Link from 'next/link'
 import PingText from './PingText'
+import { RefObject } from 'react'
 
-const Hero = () => {
+interface HeroProps {
+  ref: RefObject<HTMLDivElement | null>
+}
+
+const Hero: React.FC<HeroProps> = ({ ref }) => {
   return (
     <div className='pt-32'>
-      <div className=''>
+      <div>
         <AnnoucementBanner
           variant='default'
           title='Writing'
           description='Google Maps to GPX and vice versa.'
           slug='new-feature'
         />
-        <h1 className='text-[40px] font-regular mb-[19px]'>
+        <h1 className='text-[40px] font-regular mb-[19px]' ref={ref}>
           Hi, I&apos;m{' '}
           <span className='text-black dark:text-white font-bold'>Manish!</span>
         </h1>
@@ -28,18 +33,18 @@ const Hero = () => {
         <div className='font-regular text-[15px] mb-[16px]'>Currently</div>
         <div className='flex flex-col gap-[12px]'>
           <PingText color='bg-[#69E5FE]'>
-            <div className='flex flex-row gap-1'>
-              <span>Working as a Frontend Developer for </span>
+            <span>
+              Working as a Frontend Developer for{' '}
               <Link
                 href='https://dgtlpower.com'
                 className='underline decoration-[#69E5FE] underline-offset-[3px]'
               >
                 DGTL Power UK.
               </Link>
-            </div>
+            </span>
           </PingText>
           <PingText color='bg-blue-500'>
-            <div className='flex flex-row gap-1'>
+            <span>
               <span>Building </span>
               <Link
                 href='https://openpastpaper.com'
@@ -48,10 +53,10 @@ const Hero = () => {
                 Open Past Paper
               </Link>
               <span> and other stuffs on weekends.</span>
-            </div>
+            </span>
           </PingText>
           <PingText color='bg-green-500'>
-            <div className='flex flex-row gap-1'>
+            <span>
               <span>Freelancing on </span>
               <Link
                 href='https://dgtlpower.com'
@@ -60,7 +65,7 @@ const Hero = () => {
                 Upwork
               </Link>
               <span> and helping clients all over the world.</span>
-            </div>
+            </span>
           </PingText>
         </div>
       </div>
