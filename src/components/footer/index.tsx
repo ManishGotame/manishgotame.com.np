@@ -32,7 +32,7 @@ const Footer = () => {
           <Instagram />
         </a>
       </div>
-      <div className='text-center text-gray-600 dark:text-gray-400 my-4 text-md'>
+      <div className='text-center text-gray-600 dark:text-gray-400 my-4 text-sm md:text-md'>
         Copyright © {currentYear} Manish Gotame. All rights reserved.
       </div>
     </footer>

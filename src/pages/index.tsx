@@ -36,7 +36,7 @@ export default function Home() {
     <>
       <div
         className={cn(
-          'fixed bg-white dark:bg-black w-full z-10 flex items-center',
+          'fixed bg-white/70 dark:bg-black/70 w-full z-10 flex items-center backdrop-blur-sm transition-opacity duration-200',
           showName && 'border-b border-gray-200 dark:border-gray-800 shadow-sm'
         )}
       >
