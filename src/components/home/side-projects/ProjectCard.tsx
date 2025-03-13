@@ -10,6 +10,8 @@ export interface ProjectCardProps {
   externalLink: string
   active: boolean
   tags?: string[]
+  height?: number
+  width?: number
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -19,21 +21,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   link,
   externalLink,
   active,
-  tags
+  tags,
+  height = 48,
+  width = 48
 }) => {
   return (
     <Link
       href={link}
       className='cursor-pointer bg-lotion border border-gray-150 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800 relative group rounded-lg dark:bg-erie overflow-hidden min-h-[210px]'
     >
-      <div className='p-4 space-y-4'>
-        <div className='flex items-start justify-between mb-[29px]'>
+      <div className='p-4 flex flex-col justify-between h-full pb-10'>
+        <div className='flex items-start justify-between'>
           <Image
             src={image}
             alt={title}
-            className='w-14 h-14 rounded-xl'
-            width={48}
-            height={48}
+            className='rounded-md'
+            width={width}
+            height={height}
           />
           <div
             onClick={() =>
@@ -54,7 +58,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <p className='text-[14px] font-regular text-gray-600 dark:text-gray-400 mt-1'>
             {description}
           </p>
-          {tags && tags.length > 0 && (
+          {tags && tags.length > 0 ? (
             <div className='flex gap-2 mt-3'>
               {tags.map((tag, index) => (
                 <span
@@ -65,6 +69,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 </span>
               ))}
             </div>
+          ) : (
+            <div className='flex gap-2 my-4' />
           )}
         </div>
       </div>
