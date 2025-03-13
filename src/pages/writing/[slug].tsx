@@ -13,12 +13,13 @@ import { Modal } from 'react-notion-x/build/third-party/modal'
 import { Pdf } from 'react-notion-x/build/third-party/pdf'
 import { useTheme } from '@/Providers/ThemeProvider'
 
-import { Header, ListLayout, MenuButton } from '@/components'
+import { Header, MenuButton, WritingSidebar } from '@/components'
 import { cn, getTitles } from '@/lib'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface PostProps {
   blockMap: ExtendedRecordMap
+  posts: BlockMap
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -60,12 +61,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-export default function Post({ blockMap }: PostProps) {
+export default function Post({ blockMap, posts }: PostProps) {
   const router = useRouter()
   const keys = Object.keys(blockMap?.block || {})
   const block = blockMap?.block?.[keys[0]]?.value
   const title = getBlockTitle(block, blockMap)
-  const [showFixedTitle, setShowFixedTitle] = React.useState(false)
+  const [showFixedTitle, setShowFixedTitle] = useState(false)
+  const [openSidebar, setOpenSidebar] = useState(false)
   const titleRef = React.useRef<HTMLDivElement>(null)
   const { theme } = useTheme()
 
@@ -89,6 +91,7 @@ export default function Post({ blockMap }: PostProps) {
   useEffect(() => {
     // Scroll to top when the route changes
     window.scrollTo(0, 0)
+    setOpenSidebar(false)
   }, [router.asPath])
 
   // Show loading state when the fallback is being generated
@@ -110,37 +113,40 @@ export default function Post({ blockMap }: PostProps) {
   }
 
   return (
-    <div className='overflow-y-scroll h-screen'>
-      <MenuButton />
-      <div
-        className='flex flex-col justify-center items-center mt-20 mb-10 px-[16px]'
-        ref={titleRef}
-      >
-        <h1 className='text-3xl font-semibold'>{title}</h1>
+    <div className='flex'>
+      <WritingSidebar blockMap={posts} title='Writing' open={openSidebar} />
+      <div className='overflow-y-scroll h-screen flex-1'>
+        <MenuButton onClick={() => setOpenSidebar(!openSidebar)} />
+        <div
+          className='flex flex-col justify-center items-center mt-20 mb-10 px-[16px]'
+          ref={titleRef}
+        >
+          <h1 className='text-3xl font-semibold'>{title}</h1>
+        </div>
+        <div
+          className={cn(
+            'fixed w-[100%] top-0 z-10 flex flex-col justify-center transition-opacity duration-200',
+            showFixedTitle ? 'block' : 'hidden',
+            theme === 'dark'
+              ? 'bg-black/70 border-gray-800 backdrop-blur-sm'
+              : 'bg-white/70 border-gray-200 backdrop-blur-sm'
+          )}
+        >
+          <Header title={title} onClick={() => setOpenSidebar(!openSidebar)} />
+        </div>
+        <NotionRenderer
+          recordMap={blockMap}
+          darkMode={theme === 'dark'}
+          disableHeader={true}
+          components={{
+            Code,
+            Collection,
+            Equation,
+            Pdf,
+            Modal
+          }}
+        />
       </div>
-      <div
-        className={cn(
-          'fixed w-[100%] top-0 z-10 flex flex-col justify-center transition-opacity duration-200',
-          showFixedTitle ? 'block' : 'hidden',
-          theme === 'dark'
-            ? 'bg-black/70 border-gray-800 backdrop-blur-sm'
-            : 'bg-white/70 border-gray-200 backdrop-blur-sm'
-        )}
-      >
-        <Header title={title} />
-      </div>
-      <NotionRenderer
-        recordMap={blockMap}
-        darkMode={theme === 'dark'}
-        disableHeader={true}
-        components={{
-          Code,
-          Collection,
-          Equation,
-          Pdf,
-          Modal
-        }}
-      />
     </div>
   )
 }
@@ -157,9 +163,5 @@ Post.getLayout = function getLayout(page: React.ReactElement<PageProps>) {
     return <div>Loading...</div>
   }
 
-  return (
-    <ListLayout title='Writing' blockMap={page.props.posts}>
-      {page}
-    </ListLayout>
-  )
+  return page
 }
