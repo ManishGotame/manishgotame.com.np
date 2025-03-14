@@ -90,15 +90,12 @@ export default function Post({ blockMap, posts }: PostProps) {
   }, [])
 
   useEffect(() => {
-    // Scroll to top when the route changes
     window.scrollTo(0, 0)
     setOpenSidebar(false)
   }, [router.asPath])
 
-  // Add new useEffect for handling resize
   useEffect(() => {
     const handleResize = () => {
-      // 1024px is tailwind's lg breakpoint
       if (window.innerWidth >= 1024 && openSidebar) {
         setOpenSidebar(false)
       }
@@ -108,7 +105,6 @@ export default function Post({ blockMap, posts }: PostProps) {
     return () => window.removeEventListener('resize', handleResize)
   }, [openSidebar])
 
-  // Show loading state when the fallback is being generated
   if (router.isFallback) {
     return (
       <div className='flex items-center justify-center min-h-screen'>
@@ -117,7 +113,6 @@ export default function Post({ blockMap, posts }: PostProps) {
     )
   }
 
-  // Add error boundary for invalid blockMap
   if (!blockMap) {
     return (
       <div className='flex items-center justify-center min-h-screen'>
@@ -147,7 +142,7 @@ export default function Post({ blockMap, posts }: PostProps) {
             'fixed w-[100%] top-0 z-10 flex flex-col justify-center transition-opacity duration-200',
             showFixedTitle ? 'block' : 'hidden',
             theme === 'dark'
-              ? 'bg-black/70 border-gray-800 backdrop-blur-sm'
+              ? 'bg-gray-900/70  border-gray-800 backdrop-blur-sm'
               : 'bg-white/70 border-gray-200 backdrop-blur-sm'
           )}
         >
