@@ -8,7 +8,7 @@ export default function Document() {
         <title>Manish Gotame</title>
         <meta
           name='description'
-          content='Full Stack Developer, Cyclist, and occasional Essayist.'
+          content='Full Stack Developer, cyclist, and occasional essayist.'
         />
         <meta
           name='keywords'
@@ -23,11 +23,11 @@ export default function Document() {
         />
         <meta
           property='og:description'
-          content='Full Stack Developer, Cyclist, and occasional Essayist.'
+          content='Full Stack Developer, cyclist, and occasional essayist.'
         />
         <meta
           property='og:image'
-          content='https://manishgotame.com.np/og-image.jpg'
+          content='https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png'
         />
         <meta property='og:url' content='https://manishgotame.com.np' />
         <meta property='og:type' content='website' />
@@ -43,11 +43,11 @@ export default function Document() {
         />
         <meta
           name='twitter:description'
-          content='Full Stack Developer, Cyclist, and occasional Essayist.'
+          content='Full Stack Developer, cyclist, and occasional essayist.'
         />
         <meta
           name='twitter:image'
-          content='https://manishgotame.com.np/og-image.jpg'
+          content='https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png'
         />
 
         {/* Favicon */}
