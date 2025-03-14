@@ -22,7 +22,10 @@ export default function Writing({ blockMap }: PageProps) {
 
   return (
     <div className='flex'>
-      <WritingSidebar blockMap={blockMap} title={title} open={true} />
+      {/* when resizing the sidebar adjusts, it needs to be static */}
+      <div className='w-full lg:w-[25%]'>
+        <WritingSidebar blockMap={blockMap} title={title} open={true} />
+      </div>
     </div>
   )
 }

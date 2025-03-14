@@ -95,6 +95,19 @@ export default function Post({ blockMap, posts }: PostProps) {
     setOpenSidebar(false)
   }, [router.asPath])
 
+  // Add new useEffect for handling resize
+  useEffect(() => {
+    const handleResize = () => {
+      // 1024px is tailwind's lg breakpoint
+      if (window.innerWidth >= 1024 && openSidebar) {
+        setOpenSidebar(false)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [openSidebar])
+
   // Show loading state when the fallback is being generated
   if (router.isFallback) {
     return (
