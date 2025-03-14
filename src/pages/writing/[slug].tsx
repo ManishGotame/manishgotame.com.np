@@ -13,9 +13,10 @@ import { Modal } from 'react-notion-x/build/third-party/modal'
 import { Pdf } from 'react-notion-x/build/third-party/pdf'
 import { useTheme } from '@/Providers/ThemeProvider'
 
-import { Header, MenuButton, WritingSidebar } from '@/components'
+import { Header, WritingSidebar } from '@/components'
 import { cn, getTitles } from '@/lib'
 import React, { useEffect, useState } from 'react'
+import { ChevronLeft } from 'lucide-react'
 
 interface PostProps {
   blockMap: ExtendedRecordMap
@@ -116,7 +117,12 @@ export default function Post({ blockMap, posts }: PostProps) {
     <div className='flex'>
       <WritingSidebar blockMap={posts} title='Writing' open={openSidebar} />
       <div className='overflow-y-scroll h-screen flex-1'>
-        <MenuButton onClick={() => setOpenSidebar(!openSidebar)} />
+        <div className='absolute p-5 top-0 left-0'>
+          <ChevronLeft
+            className='w-5 h-5 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg block lg:hidden'
+            onClick={() => setOpenSidebar(!openSidebar)}
+          />
+        </div>
         <div
           className='flex flex-col justify-center items-center mt-20 mb-10 px-[16px]'
           ref={titleRef}
@@ -132,7 +138,11 @@ export default function Post({ blockMap, posts }: PostProps) {
               : 'bg-white/70 border-gray-200 backdrop-blur-sm'
           )}
         >
-          <Header title={title} onClick={() => setOpenSidebar(!openSidebar)} />
+          <Header
+            title={title}
+            onClick={() => setOpenSidebar(!openSidebar)}
+            backButton={true}
+          />
         </div>
         <NotionRenderer
           recordMap={blockMap}

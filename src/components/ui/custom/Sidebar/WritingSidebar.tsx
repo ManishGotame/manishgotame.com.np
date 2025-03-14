@@ -33,7 +33,7 @@ export default function WritingSidebar({
           ? 'absolute translate-x-0 shadow-lg w-full'
           : 'absolute -translate-x-full',
 
-        'lg:relative lg:translate-x-0 lg:w-[30%] lg:shadow-none'
+        'lg:relative lg:translate-x-0 lg:min-w-[25%] lg:shadow-none'
       )}
     >
       <div className='sticky top-0 z-10 bg-lotion dark:bg-gray-900'>
