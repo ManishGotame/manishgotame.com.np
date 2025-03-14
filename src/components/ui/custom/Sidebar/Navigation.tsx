@@ -72,7 +72,7 @@ export function SidebarNavigation() {
           label: 'Gallery',
           icon: Images,
           trailingAccessory: null,
-          isActive: router.asPath.indexOf('/photos') >= 0,
+          isActive: router.asPath.indexOf('/gallery') >= 0,
           trailingAction: null,
           isExternal: false
         }
