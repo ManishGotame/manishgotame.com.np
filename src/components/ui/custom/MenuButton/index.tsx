@@ -7,7 +7,7 @@ interface MenuButtonProps {
 }
 
 const MenuButton: React.FC<MenuButtonProps> = ({
-  className = 'p-5 block lg:hidden',
+  className = 'block lg:hidden',
   onClick
 }) => {
   const { toggleSidebar } = useSidebar()

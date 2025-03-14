@@ -1,8 +1,6 @@
 import { NotionAPI } from 'notion-client'
 import { BlockMap } from 'notion-types'
-
-import { ListLayout, MenuButton } from '@/components'
-import { useState } from 'react'
+import { WritingSidebar } from '@/components'
 
 export async function getStaticProps() {
   const notion = new NotionAPI()
@@ -15,27 +13,18 @@ export async function getStaticProps() {
   }
 }
 
-export default function Writing() {
-  const [open, setOpen] = useState(false)
+type PageProps = {
+  blockMap: BlockMap
+}
+
+export default function Writing({ blockMap }: PageProps) {
+  const title = 'Writing'
 
   return (
-    <>
-      <MenuButton onClick={() => setOpen(!open)} />
-    </>
+    <div className='flex'>
+      <WritingSidebar blockMap={blockMap} title={title} open={true} />
+    </div>
   )
 }
 
 Writing.displayName = 'Writing'
-
-type PageProps = {
-  blockMap: BlockMap
-  open: boolean
-}
-
-Writing.getLayout = function getLayout(page: React.ReactElement<PageProps>) {
-  return (
-    <ListLayout title='Writing' blockMap={page.props.blockMap}>
-      {page}
-    </ListLayout>
-  )
-}

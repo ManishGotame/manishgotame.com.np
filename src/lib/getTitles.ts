@@ -2,7 +2,6 @@ import { ITitleResponse } from '@/interfaces'
 import { BlockMap } from 'notion-types'
 
 export const getTitles = (data: BlockMap) => {
-  console.log(data)
   const titles: ITitleResponse[] = Object.values(data)
     .filter(
       (each) =>
