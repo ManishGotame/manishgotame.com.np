@@ -36,14 +36,14 @@ export default function Home() {
     <>
       <div
         className={cn(
-          'fixed bg-white/70 dark:bg-black/70 w-full z-10 flex items-center backdrop-blur-sm transition-opacity duration-200',
+          'p-5 block lg:hidden fixed bg-white/70 dark:bg-black/70 w-full z-10 flex items-center backdrop-blur-sm transition-opacity duration-200',
           showName && 'border-b border-gray-200 dark:border-gray-800 shadow-sm'
         )}
       >
         <MenuButton />
         <h2
           className={cn(
-            'text-sm font-bold text-primary transform-gpu line-clamp-1 lg:hidden',
+            'text-sm ml-1 font-bold text-primary transform-gpu line-clamp-1 lg:hidden',
             showName ? 'block' : 'hidden'
           )}
         >
