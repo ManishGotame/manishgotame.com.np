@@ -17,10 +17,7 @@ export default function Document() {
         <meta name='author' content='Manish Gotame' />
 
         {/* Open Graph for social media */}
-        <meta
-          property='og:title'
-          content='Manish Gotame - Software Developer'
-        />
+        <meta property='og:title' content='Manish Gotame' />
         <meta
           property='og:description'
           content='Full Stack Developer, cyclist, and occasional essayist.'
@@ -37,10 +34,7 @@ export default function Document() {
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:site' content='@manishgotame' />
         <meta name='twitter:creator' content='@manishgotame' />
-        <meta
-          name='twitter:title'
-          content='Manish Gotame - Software Developer'
-        />
+        <meta name='twitter:title' content='Manish Gotame' />
         <meta
           name='twitter:description'
           content='Full Stack Developer, cyclist, and occasional essayist.'
