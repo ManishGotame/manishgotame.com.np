@@ -9,7 +9,14 @@ import {
 } from '@/components/Icon'
 
 import { NavigationLink } from './NavigationLink'
-import { User, Images, PenLine } from 'lucide-react'
+import {
+  User,
+  Images,
+  PenLine,
+  LinkedinIcon,
+  InstagramIcon,
+  LayoutGrid
+} from 'lucide-react'
 
 export function SidebarNavigation() {
   const router = useRouter()
@@ -58,15 +65,15 @@ export function SidebarNavigation() {
     {
       label: 'Me',
       items: [
-        {
-          href: '/activity',
-          label: 'Activity Heatmap',
-          icon: StackIcon,
-          trailingAccessory: null,
-          isActive: router.asPath.indexOf('/activity') >= 0,
-          trailingAction: null,
-          isExternal: false
-        },
+        // {
+        //   href: '/activity',
+        //   label: 'Activity Heatmap',
+        //   icon: StackIcon,
+        //   trailingAccessory: null,
+        //   isActive: router.asPath.indexOf('/activity') >= 0,
+        //   trailingAction: null,
+        //   isExternal: false
+        // },
         {
           href: '/gallery',
           label: 'Gallery',
@@ -84,7 +91,7 @@ export function SidebarNavigation() {
         {
           href: 'https://openpastpaper.com',
           label: 'Open Past Paper',
-          icon: GitHubIcon,
+          icon: LayoutGrid,
           trailingAccessory: ExternalLinkIcon,
           isActive: false,
           trailingAction: null,
@@ -97,7 +104,7 @@ export function SidebarNavigation() {
       items: [
         {
           href: 'https://twitter.com/manigotame',
-          label: 'Twitter',
+          label: 'X',
           icon: TwitterIcon,
           trailingAccessory: ExternalLinkIcon,
           isActive: false,
@@ -109,6 +116,26 @@ export function SidebarNavigation() {
           href: 'https://github.com/manishgotame',
           label: 'GitHub',
           icon: GitHubIcon,
+          trailingAccessory: ExternalLinkIcon,
+          isActive: false,
+          trailingAction: null,
+          isExternal: true
+        },
+
+        {
+          href: 'https://www.linkedin.com/in/manishgotame/',
+          label: 'LinkedIn',
+          icon: LinkedinIcon,
+          trailingAccessory: ExternalLinkIcon,
+          isActive: false,
+          trailingAction: null,
+          isExternal: true
+        },
+
+        {
+          href: 'https://www.instagram.com/manishgotame/',
+          label: 'Instagram',
+          icon: InstagramIcon,
           trailingAccessory: ExternalLinkIcon,
           isActive: false,
           trailingAction: null,

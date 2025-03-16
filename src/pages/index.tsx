@@ -8,9 +8,26 @@ import {
   Footer,
   PageHeader
 } from '@/components'
+import { NotionAPI } from 'notion-client'
+import { BlockMap } from 'notion-types'
 import { useEffect, useRef, useState } from 'react'
 
-export default function Home() {
+export async function getStaticProps() {
+  const notion = new NotionAPI()
+  const recordMap = await notion.getPage(process.env.NOTION_PAGE_ID as string)
+
+  return {
+    props: {
+      blockMap: recordMap.block
+    }
+  }
+}
+
+type PageProps = {
+  blockMap: BlockMap
+}
+
+export default function Home({ blockMap }: PageProps) {
   const [showName, setShowName] = useState(false)
   const headerRef = useRef<HTMLDivElement>(null)
 
@@ -35,11 +52,11 @@ export default function Home() {
     <>
       <PageHeader showName={showName} />
       <div className='flex flex-col gap-[138px] px-[30px] md:px-[30px] container max-w-5xl mx-auto bg-white dark:bg-black text-black dark:text-white'>
-        <Hero ref={headerRef} />
+        <Hero ref={headerRef} blockMap={blockMap} />
         <SideProjects />
         <Companies />
         <Portfolio />
-        <Blog />
+        <Blog blockMap={blockMap} />
         <Photos />
       </div>
       <Footer />

@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
-import { companiesList } from './constants'
 import Marquee from 'react-fast-marquee'
+import { companiesList } from '@/constants'
 
 const Companies = () => {
   return (

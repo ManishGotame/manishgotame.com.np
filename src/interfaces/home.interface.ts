@@ -14,3 +14,9 @@ export interface IPortfolio {
   year: string
   image: string
 }
+
+export interface IPhoto {
+  title: string
+  description: string
+  image: string
+}

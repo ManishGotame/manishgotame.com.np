@@ -1,33 +1,6 @@
 import Image from 'next/image'
-
-interface IPhoto {
-  title: string
-  description: string
-  image: string
-}
-
-const photos: IPhoto[] = [
-  {
-    title: 'Photo 1',
-    description: 'Description 1',
-    image: '/photos/IMG_1.jpg'
-  },
-  {
-    title: 'Photo 2',
-    description: 'Description 2',
-    image: '/photos/IMG_2.jpg'
-  },
-  {
-    title: 'Photo 3',
-    description: 'Description 3',
-    image: '/photos/IMG_3.jpg'
-  },
-  {
-    title: 'Photo 4',
-    description: 'Description 4',
-    image: '/photos/IMG_4.jpg'
-  }
-]
+import { photos } from '@/constants'
+import Link from 'next/link'
 
 const Photos = () => {
   return (
@@ -50,6 +23,14 @@ const Photos = () => {
             />
           </div>
         ))}
+      </div>
+      <div className='flex justify-center mt-10'>
+        <Link
+          href='/gallery'
+          className='px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors'
+        >
+          See more
+        </Link>
       </div>
     </div>
   )

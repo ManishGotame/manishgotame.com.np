@@ -2,21 +2,44 @@ import { AnnoucementBanner } from '../../ui/custom'
 import Link from 'next/link'
 import PingText from './PingText'
 import { RefObject } from 'react'
+import { getTitles } from '@/lib'
+import { BlockMap } from 'notion-types'
 
 interface HeroProps {
   ref: RefObject<HTMLDivElement | null>
+  blockMap: BlockMap
 }
 
-const Hero: React.FC<HeroProps> = ({ ref }) => {
+const Hero: React.FC<HeroProps> = ({ ref, blockMap }) => {
   return (
     <div className='pt-32'>
       <div>
-        <AnnoucementBanner
-          variant='default'
-          title='Writing'
-          description='Google Maps to GPX and vice versa.'
-          slug='new-feature'
-        />
+        {!blockMap ? null : (
+          <>
+            {(() => {
+              const articleTitles = getTitles(blockMap)
+              const oneMonthAgo = new Date()
+              oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 2)
+
+              const showBanner =
+                articleTitles[0].created_at &&
+                new Date(articleTitles[0].created_at) > oneMonthAgo
+
+              return (
+                <>
+                  {showBanner ? (
+                    <AnnoucementBanner
+                      variant='default'
+                      title='New'
+                      description={articleTitles[0].title}
+                      slug={articleTitles[0].id}
+                    />
+                  ) : null}
+                </>
+              )
+            })()}
+          </>
+        )}
         <h1 className='text-[40px] font-regular mb-[19px]' ref={ref}>
           Hi, I&apos;m{' '}
           <span className='text-black dark:text-white font-bold'>Manish!</span>
@@ -37,6 +60,7 @@ const Hero: React.FC<HeroProps> = ({ ref }) => {
               Working as a Frontend Developer for{' '}
               <Link
                 href='https://dgtlpower.com'
+                target='_blank'
                 className='underline decoration-[#69E5FE] underline-offset-[3px]'
               >
                 Digital Power.
@@ -48,6 +72,7 @@ const Hero: React.FC<HeroProps> = ({ ref }) => {
               <span>Building </span>
               <Link
                 href='https://openpastpaper.com'
+                target='_blank'
                 className='underline decoration-blue-500 underline-offset-[3px]'
               >
                 Open Past Paper
@@ -59,7 +84,8 @@ const Hero: React.FC<HeroProps> = ({ ref }) => {
             <span>
               <span>Freelancing on </span>
               <Link
-                href='https://dgtlpower.com'
+                href='https://www.upwork.com/en-gb/freelancers/~0125f2add906ad5883'
+                target='_blank'
                 className='underline decoration-green-500 underline-offset-[3px]'
               >
                 Upwork

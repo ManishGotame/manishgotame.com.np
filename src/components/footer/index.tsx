@@ -1,4 +1,4 @@
-import { GithubIcon } from 'lucide-react'
+import { GithubIcon, LinkedinIcon } from 'lucide-react'
 import { TwitterIcon } from 'lucide-react'
 import { Instagram } from 'lucide-react'
 
@@ -24,8 +24,15 @@ const Footer = () => {
           <GithubIcon />
         </a>
         <a
-          href='https://www.instagram.com/manish.gotame'
+          href='https://www.linkedin.com/in/manishgotame/'
           target='_blank'
+          rel='noopener noreferrer'
+          className='text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50'
+        >
+          <LinkedinIcon />
+        </a>
+        <a
+          href='https://www.instagram.com/manish.gotame'
           rel='noopener noreferrer'
           className='text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50'
         >
