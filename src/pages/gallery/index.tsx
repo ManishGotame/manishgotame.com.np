@@ -8,8 +8,7 @@ import { Equation } from 'react-notion-x/build/third-party/equation'
 import { Modal } from 'react-notion-x/build/third-party/modal'
 import { Pdf } from 'react-notion-x/build/third-party/pdf'
 import { Code } from 'react-notion-x/build/third-party/code'
-import { MenuButton } from '@/components'
-import { cn } from '@/lib'
+import { PageHeader } from '@/components'
 
 export async function getStaticProps() {
   try {
@@ -55,23 +54,7 @@ export default function Gallery({ recordMap }: PageProps) {
   }
   return (
     <>
-      {/* This section could be a separate header component. */}
-      <div
-        className={cn(
-          'p-5 block lg:hidden fixed bg-white/70 dark:bg-black/70 w-full z-10 flex items-center backdrop-blur-sm transition-opacity duration-200'
-          // showName && 'border-b border-gray-200 dark:border-gray-800 shadow-sm'
-        )}
-      >
-        <MenuButton />
-        <h2
-          className={cn(
-            'text-sm ml-1 font-bold text-primary transform-gpu line-clamp-1 lg:hidden'
-            // showName ? 'block' : 'hidden'
-          )}
-        >
-          Manish Gotame
-        </h2>
-      </div>
+      <PageHeader />
       <div className='overflow-y-scroll h-screen flex-1'>
         <NotionRenderer
           recordMap={recordMap}

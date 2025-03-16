@@ -9,7 +9,7 @@ import {
 } from '@/components/Icon'
 
 import { NavigationLink } from './NavigationLink'
-import { Contact, Images, PenLine } from 'lucide-react'
+import { User, Images, PenLine } from 'lucide-react'
 
 export function SidebarNavigation() {
   const router = useRouter()
@@ -29,7 +29,7 @@ export function SidebarNavigation() {
         {
           href: '/about',
           label: 'About',
-          icon: Contact,
+          icon: User,
           trailingAccessory: null,
           isActive: router.asPath.indexOf('/about') >= 0,
           trailingAction: null,

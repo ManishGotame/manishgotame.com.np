@@ -1,11 +1,12 @@
+import { PageHeader } from '@/components'
 import Footer from '@/components/footer'
-import PingText from '@/components/home/hero/PingText'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function About() {
   return (
     <>
+      <PageHeader />
       <div className='w-full bg-white dark:bg-black p-4 md:p-6'>
         <div className='relative max-w-5xl mx-auto min-h-[500px] md:min-h-[600px]'>
           <div className='absolute w-[35%] left-0 top-[25%] aspect-square overflow-hidden'>
@@ -17,7 +18,7 @@ export default function About() {
               className='object-cover rounded-md'
             />
           </div>
-          <div className='z-10 absolute w-[40%] left-[30%] top-[15%] overflow-hidden'>
+          <div className='z-[2] absolute w-[40%] left-[30%] top-[15%] overflow-hidden'>
             <div className='relative aspect-[0.8] w-full'>
               <Image
                 src='/photos/IMG_3.jpg'
