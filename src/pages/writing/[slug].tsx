@@ -13,7 +13,7 @@ import { Modal } from 'react-notion-x/build/third-party/modal'
 import { Pdf } from 'react-notion-x/build/third-party/pdf'
 import { useTheme } from '@/Providers/ThemeProvider'
 
-import { Header, WritingSidebar } from '@/components'
+import { Footer, Header, WritingSidebar } from '@/components'
 import { cn, getTitles } from '@/lib'
 import React, { useEffect, useState } from 'react'
 import { ChevronLeft } from 'lucide-react'
@@ -164,6 +164,7 @@ export default function Post({ blockMap, posts }: PostProps) {
             Modal
           }}
         />
+        <Footer />
       </div>
     </div>
   )

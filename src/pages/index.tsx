@@ -57,8 +57,8 @@ export default function Home() {
         <Portfolio />
         <Blog />
         <Photos />
-        <Footer />
       </div>
+      <Footer />
     </>
   )
 }

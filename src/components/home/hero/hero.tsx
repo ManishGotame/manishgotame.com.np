@@ -39,7 +39,7 @@ const Hero: React.FC<HeroProps> = ({ ref }) => {
                 href='https://dgtlpower.com'
                 className='underline decoration-[#69E5FE] underline-offset-[3px]'
               >
-                DGTL Power UK.
+                Digital Power.
               </Link>
             </span>
           </PingText>
