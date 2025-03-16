@@ -48,7 +48,7 @@ const Hero: React.FC<HeroProps> = ({ ref, blockMap }) => {
           Full Stack Developer, Cyclist, and occasional Essayist.
         </h2>
         <p className='text-gray-600 dark:text-gray-400 text-base'>
-          (Money-ish for non-native speakers)
+          (Money-sh for non-native speakers)
         </p>
       </div>
 
