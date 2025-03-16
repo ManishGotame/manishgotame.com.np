@@ -10,7 +10,7 @@ import { Pdf } from 'react-notion-x/build/third-party/pdf'
 import { Code } from 'react-notion-x/build/third-party/code'
 import { PageHeader } from '@/components'
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const notion = new NotionAPI()
     const recordMap = await notion.getPage(
