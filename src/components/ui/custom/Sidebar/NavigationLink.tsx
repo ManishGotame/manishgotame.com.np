@@ -2,6 +2,8 @@ import * as React from 'react'
 import Link from 'next/link'
 
 import { cn } from '@/lib'
+import { useRouter } from 'next/router'
+import { useSidebar } from '@/Providers'
 
 interface NavigationLinkProps {
   link: {
@@ -10,7 +12,6 @@ interface NavigationLinkProps {
     icon: React.ComponentType
     trailingAccessory?: React.ComponentType | null
     trailingAction?: React.ComponentType | null
-    isActive?: boolean | null
     isExternal?: boolean | null
   }
 }
@@ -22,10 +23,12 @@ export function NavigationLink({
     icon: Icon,
     trailingAccessory: Accessory,
     trailingAction: Action,
-    isActive = false,
     isExternal = false
   }
 }: NavigationLinkProps) {
+  const router = useRouter()
+  const { toggleClose } = useSidebar()
+
   return (
     <li className='flex items-stretch space-x-1'>
       <Link
@@ -33,9 +36,10 @@ export function NavigationLink({
         passHref
         target={isExternal ? '_blank' : undefined}
         rel={isExternal ? 'noopener noreferrer' : undefined}
+        onClick={toggleClose}
         className={cn(
           'flex flex-1 items-center space-x-3 rounded-md px-2 py-1.5 text-sm font-medium',
-          isActive
+          router.asPath === href || router.asPath.startsWith(`${href}/`)
             ? 'bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900'
             : 'text-gray-700 hover:bg-gray-150 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white'
         )}

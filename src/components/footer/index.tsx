@@ -5,7 +5,7 @@ import { Instagram } from 'lucide-react'
 const Footer = () => {
   const currentYear = new Date().getFullYear()
   return (
-    <footer className='py-4 pt-6 mt-16 mb-6 bg-lotion dark:bg-black rounded-sm border-t border-gray-200 dark:border-gray-800'>
+    <footer className='py-4 pt-6 mt-16 mb-16 bg-lotion dark:bg-black rounded-sm border-t border-gray-200 dark:border-gray-800'>
       <div className='flex justify-center items-center gap-4'>
         <a
           href='https://x.com/manishgotame'
