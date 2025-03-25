@@ -3,16 +3,17 @@ import Image from 'next/image'
 
 import { useSidebar } from '@/Providers'
 import { useTheme } from '@/Providers/ThemeProvider'
-import { SidebarNavigation } from './Navigation'
+import { SidebarNavigation } from './SidebarNavigation'
 import { SidebarOverlay } from './Overlay'
 import { cn } from '@/lib'
+import Link from 'next/link'
 
 const Sidebar = () => {
   const { openSidebar } = useSidebar()
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <div className='z-[9999]'>
+    <div>
       <nav
         className={cn(
           openSidebar
@@ -22,12 +23,15 @@ const Sidebar = () => {
         )}
       >
         <div className='filter-blur sticky top-0 z-10 flex flex-col justify-center px-5 py-5'>
-          <div className='flex items-center gap-3 flex-none'>
+          <Link
+            href='/'
+            className='flex items-center gap-3 flex-none cursor-pointer'
+          >
             <Image src='/logo.png' alt='logo' width={32} height={32} />
             <h2 className='text-sm font-bold text-primary transform-gpu line-clamp-1'>
               Manish Gotame
             </h2>
-          </div>
+          </Link>
         </div>
         <SidebarNavigation />
         <div className='mt-auto px-3 py-4 border-t border-gray-150 dark:border-gray-800'>

@@ -13,10 +13,10 @@ const PageHeader = ({ showName = false }: PageHeaderProps) => {
         showName && 'border-b border-gray-200 dark:border-gray-800 shadow-sm'
       )}
     >
-      <MenuButton />
+      <MenuButton icon='/logo.png' />
       <h2
         className={cn(
-          'text-sm ml-2 font-bold text-primary transform-gpu line-clamp-1 lg:hidden',
+          'text-sm ml-3 font-bold text-primary transform-gpu line-clamp-1 lg:hidden',
           showName ? 'block' : 'hidden'
         )}
       >

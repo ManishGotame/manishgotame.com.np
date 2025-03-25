@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({
               onClick={onClick}
             />
           ) : (
-            <MenuButton onClick={onClick} />
+            <MenuButton onClick={onClick} icon='/logo.png' />
           )}
           <h2 className='text-sm font-bold text-primary transform-gpu line-clamp-1'>
             {title}
