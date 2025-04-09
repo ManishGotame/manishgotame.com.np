@@ -1,7 +1,7 @@
 import 'prismjs/themes/prism-tomorrow.css'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { NotionRenderer } from 'react-notion-x'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { NotionAPI } from 'notion-client'
 import 'react-notion-x/src/styles.css'
 import { BlockMap, ExtendedRecordMap } from 'notion-types'

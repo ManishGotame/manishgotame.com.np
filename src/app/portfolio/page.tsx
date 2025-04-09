@@ -2,7 +2,7 @@ import { Footer, PageHeader } from '@/components'
 import PortfolioCard from '@/components/home/portfolio/PortfolioCard'
 import { portfolio } from '@/constants'
 
-export default function PortfolioPage() {
+export default function Page() {
   return (
     <>
       <PageHeader />

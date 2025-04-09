@@ -2,7 +2,7 @@ import * as React from 'react'
 import Link from 'next/link'
 
 import { cn } from '@/lib'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { useSidebar } from '@/Providers'
 
 interface NavigationLinkProps {
@@ -26,7 +26,7 @@ export function NavigationLink({
     isExternal = false
   }
 }: NavigationLinkProps) {
-  const router = useRouter()
+  const pathname = usePathname()
   const { toggleClose } = useSidebar()
 
   return (
@@ -39,7 +39,7 @@ export function NavigationLink({
         onClick={toggleClose}
         className={cn(
           'flex flex-1 items-center space-x-3 rounded-md px-2 py-1.5 text-sm font-medium',
-          router.asPath === href || router.asPath.startsWith(`${href}/`)
+          pathname === href || pathname.startsWith(`${href}/`)
             ? 'bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900'
             : 'text-gray-700 hover:bg-gray-150 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white'
         )}

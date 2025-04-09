@@ -1,5 +1,7 @@
+'use client'
+
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { format } from 'date-fns'
 import { BlockMap } from 'notion-types'
 import { Header } from '@/components'
@@ -16,7 +18,7 @@ export default function WritingSidebar({
   title,
   open = true
 }: SidebarProps) {
-  const router = useRouter()
+  const pathname = usePathname()
 
   if (!blockMap) {
     return null
@@ -46,7 +48,7 @@ export default function WritingSidebar({
             label: each.title,
             created_at: each.created_at
           }
-          const isActive = router.asPath === item.href
+          const isActive = pathname === item.href
           return (
             <Link
               key={index}

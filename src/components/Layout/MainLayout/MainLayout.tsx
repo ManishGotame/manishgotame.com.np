@@ -1,3 +1,5 @@
+'use client'
+
 import { BottomNavigation, Sidebar } from '@/components/ui/custom'
 
 interface MainLayoutProps {

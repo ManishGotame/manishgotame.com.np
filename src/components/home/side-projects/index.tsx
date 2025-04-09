@@ -1,3 +1,5 @@
+'use client'
+
 import { sideProjects } from '@/constants'
 import ProjectCard from './ProjectCard'
 
