@@ -3,6 +3,8 @@ import { PageHeader } from '@/components'
 import ClientGalleryContent from './content'
 import { notion } from '@/lib'
 
+export const revalidate = 30
+
 export default async function Gallery() {
   let recordMap: ExtendedRecordMap | null = null
 

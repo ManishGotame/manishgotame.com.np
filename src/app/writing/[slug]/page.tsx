@@ -2,8 +2,12 @@ import { getBlockTitle } from 'notion-utils'
 import Post from './post'
 import { notion } from '@/lib'
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params
+type tParams = Promise<{ slug: string }>
+
+export const revalidate = 30
+
+export default async function Page({ params }: { params: tParams }) {
+  const { slug } = await params
   const data = await notion.getPage(slug as string)
 
   const keys = Object.keys(data?.block || {})
