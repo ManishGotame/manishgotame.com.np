@@ -1,5 +1,7 @@
 'use client'
 
+import 'prismjs/themes/prism-tomorrow.css'
+import 'react-notion-x/src/styles.css'
 import { ExtendedRecordMap } from 'notion-types'
 import { NotionRenderer } from 'react-notion-x'
 import { useTheme } from '@/Providers'

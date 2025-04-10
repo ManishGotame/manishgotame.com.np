@@ -14,14 +14,9 @@ import {
   Photos,
   Footer
 } from '@/components'
-import { NotionAPI } from 'notion-client'
-// import { BlockMap } from 'notion-types'
-// import HeaderWithName from './HeaderWithName'
+import { notion } from '@/lib'
 
-// Mark page as Server Component
 export default async function Home() {
-  // Fetch data directly in the component
-  const notion = new NotionAPI()
   const recordMap = await notion.getPage(process.env.NOTION_PAGE_ID as string)
   const blockMap = recordMap.block
 

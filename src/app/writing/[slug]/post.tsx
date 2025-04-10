@@ -1,76 +1,34 @@
+'use client'
+
 import 'prismjs/themes/prism-tomorrow.css'
-import { GetStaticProps, GetStaticPaths } from 'next'
-import { NotionRenderer } from 'react-notion-x'
-import { useRouter } from 'next/navigation'
-import { NotionAPI } from 'notion-client'
+// TODO: To support dashes, probably need to mess around with this styling file.
 import 'react-notion-x/src/styles.css'
-import { BlockMap, ExtendedRecordMap } from 'notion-types'
-import { Code } from 'react-notion-x/build/third-party/code'
-import { getBlockTitle } from 'notion-utils'
+
+import { Footer, Header } from '@/components'
+import { cn } from '@/lib'
+import { useTheme } from '@/Providers'
+import { ChevronLeft, Code } from 'lucide-react'
+import { usePathname } from 'next/navigation'
+import { ExtendedRecordMap } from 'notion-types'
+import React from 'react'
+import { useEffect, useState } from 'react'
+import { NotionRenderer } from 'react-notion-x'
 import { Collection } from 'react-notion-x/build/third-party/collection'
 import { Equation } from 'react-notion-x/build/third-party/equation'
 import { Modal } from 'react-notion-x/build/third-party/modal'
 import { Pdf } from 'react-notion-x/build/third-party/pdf'
-import { useTheme } from '@/Providers/ThemeProvider'
-
-import { Footer, Header, WritingSidebar } from '@/components'
-import { cn, getTitles } from '@/lib'
-import React, { useEffect, useState } from 'react'
-import { ChevronLeft } from 'lucide-react'
 
 interface PostProps {
   blockMap: ExtendedRecordMap
-  posts: BlockMap
+  title: string
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const notion = new NotionAPI()
-  const recordMap = await notion.getPage(process.env.NOTION_PAGE_ID as string)
-  const posts = recordMap.block
-  const titles = getTitles(posts)
-
-  const paths = titles.map((title) => ({
-    params: {
-      slug: title.id.toString()
-    }
-  }))
-
-  return {
-    paths,
-    fallback: true
-  }
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  try {
-    const notion = new NotionAPI()
-    const data = await notion.getPage(params?.slug as string)
-    const posts = await notion.getPage(process.env.NOTION_PAGE_ID as string)
-
-    return {
-      props: {
-        blockMap: data,
-        posts: posts.block
-      },
-      revalidate: 10 // Add ISR revalidation time in seconds
-    }
-  } catch {
-    // If the page doesn't exist or there's an error, return notFound
-    return {
-      notFound: true
-    }
-  }
-}
-
-export default function Post({ blockMap, posts }: PostProps) {
-  const router = useRouter()
-  const keys = Object.keys(blockMap?.block || {})
-  const block = blockMap?.block?.[keys[0]]?.value
-  const title = getBlockTitle(block, blockMap)
+export default function Post({ blockMap, title }: PostProps) {
+  const pathname = usePathname()
+  const { theme } = useTheme()
   const [showFixedTitle, setShowFixedTitle] = useState(false)
   const [openSidebar, setOpenSidebar] = useState(false)
   const titleRef = React.useRef<HTMLDivElement>(null)
-  const { theme } = useTheme()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -92,7 +50,7 @@ export default function Post({ blockMap, posts }: PostProps) {
   useEffect(() => {
     window.scrollTo(0, 0)
     setOpenSidebar(false)
-  }, [router.asPath])
+  }, [pathname])
 
   useEffect(() => {
     const handleResize = () => {
@@ -105,14 +63,6 @@ export default function Post({ blockMap, posts }: PostProps) {
     return () => window.removeEventListener('resize', handleResize)
   }, [openSidebar])
 
-  if (router.isFallback) {
-    return (
-      <div className='flex items-center justify-center min-h-screen'>
-        <div className='text-xl font-semibold'>Loading...</div>
-      </div>
-    )
-  }
-
   if (!blockMap) {
     return (
       <div className='flex items-center justify-center min-h-screen'>
@@ -123,7 +73,6 @@ export default function Post({ blockMap, posts }: PostProps) {
 
   return (
     <div className='flex'>
-      <WritingSidebar blockMap={posts} title='Writing' open={openSidebar} />
       <div className='overflow-y-scroll h-screen flex-1'>
         <div className='absolute p-5 top-0 left-0'>
           <ChevronLeft
@@ -168,19 +117,4 @@ export default function Post({ blockMap, posts }: PostProps) {
       </div>
     </div>
   )
-}
-
-type PageProps = {
-  posts: BlockMap
-}
-
-Post.getLayout = function getLayout(page: React.ReactElement<PageProps>) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const router = useRouter()
-
-  if (router.isFallback) {
-    return <div>Loading...</div>
-  }
-
-  return page
 }

@@ -2,7 +2,7 @@ import { WritingLayout } from '@/components'
 import { getTitles } from '@/lib'
 import { NotionAPI } from 'notion-client'
 
-export const revalidate = 60
+export const revalidate = 30
 
 export default async function Layout({
   children
