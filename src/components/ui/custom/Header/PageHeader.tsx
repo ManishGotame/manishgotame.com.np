@@ -1,3 +1,5 @@
+'use client'
+
 import { cn } from '@/lib'
 import MenuButton from '../MenuButton'
 
@@ -9,7 +11,7 @@ const PageHeader = ({ showName = false }: PageHeaderProps) => {
   return (
     <div
       className={cn(
-        'p-5 block lg:hidden fixed bg-white/70 dark:bg-black/70 w-full z-10 flex items-center backdrop-blur-sm transition-opacity duration-200',
+        'px-5 py-4 block lg:hidden fixed bg-white/70 dark:bg-black/70 w-full z-10 flex items-center backdrop-blur-sm transition-opacity duration-200',
         showName && 'border-b border-gray-200 dark:border-gray-800 shadow-sm'
       )}
     >

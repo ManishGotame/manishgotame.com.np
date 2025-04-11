@@ -1,10 +1,12 @@
+'use client'
+
 import Link from 'next/link'
 import { routes } from '@/constants/navigation'
 import { cn } from '@/lib/utils'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 
 const BottomNavigation = () => {
-  const router = useRouter()
+  const pathname = usePathname()
 
   // Get only the main navigation items (first group)
   const mainNavItems = routes[0].items
@@ -14,8 +16,7 @@ const BottomNavigation = () => {
       <div className='grid h-full max-w-lg grid-cols-4 mx-auto'>
         {mainNavItems.map((item) => {
           const isActive =
-            router.asPath === item.href ||
-            router.asPath.startsWith(`${item.href}/`)
+            pathname === item.href || pathname.startsWith(`${item.href}/`)
           const Icon = item.icon
 
           return (

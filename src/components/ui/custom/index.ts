@@ -5,6 +5,7 @@ import MenuButton from './MenuButton'
 import WritingSidebar from './Sidebar/WritingSidebar'
 import PageHeader from './Header/PageHeader'
 import BottomNavigation from './Sidebar/BottomNavigation'
+import Loading from './Loading'
 
 export {
   Header,
@@ -13,5 +14,6 @@ export {
   MenuButton,
   WritingSidebar,
   PageHeader,
-  BottomNavigation
+  BottomNavigation,
+  Loading
 }
