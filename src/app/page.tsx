@@ -1,10 +1,3 @@
-import { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'Manish brah',
-  description: 'This is the layout metadata'
-}
-
 import {
   Blog,
   Companies,
