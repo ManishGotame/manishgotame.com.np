@@ -9,34 +9,29 @@ import { usePathname } from 'next/navigation'
 
 type WritingLayoutProps = {
   title: string
-  open: boolean
   children: React.ReactNode
   articleTitles: ITitleResponse[]
 }
 
 const WritingLayout: React.FC<WritingLayoutProps> = ({
   title,
-  open,
   children,
   articleTitles
 }) => {
   const pathname = usePathname()
+  const isWritingHome = pathname === '/writing'
 
   if (!articleTitles) {
     return null
   }
 
   return (
-    <div className='flex flex-row'>
+    <div className='flex flex-row w-full'>
       <div
         className={cn(
-          'z-20 flex h-full max-h-screen min-h-screen flex-none transform flex-col overflow-y-auto border-r border-gray-150 bg-lotion pb-10 transition duration-200 ease-in-out dark:border-gray-800 dark:bg-gray-900',
-
-          open
-            ? 'absolute translate-x-0 shadow-lg w-full'
-            : 'absolute -translate-x-full',
-
-          'lg:relative lg:translate-x-0 lg:min-w-[25%] lg:shadow-none'
+          'z-20 flex h-full max-h-screen min-h-screen flex-none transform flex-col overflow-y-auto border-r border-gray-150 bg-lotion pb-10 dark:border-gray-800 dark:bg-gray-900',
+          'w-screen lg:relative lg:min-w-[25%] lg:w-auto',
+          !isWritingHome && 'hidden lg:flex'
         )}
       >
         <div className='sticky top-0 z-10 bg-lotion dark:bg-gray-900'>
@@ -73,7 +68,7 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
         </div>
       </div>
 
-      <div className='flex-1'>{children}</div>
+      <div className={cn('flex-1', !isWritingHome && 'w-full')}>{children}</div>
     </div>
   )
 }

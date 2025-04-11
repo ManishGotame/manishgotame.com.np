@@ -7,8 +7,8 @@ import 'react-notion-x/src/styles.css'
 import { Footer, Header } from '@/components'
 import { cn } from '@/lib'
 import { useTheme } from '@/Providers'
-import { ChevronLeft, Code } from 'lucide-react'
-import { usePathname } from 'next/navigation'
+import { ChevronLeft } from 'lucide-react'
+import { usePathname, useRouter } from 'next/navigation'
 import { ExtendedRecordMap } from 'notion-types'
 import React from 'react'
 import { useEffect, useState } from 'react'
@@ -17,6 +17,7 @@ import { Collection } from 'react-notion-x/build/third-party/collection'
 import { Equation } from 'react-notion-x/build/third-party/equation'
 import { Modal } from 'react-notion-x/build/third-party/modal'
 import { Pdf } from 'react-notion-x/build/third-party/pdf'
+import { Code } from 'react-notion-x/build/third-party/code'
 
 interface PostProps {
   blockMap: ExtendedRecordMap
@@ -25,6 +26,7 @@ interface PostProps {
 
 export default function Post({ blockMap, title }: PostProps) {
   const pathname = usePathname()
+  const router = useRouter()
   const { theme } = useTheme()
   const [showFixedTitle, setShowFixedTitle] = useState(false)
   const [openSidebar, setOpenSidebar] = useState(false)
@@ -63,6 +65,10 @@ export default function Post({ blockMap, title }: PostProps) {
     return () => window.removeEventListener('resize', handleResize)
   }, [openSidebar])
 
+  const handleBack = () => {
+    router.push('/writing')
+  }
+
   if (!blockMap) {
     return (
       <div className='flex items-center justify-center min-h-screen'>
@@ -77,7 +83,7 @@ export default function Post({ blockMap, title }: PostProps) {
         <div className='absolute p-5 top-0 left-0'>
           <ChevronLeft
             className='w-5 h-5 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg block lg:hidden'
-            onClick={() => setOpenSidebar(!openSidebar)}
+            onClick={handleBack}
           />
         </div>
         <div
@@ -95,11 +101,7 @@ export default function Post({ blockMap, title }: PostProps) {
               : 'bg-white/70 border-gray-200 backdrop-blur-sm'
           )}
         >
-          <Header
-            title={title}
-            onClick={() => setOpenSidebar(!openSidebar)}
-            backButton={true}
-          />
+          <Header title={title} onClick={handleBack} backButton={true} />
         </div>
         <NotionRenderer
           recordMap={blockMap}

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 import {
   Blog,
   Companies,
-  // Hero,
+  Hero,
   Portfolio,
   SideProjects,
   Photos,
@@ -22,9 +22,8 @@ export default async function Home() {
 
   return (
     <>
-      {/* <HeaderWithName /> */}
       <div className='flex flex-col gap-[138px] px-[30px] md:px-[30px] container max-w-5xl mx-auto bg-white dark:bg-black text-black dark:text-white'>
-        {/* <Hero blockMap={blockMap} /> */}
+        <Hero blockMap={blockMap} />
         <SideProjects />
         <Companies />
         <Portfolio />

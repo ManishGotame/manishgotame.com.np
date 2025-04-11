@@ -15,7 +15,7 @@ export default async function Layout({
   const articleTitles = getTitles(blockMap)
 
   return (
-    <WritingLayout title='Writing' open={false} articleTitles={articleTitles}>
+    <WritingLayout title='Writing' articleTitles={articleTitles}>
       {children}
     </WritingLayout>
   )

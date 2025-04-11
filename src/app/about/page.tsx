@@ -1,4 +1,3 @@
-import { PageHeader } from '@/components'
 import Footer from '@/components/footer'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -6,7 +5,6 @@ import Link from 'next/link'
 export default function About() {
   return (
     <>
-      <PageHeader />
       <div className='w-full bg-white dark:bg-black p-4 md:p-6'>
         <div className='relative max-w-5xl mx-auto min-h-[500px] md:min-h-[600px]'>
           <div className='absolute w-[35%] left-0 top-[25%] aspect-square overflow-hidden'>

@@ -1,5 +1,4 @@
 import { ExtendedRecordMap } from 'notion-types'
-import { PageHeader } from '@/components'
 import ClientGalleryContent from './content'
 import { notion } from '@/lib'
 
@@ -17,9 +16,8 @@ export default async function Gallery() {
   }
 
   return (
-    <>
-      <PageHeader />
+    <div className=''>
       <ClientGalleryContent recordMap={recordMap} />
-    </>
+    </div>
   )
 }

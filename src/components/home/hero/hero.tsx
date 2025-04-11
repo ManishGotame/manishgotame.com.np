@@ -1,16 +1,14 @@
 import { AnnoucementBanner } from '../../ui/custom'
 import Link from 'next/link'
 import PingText from './PingText'
-import { RefObject } from 'react'
 import { getTitles } from '@/lib'
 import { BlockMap } from 'notion-types'
 
 interface HeroProps {
-  ref: RefObject<HTMLDivElement | null>
   blockMap: BlockMap
 }
 
-const Hero: React.FC<HeroProps> = ({ ref, blockMap }) => {
+const Hero: React.FC<HeroProps> = ({ blockMap }) => {
   return (
     <div className='pt-32'>
       <div>
@@ -40,7 +38,7 @@ const Hero: React.FC<HeroProps> = ({ ref, blockMap }) => {
             })()}
           </>
         )}
-        <h1 className='text-[40px] font-regular mb-[19px]' ref={ref}>
+        <h1 className='text-[40px] font-regular mb-[19px]'>
           Hi, I&apos;m{' '}
           <span className='text-black dark:text-white font-bold'>Manish!</span>
         </h1>
