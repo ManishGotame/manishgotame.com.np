@@ -92,7 +92,7 @@ export const routes = [
     label: 'Online',
     items: [
       {
-        href: 'https://twitter.com/manigotame',
+        href: 'https://twitter.com/manishgotame',
         label: 'X',
         icon: TwitterIcon,
         trailingAccessory: ExternalLinkIcon,
@@ -119,7 +119,7 @@ export const routes = [
       },
 
       {
-        href: 'https://www.instagram.com/manishgotame/',
+        href: 'https://www.instagram.com/manish.gotame/',
         label: 'Instagram',
         icon: InstagramIcon,
         trailingAccessory: ExternalLinkIcon,
