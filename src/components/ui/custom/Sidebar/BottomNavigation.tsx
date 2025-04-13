@@ -12,7 +12,7 @@ const BottomNavigation = () => {
   const mainNavItems = routes[0].items
 
   return (
-    <nav className='z-[1000] block lg:hidden fixed bottom-0 left-0 right-0 h-16 bg-background/80 backdrop-blur-lg border-t border-gray-150 dark:border-gray-800'>
+    <nav className='z-[1000] block lg:hidden fixed bottom-0 left-0 right-0 h-[52px] bg-background/80 backdrop-blur-lg border-t border-gray-150 dark:border-gray-800'>
       <div className='grid h-full max-w-lg grid-cols-4 mx-auto'>
         {mainNavItems.map((item) => {
           const isActive =

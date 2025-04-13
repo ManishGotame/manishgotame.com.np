@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({
   backButton = false
 }) => {
   return (
-    <div className='z-10 flex flex-col justify-center px-5 py-5 border-b border-gray-150 dark:border-gray-800'>
+    <div className='z-10 flex flex-col justify-center px-5 py-[14px] bg-lotion/50 dark:bg-gray-900/50 backdrop-blur-sm'>
       <div className='flex items-center justify-between flex-none'>
         <div className='flex items-center gap-3'>
           {backButton ? (

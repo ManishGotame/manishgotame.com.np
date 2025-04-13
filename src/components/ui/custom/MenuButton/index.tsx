@@ -25,8 +25,8 @@ const MenuButton: React.FC<MenuButtonProps> = ({
         <Image
           src={icon!}
           alt='logo'
-          width={32}
-          height={32}
+          width={24}
+          height={24}
           className='cursor-pointer'
           onClick={onClick ?? toggleSidebar}
         />

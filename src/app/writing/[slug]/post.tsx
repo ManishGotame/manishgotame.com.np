@@ -78,8 +78,9 @@ export default function Post({ blockMap, title }: PostProps) {
   }
 
   return (
-    <div className='flex'>
+    <div className='flex relative'>
       <div className='overflow-y-scroll h-screen flex-1'>
+        {/* smalle screen header */}
         <div className='absolute p-5 top-0 left-0'>
           <ChevronLeft
             className='w-5 h-5 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg block lg:hidden'
@@ -92,13 +93,12 @@ export default function Post({ blockMap, title }: PostProps) {
         >
           <h1 className='text-3xl font-semibold'>{title}</h1>
         </div>
+
+        {/* big screen header */}
         <div
           className={cn(
-            'fixed w-[100%] top-0 z-10 flex flex-col justify-center transition-opacity duration-200',
-            showFixedTitle ? 'block' : 'hidden',
-            theme === 'dark'
-              ? 'bg-gray-900/70  border-gray-800 backdrop-blur-sm'
-              : 'bg-white/70 border-gray-200 backdrop-blur-sm'
+            'absolute w-[100%] top-0 z-10 flex flex-col justify-center transition-opacity duration-200',
+            showFixedTitle ? 'block' : 'hidden'
           )}
         >
           <Header title={title} onClick={handleBack} backButton={true} />

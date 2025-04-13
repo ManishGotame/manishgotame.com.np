@@ -34,37 +34,42 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
           !isWritingHome && 'hidden lg:flex'
         )}
       >
-        <div className='sticky top-0 z-10 bg-lotion dark:bg-gray-900'>
+        <div className='sticky top-0 z-10'>
           <Header title={title} />
         </div>
         <div className='px-3 py-2'>
-          {articleTitles.map((each, index) => {
-            const item = {
-              href: `/writing/${each.id}`,
-              label: each.title,
-              created_at: each.created_at
+          {[...articleTitles, ...articleTitles, ...articleTitles].map(
+            (each, index) => {
+              const item = {
+                href: `/writing/${each.id}`,
+                label: each.title,
+                created_at: each.created_at
+              }
+              const isActive = pathname === item.href
+              return (
+                <Link
+                  key={index}
+                  href={item.href}
+                  className={cn(
+                    'cursor-pointer my-1 gap-1 flex flex-1 flex-col space-x-3 rounded-md px-2 py-[10px] text-[14px] font-medium',
+                    isActive
+                      ? 'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-white'
+                      : 'text-gray-900 dark:text-white hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white'
+                  )}
+                >
+                  <div className='flex flex-col'>
+                    <span>{item.label}</span>
+                    <span className='text-gray-500 dark:text-gray-400 text-[13px]'>
+                      {format(
+                        new Date(Number(item.created_at)),
+                        'dd MMM, yyyy'
+                      )}
+                    </span>
+                  </div>
+                </Link>
+              )
             }
-            const isActive = pathname === item.href
-            return (
-              <Link
-                key={index}
-                href={item.href}
-                className={cn(
-                  'cursor-pointer my-1 gap-1 flex flex-1 flex-col space-x-3 rounded-md px-2 py-3 text-[14px] font-medium',
-                  isActive
-                    ? 'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-white'
-                    : 'text-gray-900 dark:text-white hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white'
-                )}
-              >
-                <div className='flex flex-col'>
-                  <span>{item.label}</span>
-                  <span className='text-gray-500 dark:text-gray-300 text-[13px]'>
-                    {format(new Date(Number(item.created_at)), 'dd MMM, yyyy')}
-                  </span>
-                </div>
-              </Link>
-            )
-          })}
+          )}
         </div>
       </div>
 
