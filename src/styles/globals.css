@@ -59,6 +59,8 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --scroll-thumb: hsl(var(--muted-foreground) / 0.35);
+    --scroll-track: hsl(var(--secondary));
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -85,8 +87,26 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --scroll-thumb: hsl(var(--muted-foreground) / 0.35);
+    --scroll-track: hsl(var(--secondary));
   }
 }
+
+/* Firefox */
+@media (min-width: 768px) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+  }
+}
+
+@media (max-width: 767px) {
+  * {
+    scrollbar-width: none;
+  }
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -107,3 +127,4 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-muted-foreground/50;
 }
+
