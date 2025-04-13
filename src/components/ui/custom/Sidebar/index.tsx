@@ -22,12 +22,12 @@ const Sidebar = () => {
           'z-50 flex h-full max-h-screen min-h-screen flex-none transform flex-col overflow-y-auto border-r border-gray-150 bg-white pb-10 transition duration-200 ease-in-out dark:border-gray-800 dark:bg-gray-900 sm:pb-0 lg:relative lg:translate-x-0 lg:bg-gray-50 lg:dark:bg-gray-900'
         )}
       >
-        <div className='filter-blur sticky top-0 z-10 flex flex-col justify-center px-5 py-5'>
+        <div className='filter-blur sticky top-0 z-10 flex flex-col justify-center px-5 py-[14px]'>
           <Link
             href='/'
             className='flex items-center gap-3 flex-none cursor-pointer'
           >
-            <Image src='/logo.png' alt='logo' width={32} height={32} />
+            <Image src='/logo.png' alt='logo' width={28} height={28} />
             <h2 className='text-sm font-bold text-primary transform-gpu line-clamp-1'>
               Manish Gotame
             </h2>
