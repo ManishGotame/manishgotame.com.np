@@ -7,6 +7,7 @@ import { StackIcon } from './StackIcon'
 import { TwitterIcon } from './TwitterIcon'
 import { GitHubIcon } from './GitHubIcon'
 import { ExternalLinkIcon } from './ExternalLinkIcon'
+import { NotionIcon } from './NotionIcon'
 
 export {
   HomeIcon,
@@ -17,5 +18,6 @@ export {
   StackIcon,
   TwitterIcon,
   GitHubIcon,
-  ExternalLinkIcon
+  ExternalLinkIcon,
+  NotionIcon
 }

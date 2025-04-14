@@ -106,7 +106,7 @@ export default function Post({ blockMap, title }: PostProps) {
         <NotionRenderer
           recordMap={blockMap}
           darkMode={theme === 'dark'}
-          disableHeader={true}
+          showCollectionViewDropdown={true}
           components={{
             Code,
             Collection,

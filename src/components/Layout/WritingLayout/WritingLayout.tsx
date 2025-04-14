@@ -2,10 +2,16 @@
 
 import Link from 'next/link'
 import { format } from 'date-fns'
-import { Header } from '@/components'
+import { Header, NotionIcon } from '@/components'
 import { cn } from '@/lib'
 import { ITitleResponse } from '@/interfaces'
 import { usePathname } from 'next/navigation'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from '@/components/ui/tooltip'
 
 type WritingLayoutProps = {
   title: string
@@ -34,8 +40,29 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
           !isWritingHome && 'hidden lg:flex'
         )}
       >
-        <div className='sticky top-0 z-10'>
-          <Header title={title} />
+        <div className='sticky top-0 z-10 flex flex-row items-center justify-between gap-2'>
+          <div className='flex-1'>
+            <Header title={title} />
+          </div>
+          <div className='mr-3 z-20 relative group'>
+            <TooltipProvider delayDuration={100}>
+              <Tooltip>
+                <TooltipTrigger>
+                  <NotionIcon height={20} width={20} />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Blog rendered using Notion.</p>
+                  <Link
+                    href='/writing/89d9bcb5-8937-465f-96ff-c869ca4c7726'
+                    className='text-blue-400 underline text-xs'
+                    rel='noopener noreferrer'
+                  >
+                    Read how I built it
+                  </Link>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
         </div>
         <div className='px-3 py-2'>
           {articleTitles.map((each, index) => {
