@@ -12,6 +12,7 @@ import {
   TooltipProvider,
   TooltipTrigger
 } from '@/components/ui/tooltip'
+import { useTheme } from '@/Providers'
 
 type WritingLayoutProps = {
   title: string
@@ -25,6 +26,7 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
   articleTitles
 }) => {
   const pathname = usePathname()
+  const { theme } = useTheme()
   const isWritingHome = pathname === '/writing'
 
   if (!articleTitles) {
@@ -48,7 +50,11 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
             <TooltipProvider delayDuration={100}>
               <Tooltip>
                 <TooltipTrigger>
-                  <NotionIcon height={20} width={20} />
+                  <NotionIcon
+                    height={20}
+                    width={20}
+                    color={theme === 'dark' ? '#fafafa' : '#000000'}
+                  />
                 </TooltipTrigger>
                 <TooltipContent>
                   <p>Blog rendered using Notion.</p>
