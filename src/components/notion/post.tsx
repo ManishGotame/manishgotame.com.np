@@ -22,9 +22,10 @@ import { Code } from 'react-notion-x/build/third-party/code'
 interface PostProps {
   blockMap: ExtendedRecordMap
   title: string
+  link: string
 }
 
-export default function Post({ blockMap, title }: PostProps) {
+export default function Post({ blockMap, title, link }: PostProps) {
   const pathname = usePathname()
   const router = useRouter()
   const { theme } = useTheme()
@@ -66,7 +67,7 @@ export default function Post({ blockMap, title }: PostProps) {
   }, [openSidebar])
 
   const handleBack = () => {
-    router.push('/writing')
+    router.push(link)
   }
 
   if (!blockMap) {
@@ -79,7 +80,7 @@ export default function Post({ blockMap, title }: PostProps) {
 
   return (
     <div className='flex relative'>
-      <div className='overflow-y-scroll h-screen flex-1'>
+      <div className='overflow-y-scroll h-screen w-full'>
         {/* smalle screen header */}
         <div className='absolute p-5 top-0 left-0'>
           <ChevronLeft
@@ -94,7 +95,7 @@ export default function Post({ blockMap, title }: PostProps) {
           <h1 className='text-3xl font-semibold'>{title}</h1>
         </div>
 
-        {/* big screen header */}
+        {/* scroll controlled header for larger screens */}
         <div
           className={cn(
             'absolute w-[100%] top-0 z-10 flex flex-col justify-center transition-opacity duration-200',
@@ -106,7 +107,7 @@ export default function Post({ blockMap, title }: PostProps) {
         <NotionRenderer
           recordMap={blockMap}
           darkMode={theme === 'dark'}
-          showCollectionViewDropdown={true}
+          pageTitle={title}
           components={{
             Code,
             Collection,

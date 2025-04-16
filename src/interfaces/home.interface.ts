@@ -13,6 +13,8 @@ export interface IPortfolio {
   description: string
   year: string
   image: string
+  link?: string
+  tags?: string[]
 }
 
 export interface IPhoto {

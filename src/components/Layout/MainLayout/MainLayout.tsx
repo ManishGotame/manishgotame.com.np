@@ -7,9 +7,11 @@ interface MainLayoutProps {
   children: React.ReactNode
 }
 
+const hideHeaderPaths = ['/writing/', '/portfolio/']
+
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const pathname = usePathname()
-  const showHeader = !pathname?.includes('/writing/')
+  const showHeader = !hideHeaderPaths.some((path) => pathname?.includes(path))
 
   return (
     <div className='relative flex h-full min-h-screen w-full bg-background-light dark:bg-background-dark text-primary-light dark:text-primary-dark'>

@@ -16,12 +16,12 @@ export default async function Page({ params }: { params: tParams }) {
     const block = data?.block?.[keys[0]]?.value
     const title = getBlockTitle(block, data)
 
-    return <Post blockMap={data} title={title} link='/writing' />
+    return <Post blockMap={data} title={title} link='/portfolio' />
   } catch {
     return (
       <div className='flex min-h-screen items-center justify-center flex-col gap-2'>
         <CloudAlertIcon className='w-10 h-10' />
-        <h1 className='text-md font-medium'>Post not found</h1>
+        <h1 className='text-md font-medium'>Oh uh! Not Found</h1>
       </div>
     )
   }
