@@ -127,3 +127,8 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-muted-foreground/50;
 }
+
+.notion-page {
+  padding-left: 25px!important;
+  padding-right: 25px !important;
+}

@@ -32,6 +32,8 @@ export default function Post({ blockMap, title, link }: PostProps) {
   const [showFixedTitle, setShowFixedTitle] = useState(false)
   const [openSidebar, setOpenSidebar] = useState(false)
   const titleRef = React.useRef<HTMLDivElement>(null)
+  const notionRef = React.useRef<HTMLDivElement>(null)
+  const [titleMargin, setTitleMargin] = useState<number | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,6 +41,7 @@ export default function Post({ blockMap, title, link }: PostProps) {
         setShowFixedTitle(!entry.isIntersecting)
       },
       {
+        rootMargin: '-1px 0px 0px 0px',
         threshold: 0
       }
     )
@@ -66,6 +69,23 @@ export default function Post({ blockMap, title, link }: PostProps) {
     return () => window.removeEventListener('resize', handleResize)
   }, [openSidebar])
 
+  useEffect(() => {
+    const updateMargin = () => {
+      if (notionRef.current) {
+        const notionElement = notionRef.current.querySelector('.notion-page')
+        if (notionElement) {
+          const computedStyle = window.getComputedStyle(notionElement)
+          const marginLeft = parseFloat(computedStyle.marginLeft)
+          setTitleMargin(marginLeft)
+        }
+      }
+    }
+
+    updateMargin()
+    window.addEventListener('resize', updateMargin)
+    return () => window.removeEventListener('resize', updateMargin)
+  }, [])
+
   const handleBack = () => {
     router.push(link)
   }
@@ -89,33 +109,43 @@ export default function Post({ blockMap, title, link }: PostProps) {
           />
         </div>
         <div
-          className='flex flex-col justify-center items-center mt-20 mb-10 px-[16px]'
+          className='flex flex-col mt-20 mb-10'
           ref={titleRef}
+          style={{
+            marginLeft: `calc(${titleMargin}px + 10px)`,
+            paddingLeft: `calc(min(16px, 8vw))`,
+            paddingRight: `calc(min(16px, 8vw))`
+          }}
         >
-          <h1 className='text-3xl font-semibold'>{title}</h1>
+          {titleMargin !== null ? (
+            <h1 className='text-3xl font-semibold'>{title}</h1>
+          ) : null}
         </div>
 
         {/* scroll controlled header for larger screens */}
         <div
           className={cn(
             'absolute w-[100%] top-0 z-10 flex flex-col justify-center transition-opacity duration-200',
-            showFixedTitle ? 'block' : 'hidden'
+            showFixedTitle ? 'opacity-100' : 'opacity-0 pointer-events-none'
           )}
         >
           <Header title={title} onClick={handleBack} backButton={true} />
         </div>
-        <NotionRenderer
-          recordMap={blockMap}
-          darkMode={theme === 'dark'}
-          pageTitle={title}
-          components={{
-            Code,
-            Collection,
-            Equation,
-            Pdf,
-            Modal
-          }}
-        />
+        <div ref={notionRef}>
+          <NotionRenderer
+            recordMap={blockMap}
+            darkMode={theme === 'dark'}
+            pageTitle={title}
+            className='notion-page'
+            components={{
+              Code,
+              Collection,
+              Equation,
+              Pdf,
+              Modal
+            }}
+          />
+        </div>
         <Footer />
       </div>
     </div>

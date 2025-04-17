@@ -6,6 +6,7 @@ import { cn } from '@/lib'
 import { IPortfolio } from '@/interfaces'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
+import { ChevronLeft } from 'lucide-react'
 
 type PortfolioLayoutProps = {
   title: string
@@ -35,6 +36,14 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
         )}
       >
         <div className='sticky top-0 z-10 flex flex-row items-center justify-between gap-2'>
+          {!isPortfolioHome && (
+            <Link
+              href='/portfolio'
+              className='p-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
+            >
+              <ChevronLeft className='w-4 h-4' />
+            </Link>
+          )}
           <div className='flex-1'>
             <Header title={title} />
           </div>
@@ -61,15 +70,15 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
                 )}
               >
                 <div className='flex flex-row items-center gap-2'>
-                  {item.image && (
+                  {item.image ? (
                     <Image
                       src={item.image}
                       alt={item.label}
-                      width={150}
-                      height={84.38}
+                      width={120}
+                      height={67.5}
                       className='object-cover rounded'
                     />
-                  )}
+                  ) : null}
                   <div className='flex flex-col'>
                     <span>{item.label}</span>
                     {item.tags && item.tags.length > 0 && (
