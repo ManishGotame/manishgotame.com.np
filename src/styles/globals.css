@@ -62,6 +62,7 @@
     --scroll-thumb: hsl(var(--muted-foreground) / 0.35);
     --scroll-track: hsl(var(--secondary));
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -136,7 +137,7 @@
 }
 
 .medium-zoom-image {
-  border-radius: .375rem !important;
+  border-radius: 0.375rem !important;
 }
 
 .notion-link {
@@ -148,4 +149,3 @@
 .notion-link:hover {
   text-decoration: underline !important;
 }
-
