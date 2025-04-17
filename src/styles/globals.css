@@ -128,7 +128,24 @@
   @apply bg-muted-foreground/50;
 }
 
+/* Notion Page css customizations */
+
 .notion-page {
   padding-left: 25px !important;
   padding-right: 25px !important;
 }
+
+.medium-zoom-image {
+  border-radius: .375rem !important;
+}
+
+.notion-link {
+  color: #3c82f6 !important;
+  border-bottom: none !important;
+  opacity: 1 !important;
+}
+
+.notion-link:hover {
+  text-decoration: underline !important;
+}
+

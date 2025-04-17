@@ -12,6 +12,7 @@ export interface IPortfolio {
   id: number
   title: string
   description: string
+  mini_description?: string
   year: string
   image: string
   link?: string

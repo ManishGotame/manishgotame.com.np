@@ -39,12 +39,12 @@ export default async function Page({
             <span
               className={cn(
                 roboto.className,
-                'text-sm uppercase tracking-wider text-gray-500'
+                'text-sm font-semibold uppercase tracking-wider text-black dark:text-white'
               )}
             >
               PROJECT
             </span>
-            <h1 className={cn(roboto.className, 'text-6xl font-light')}>
+            <h1 className={cn(roboto.className, 'text-6xl font-medium')}>
               {title}
             </h1>
             {id ? (

@@ -53,6 +53,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
             const item = {
               href: `/portfolio/${each.link}`,
               label: each.title,
+              description: each.mini_description,
               year: each.year,
               image: each.image,
               tags: each.tags
@@ -81,6 +82,11 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
                   ) : null}
                   <div className='flex flex-col'>
                     <span>{item.label}</span>
+                    {item.description && (
+                      <span className='text-gray-500 dark:text-gray-400 text-[13px]'>
+                        {item.description}
+                      </span>
+                    )}
                     {item.tags && item.tags.length > 0 && (
                       <div className='flex flex-wrap gap-1 mt-1'>
                         {item.tags.map((tag, tagIndex) => (
@@ -93,9 +99,6 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
                         ))}
                       </div>
                     )}
-                    <span className='text-gray-500 dark:text-gray-400 text-[13px]'>
-                      {item.year}
-                    </span>
                   </div>
                 </div>
               </Link>
