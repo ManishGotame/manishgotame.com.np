@@ -1,14 +1,25 @@
 import Image from 'next/image'
 
 import { IPortfolio } from '@/interfaces'
+import Link from 'next/link'
 
-const PortfolioCard = ({ title, description, year, image }: IPortfolio) => {
+const PortfolioCard = ({
+  title,
+  description,
+  year,
+  image,
+  link,
+  id
+}: IPortfolio) => {
   return (
-    <div className='flex flex-col justify-between h-full'>
+    <Link
+      href={`/portfolio/${link}?&id=${id}`}
+      className='flex flex-col justify-between h-full'
+    >
       <Image
         src={image}
         alt={title}
-        height={600}
+        height={338}
         width={600}
         className='h-full w-full object-contain rounded-md border border-gray-150 dark:border-gray-800 mb-3'
       />
@@ -24,7 +35,7 @@ const PortfolioCard = ({ title, description, year, image }: IPortfolio) => {
           {description}
         </p>
       </div>
-    </div>
+    </Link>
   )
 }
 

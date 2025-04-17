@@ -9,10 +9,14 @@ export interface ICompany {
 }
 
 export interface IPortfolio {
+  id: number
   title: string
   description: string
+  mini_description?: string
   year: string
   image: string
+  link?: string
+  tags?: string[]
 }
 
 export interface IPhoto {

@@ -16,7 +16,7 @@ export default function Page() {
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-10'>
             {portfolio.map((project, index) => (
-              <PortfolioCard key={index} {...project} />
+              <PortfolioCard key={index} {...project} id={index} />
             ))}
           </div>
         </div>

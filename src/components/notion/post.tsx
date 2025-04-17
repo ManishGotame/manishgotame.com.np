@@ -10,7 +10,7 @@ import { useTheme } from '@/Providers'
 import { ChevronLeft } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
 import { ExtendedRecordMap } from 'notion-types'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { useEffect, useState } from 'react'
 import { NotionRenderer } from 'react-notion-x'
 import { Collection } from 'react-notion-x/build/third-party/collection'
@@ -21,16 +21,20 @@ import { Code } from 'react-notion-x/build/third-party/code'
 
 interface PostProps {
   blockMap: ExtendedRecordMap
+  link: string
   title: string
+  header: ReactNode
 }
 
-export default function Post({ blockMap, title }: PostProps) {
+export default function Post({ blockMap, link, title, header }: PostProps) {
   const pathname = usePathname()
   const router = useRouter()
   const { theme } = useTheme()
   const [showFixedTitle, setShowFixedTitle] = useState(false)
   const [openSidebar, setOpenSidebar] = useState(false)
   const titleRef = React.useRef<HTMLDivElement>(null)
+  const notionRef = React.useRef<HTMLDivElement>(null)
+  const [titleMargin, setTitleMargin] = useState<number | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -38,6 +42,7 @@ export default function Post({ blockMap, title }: PostProps) {
         setShowFixedTitle(!entry.isIntersecting)
       },
       {
+        rootMargin: '-1px 0px 0px 0px',
         threshold: 0
       }
     )
@@ -65,8 +70,25 @@ export default function Post({ blockMap, title }: PostProps) {
     return () => window.removeEventListener('resize', handleResize)
   }, [openSidebar])
 
+  useEffect(() => {
+    const updateMargin = () => {
+      if (notionRef.current) {
+        const notionElement = notionRef.current.querySelector('.notion-page')
+        if (notionElement) {
+          const computedStyle = window.getComputedStyle(notionElement)
+          const marginLeft = parseFloat(computedStyle.marginLeft)
+          setTitleMargin(marginLeft)
+        }
+      }
+    }
+
+    updateMargin()
+    window.addEventListener('resize', updateMargin)
+    return () => window.removeEventListener('resize', updateMargin)
+  }, [])
+
   const handleBack = () => {
-    router.push('/writing')
+    router.push(link)
   }
 
   if (!blockMap) {
@@ -79,8 +101,8 @@ export default function Post({ blockMap, title }: PostProps) {
 
   return (
     <div className='flex relative'>
-      <div className='overflow-y-scroll h-screen flex-1'>
-        {/* smalle screen header */}
+      <div className='overflow-y-scroll h-screen w-full'>
+        {/* smaller screen header */}
         <div className='absolute p-5 top-0 left-0'>
           <ChevronLeft
             className='w-5 h-5 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg block lg:hidden'
@@ -88,33 +110,40 @@ export default function Post({ blockMap, title }: PostProps) {
           />
         </div>
         <div
-          className='flex flex-col justify-center items-center mt-20 mb-10 px-[16px]'
+          className='flex flex-col mt-[62px] mb-8'
           ref={titleRef}
+          style={{
+            marginLeft: `calc(${titleMargin}px + 10px)`,
+            paddingLeft: `calc(min(16px, 8vw))`,
+            paddingRight: `calc(min(16px, 8vw))`
+          }}
         >
-          <h1 className='text-3xl font-semibold'>{title}</h1>
+          {titleMargin !== null ? header : null}
         </div>
 
-        {/* big screen header */}
+        {/* scroll controlled header for larger screens */}
         <div
           className={cn(
             'absolute w-[100%] top-0 z-10 flex flex-col justify-center transition-opacity duration-200',
-            showFixedTitle ? 'block' : 'hidden'
+            showFixedTitle ? 'opacity-100' : 'opacity-0 pointer-events-none'
           )}
         >
           <Header title={title} onClick={handleBack} backButton={true} />
         </div>
-        <NotionRenderer
-          recordMap={blockMap}
-          darkMode={theme === 'dark'}
-          showCollectionViewDropdown={true}
-          components={{
-            Code,
-            Collection,
-            Equation,
-            Pdf,
-            Modal
-          }}
-        />
+        <div ref={notionRef}>
+          <NotionRenderer
+            recordMap={blockMap}
+            darkMode={theme === 'dark'}
+            className='notion-page'
+            components={{
+              Code,
+              Collection,
+              Equation,
+              Pdf,
+              Modal
+            }}
+          />
+        </div>
         <Footer />
       </div>
     </div>
