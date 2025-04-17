@@ -9,6 +9,7 @@ export interface ICompany {
 }
 
 export interface IPortfolio {
+  id: number
   title: string
   description: string
   year: string

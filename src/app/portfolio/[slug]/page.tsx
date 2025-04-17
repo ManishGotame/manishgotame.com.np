@@ -1,15 +1,28 @@
 import { getBlockTitle } from 'notion-utils'
-import { notion } from '@/lib'
+import { cn, notion } from '@/lib'
 import { CloudAlertIcon } from 'lucide-react'
 import { Post } from '@/components'
+import { Roboto } from 'next/font/google'
+import { portfolio } from '@/constants'
 
-type tParams = Promise<{ slug: string }>
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap'
+})
 
 export const revalidate = 30
 
-export default async function Page({ params }: { params: tParams }) {
+export default async function Page({
+  params,
+  searchParams
+}: {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ id?: string | undefined }>
+}) {
   try {
     const { slug } = await params
+    const { id } = await searchParams
     const data = await notion.getPage(slug as string)
 
     const keys = Object.keys(data?.block || {})
@@ -23,9 +36,22 @@ export default async function Page({ params }: { params: tParams }) {
         title={title}
         header={
           <div className='flex flex-col gap-4'>
-            <span className='text-sm uppercase tracking-wider'>PROJECT</span>
-            <h1 className='text-6xl font-light'>{title}</h1>
-            <div className='text-gray-500'>Mobile · UI · UX · Wireframing</div>
+            <span
+              className={cn(
+                roboto.className,
+                'text-sm uppercase tracking-wider text-gray-500'
+              )}
+            >
+              PROJECT
+            </span>
+            <h1 className={cn(roboto.className, 'text-6xl font-light')}>
+              {title}
+            </h1>
+            {id ? (
+              <div className='text-gray-500'>
+                {portfolio[parseInt(id)].tags?.join(' · ') || ''}
+              </div>
+            ) : null}
           </div>
         }
       />

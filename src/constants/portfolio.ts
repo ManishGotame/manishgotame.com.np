@@ -2,6 +2,7 @@ import { IPortfolio } from '@/interfaces'
 
 export const portfolio: IPortfolio[] = [
   {
+    id: 0,
     title: 'ACTN Sports',
     description:
       'Web3 Sports Marketplace. Led the development of the platform from design to MVP in 3 weeks.',
@@ -11,6 +12,7 @@ export const portfolio: IPortfolio[] = [
     tags: ['Web3', 'Sports', 'NFTs']
   },
   {
+    id: 1,
     title: 'Million Dollar Vault',
     description:
       'NFT Project that made over 200K+ in sales. Built the smart contract and the web app.',
@@ -20,6 +22,7 @@ export const portfolio: IPortfolio[] = [
     tags: ['Web3', 'NFTs']
   },
   {
+    id: 2,
     title: 'NFT Fever',
     description:
       'E-Learning Platform. Led the development from design to MVP in 2 months.',
@@ -29,6 +32,7 @@ export const portfolio: IPortfolio[] = [
     tags: ['Web3', 'NFTs']
   },
   {
+    id: 3,
     title: 'Art Can Die',
     description:
       'Proposed contract changes for existing smart contract and worked on Wallet integrations for the UI.',
@@ -38,6 +42,7 @@ export const portfolio: IPortfolio[] = [
     tags: ['Web3', 'NFTs']
   },
   {
+    id: 4,
     title: 'Research Funding Club',
     description:
       'Worked on smart contract optimization to save Gas fees during mint transactions.',

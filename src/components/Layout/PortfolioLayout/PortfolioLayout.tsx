@@ -61,7 +61,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
             return (
               <Link
                 key={index}
-                href={item.href}
+                href={`${item.href}?&id=${index}`}
                 className={cn(
                   'cursor-pointer my-1 gap-1 flex flex-1 flex-col space-x-3 rounded-md px-2 py-[10px] text-[14px] font-medium',
                   isActive
