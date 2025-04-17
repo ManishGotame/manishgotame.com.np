@@ -10,7 +10,7 @@ import { useTheme } from '@/Providers'
 import { ChevronLeft } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
 import { ExtendedRecordMap } from 'notion-types'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { useEffect, useState } from 'react'
 import { NotionRenderer } from 'react-notion-x'
 import { Collection } from 'react-notion-x/build/third-party/collection'
@@ -21,11 +21,12 @@ import { Code } from 'react-notion-x/build/third-party/code'
 
 interface PostProps {
   blockMap: ExtendedRecordMap
-  title: string
   link: string
+  title: string
+  header: ReactNode
 }
 
-export default function Post({ blockMap, title, link }: PostProps) {
+export default function Post({ blockMap, link, title, header }: PostProps) {
   const pathname = usePathname()
   const router = useRouter()
   const { theme } = useTheme()
@@ -101,7 +102,7 @@ export default function Post({ blockMap, title, link }: PostProps) {
   return (
     <div className='flex relative'>
       <div className='overflow-y-scroll h-screen w-full'>
-        {/* smalle screen header */}
+        {/* smaller screen header */}
         <div className='absolute p-5 top-0 left-0'>
           <ChevronLeft
             className='w-5 h-5 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg block lg:hidden'
@@ -109,7 +110,7 @@ export default function Post({ blockMap, title, link }: PostProps) {
           />
         </div>
         <div
-          className='flex flex-col mt-20 mb-10'
+          className='flex flex-col mt-[62px] mb-8'
           ref={titleRef}
           style={{
             marginLeft: `calc(${titleMargin}px + 10px)`,
@@ -117,9 +118,7 @@ export default function Post({ blockMap, title, link }: PostProps) {
             paddingRight: `calc(min(16px, 8vw))`
           }}
         >
-          {titleMargin !== null ? (
-            <h1 className='text-3xl font-semibold'>{title}</h1>
-          ) : null}
+          {titleMargin !== null ? header : null}
         </div>
 
         {/* scroll controlled header for larger screens */}
@@ -135,7 +134,6 @@ export default function Post({ blockMap, title, link }: PostProps) {
           <NotionRenderer
             recordMap={blockMap}
             darkMode={theme === 'dark'}
-            pageTitle={title}
             className='notion-page'
             components={{
               Code,
