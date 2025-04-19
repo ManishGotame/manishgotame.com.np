@@ -60,7 +60,10 @@ const Loading = ({
 
   return (
     <div className='relative flex flex-col gap-2 items-center'>
-      <div className='z-[1] absolute animate-ping'>
+      <div
+        className='z-[1] absolute'
+        style={{ animation: 'ping 0.75s cubic-bezier(0, 0, 0.2, 1) infinite' }}
+      >
         <div className='w-8 h-8 bg-primary/50 rounded-full' />
       </div>
       <div className='z-[2]'>

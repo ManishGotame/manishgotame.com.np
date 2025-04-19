@@ -13,6 +13,7 @@ import {
   TooltipTrigger
 } from '@/components/ui/tooltip'
 import { useTheme } from '@/Providers'
+import { motion } from 'framer-motion'
 
 type WritingLayoutProps = {
   title: string
@@ -79,23 +80,33 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
             }
             const isActive = pathname === item.href
             return (
-              <Link
+              <motion.div
                 key={index}
-                href={item.href}
-                className={cn(
-                  'cursor-pointer my-1 gap-1 flex flex-1 flex-col space-x-3 rounded-md px-2 py-[10px] text-[14px] font-medium',
-                  isActive
-                    ? 'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-white'
-                    : 'text-gray-900 dark:text-white hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white'
-                )}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
               >
-                <div className='flex flex-col'>
-                  <span>{item.label}</span>
-                  <span className='text-gray-500 dark:text-gray-400 text-[13px]'>
-                    {format(new Date(Number(item.created_at)), 'dd MMM, yyyy')}
-                  </span>
-                </div>
-              </Link>
+                <Link
+                  key={index}
+                  href={item.href}
+                  className={cn(
+                    'cursor-pointer my-1 gap-1 flex flex-1 flex-col space-x-3 rounded-md px-2 py-[10px] text-[14px] font-medium',
+                    isActive
+                      ? 'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-white'
+                      : 'text-gray-900 dark:text-white hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white'
+                  )}
+                >
+                  <div className='flex flex-col'>
+                    <span>{item.label}</span>
+                    <span className='text-gray-500 dark:text-gray-400 text-[13px]'>
+                      {format(
+                        new Date(Number(item.created_at)),
+                        'dd MMM, yyyy'
+                      )}
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
             )
           })}
         </div>
