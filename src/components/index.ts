@@ -6,9 +6,22 @@ import Blog from './home/blog'
 import Photos from './home/photos'
 import Footer from './footer'
 import Post from './notion/post'
+import HomePage from './home/home'
+import AboutPage from './about/about'
 
 export * from './Icon'
 export * from './ui/custom'
 export * from './Layout'
 
-export { Hero, SideProjects, Companies, Portfolio, Blog, Photos, Footer, Post }
+export {
+  Hero,
+  SideProjects,
+  Companies,
+  Portfolio,
+  Blog,
+  Photos,
+  Footer,
+  Post,
+  HomePage,
+  AboutPage
+}
