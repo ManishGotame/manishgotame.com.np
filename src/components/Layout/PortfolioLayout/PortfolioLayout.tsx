@@ -68,7 +68,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    transition={{ duration: 0.25, delay: index * 0.1 }}
                     // quick fix for the project card, somehow adding motion.div to the project card breaks the layout
                     className='bg-lotion border border-gray-150 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800 relative group rounded-lg dark:bg-erie overflow-hidden max-h-[200px]'
                   >
@@ -87,7 +87,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    transition={{ duration: 0.25, delay: index * 0.1 }}
                   >
                     <PortfolioCard key={index} {...project} id={index} />
                   </motion.div>
@@ -111,7 +111,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
         )}
         initial={{ x: -300, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.2, ease: 'easeOut' }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
       >
         <div className='sticky top-0 z-10 flex flex-row items-center justify-between gap-2'>
           {!isPortfolioHome && (
@@ -152,7 +152,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.2, delay: index * 0.05 }}
+                    transition={{ duration: 0.25, delay: index * 0.05 }}
                   >
                     <Link
                       href={`${item.href}?tab=commercial&id=${index}`}
@@ -207,7 +207,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.2, delay: index * 0.05 }}
+                    transition={{ duration: 0.25, delay: index * 0.05 }}
                   >
                     <Link
                       href={`/portfolio/${project.link}?tab=personal`}
@@ -275,7 +275,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
         initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.25 }}
       >
         {children}
       </motion.div>

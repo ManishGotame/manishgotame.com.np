@@ -4,7 +4,7 @@ import { Instagram } from 'lucide-react'
 
 const Footer = () => {
   return (
-    <footer className='py-4 pt-6 mt-16 pb-16 lg:pb-5 bg-lotion dark:bg-black rounded-sm border-t border-gray-200 dark:border-gray-800'>
+    <footer className='py-4 pt-6 mt-16 pb-16 lg:pb-5 dark:bg-black rounded-sm border-t border-gray-200 dark:border-gray-800'>
       <div className='flex justify-center items-center gap-4'>
         <a
           href='https://x.com/manishgotame'

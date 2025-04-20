@@ -84,7 +84,7 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                transition={{ duration: 0.25, delay: index * 0.05 }}
               >
                 <Link
                   key={index}

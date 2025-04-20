@@ -10,7 +10,7 @@ export default function AboutPage() {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      transition={{ duration: 0.25, ease: 'easeInOut' }}
     >
       <div className='w-full bg-white dark:bg-black p-4 md:p-6'>
         <div className='relative max-w-5xl mx-auto min-h-[500px] md:min-h-[600px]'>
