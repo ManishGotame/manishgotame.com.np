@@ -132,7 +132,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
             className='w-full'
             onValueChange={handleTabChange}
           >
-            <TabsList className='grid w-full grid-cols-2 mb-5'>
+            <TabsList className='grid w-full grid-cols-2 mb-5 gap-1'>
               <TabsTrigger value='personal'>Personal</TabsTrigger>
               <TabsTrigger value='commercial'>Commercial</TabsTrigger>
             </TabsList>
