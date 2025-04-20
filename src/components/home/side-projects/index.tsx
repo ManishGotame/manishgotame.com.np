@@ -7,7 +7,7 @@ const SideProjects = () => {
   return (
     <div className='flex flex-col gap-10'>
       <div className='flex flex-col'>
-        <span className='font-bold text-[20px]'>Side Projects</span>
+        <span className='font-bold text-[20px]'>Personal Projects</span>
         <span className='font-regular text-[18px] text-gray-600 dark:text-gray-200'>
           Tinkering through code in various domains
         </span>

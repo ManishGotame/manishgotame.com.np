@@ -1,20 +1,15 @@
+import { IPortfolio } from '@/interfaces'
 import { ExternalLink } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from '@/components/ui/tooltip'
 
-export interface ProjectCardProps {
-  title: string
-  description: string
-  image: string
-  link: string
-  externalLink: string
-  active: boolean
-  tags?: string[]
-  height?: number
-  width?: number
-}
-
-const ProjectCard: React.FC<ProjectCardProps> = ({
+const ProjectCard: React.FC<IPortfolio> = ({
   title,
   description,
   image,
@@ -27,7 +22,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <Link
-      href={link}
+      href={`/portfolio/${link}?tab=personal`}
       className='cursor-pointer bg-lotion border border-gray-150 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800 relative group rounded-lg dark:bg-erie overflow-hidden min-h-[210px]'
     >
       <div className='p-4 flex flex-col justify-between h-full pb-10'>
@@ -39,20 +34,31 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             width={width}
             height={height}
           />
-          <div
-            onClick={() =>
-              window.open(externalLink, '_blank', 'noopener,noreferrer')
-            }
-            className='text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-transform hover:scale-[1.2] cursor-pointer'
-          >
-            <ExternalLink className='w-5 h-5' />
-          </div>
+          {externalLink ? (
+            <div
+              onClick={() =>
+                window.open(externalLink, '_blank', 'noopener,noreferrer')
+              }
+              className='text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-transform hover:scale-[1.2] cursor-pointer'
+            >
+              <ExternalLink className='w-5 h-5' />
+            </div>
+          ) : null}
         </div>
         <div>
           <h3 className='text-[15px] font-semibold text-gray-900 dark:text-white flex items-center gap-2'>
             {title}
             {active ? (
-              <span className='w-2 h-2 rounded-full bg-green-500'></span>
+              <TooltipProvider delayDuration={100}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className='w-2 h-2 rounded-full bg-green-500 cursor-pointer'></span>
+                  </TooltipTrigger>
+                  <TooltipContent side='top'>
+                    <p>Active</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             ) : null}
           </h3>
           <p className='text-[14px] font-regular text-gray-600 dark:text-gray-400 mt-1'>

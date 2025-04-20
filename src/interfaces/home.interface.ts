@@ -9,14 +9,18 @@ export interface ICompany {
 }
 
 export interface IPortfolio {
+  externalLink?: string
   id: number
   title: string
   description: string
   mini_description?: string
-  year: string
+  year?: string
   image: string
   link?: string
   tags?: string[]
+  active?: boolean
+  height?: number
+  width?: number
 }
 
 export interface IPhoto {
