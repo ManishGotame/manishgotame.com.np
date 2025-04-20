@@ -130,7 +130,7 @@ export default function Post({ blockMap, link, title, header }: PostProps) {
         >
           <Header title={title} onClick={handleBack} backButton={true} />
         </div>
-        <div ref={notionRef}>
+        <div ref={notionRef} className=''>
           <NotionRenderer
             recordMap={blockMap}
             darkMode={theme === 'dark'}

@@ -3,9 +3,8 @@ import { TwitterIcon } from 'lucide-react'
 import { Instagram } from 'lucide-react'
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear()
   return (
-    <footer className='py-4 pt-6 mt-16 pb-16 lg:mb-6 lg:pb-0 bg-lotion dark:bg-black rounded-sm border-t border-gray-200 dark:border-gray-800'>
+    <footer className='py-4 pt-6 mt-16 pb-16 lg:pb-5 bg-lotion dark:bg-black rounded-sm border-t border-gray-200 dark:border-gray-800'>
       <div className='flex justify-center items-center gap-4'>
         <a
           href='https://x.com/manishgotame'
@@ -40,7 +39,7 @@ const Footer = () => {
         </a>
       </div>
       <div className='text-center text-gray-600 dark:text-gray-400 my-4 text-sm md:text-md'>
-        Copyright © {currentYear} Manish Gotame. All rights reserved.
+        Made by Manish Gotame
       </div>
     </footer>
   )
