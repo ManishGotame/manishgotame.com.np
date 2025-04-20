@@ -39,7 +39,7 @@ export const portfolio: IPortfolio[] = [
       'Proposed contract changes for existing smart contract and worked on Wallet integrations for the UI.',
     year: '2022',
     image: '/portfolio/artcandie.png',
-    link: 'Art-Can-Die-1d70afa84937807da6c5e1faa2eca787',
+    link: 'Art-Can-Die-1db0afa84937801c814afde8a024064d',
     mini_description: 'Smart Contract Optimization'
   },
   {
