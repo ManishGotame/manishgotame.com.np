@@ -8,6 +8,7 @@ import { TwitterIcon } from './TwitterIcon'
 import { GitHubIcon } from './GitHubIcon'
 import { ExternalLinkIcon } from './ExternalLinkIcon'
 import { NotionIcon } from './NotionIcon'
+import { OPPIcon } from './OPP'
 
 export {
   HomeIcon,
@@ -19,5 +20,6 @@ export {
   TwitterIcon,
   GitHubIcon,
   ExternalLinkIcon,
-  NotionIcon
+  NotionIcon,
+  OPPIcon
 }

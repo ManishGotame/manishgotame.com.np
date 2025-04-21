@@ -10,6 +10,7 @@ import { Equation } from 'react-notion-x/build/third-party/equation'
 import { Modal } from 'react-notion-x/build/third-party/modal'
 import { Pdf } from 'react-notion-x/build/third-party/pdf'
 import { Code } from 'react-notion-x/build/third-party/code'
+import { motion } from 'framer-motion'
 
 export default function ClientGalleryContent({
   recordMap
@@ -27,19 +28,32 @@ export default function ClientGalleryContent({
   }
 
   return (
-    <div className='overflow-y-scroll h-screen flex-1'>
-      <NotionRenderer
-        recordMap={recordMap}
-        darkMode={theme === 'dark'}
-        disableHeader={true}
-        components={{
-          Code,
-          Collection,
-          Equation,
-          Pdf,
-          Modal
-        }}
-      />
+    <div className='overflow-hidden'>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.25, ease: 'easeInOut' }}
+      >
+        <div className='overflow-y-scroll h-screen flex-1'>
+          <style jsx global>{`
+            .medium-zoom-image {
+              border-radius: 0 !important;
+            }
+          `}</style>
+          <NotionRenderer
+            recordMap={recordMap}
+            darkMode={theme === 'dark'}
+            disableHeader={true}
+            components={{
+              Code,
+              Collection,
+              Equation,
+              Pdf,
+              Modal
+            }}
+          />
+        </div>
+      </motion.div>
     </div>
   )
 }

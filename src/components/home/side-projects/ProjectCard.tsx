@@ -36,9 +36,11 @@ const ProjectCard: React.FC<IPortfolio> = ({
           />
           {externalLink ? (
             <div
-              onClick={() =>
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
                 window.open(externalLink, '_blank', 'noopener,noreferrer')
-              }
+              }}
               className='text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-transform hover:scale-[1.2] cursor-pointer'
             >
               <ExternalLink className='w-5 h-5' />

@@ -16,7 +16,7 @@ export default async function Gallery() {
   }
 
   return (
-    <div className=''>
+    <div>
       <ClientGalleryContent recordMap={recordMap} />
     </div>
   )

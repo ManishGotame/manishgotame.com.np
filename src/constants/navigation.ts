@@ -2,6 +2,7 @@ import {
   ExternalLinkIcon,
   GitHubIcon,
   HomeIcon,
+  OPPIcon,
   StackIcon,
   TwitterIcon
 } from '@/components/Icon'
@@ -11,8 +12,7 @@ import {
   Images,
   PenLine,
   LinkedinIcon,
-  InstagramIcon,
-  LayoutGrid
+  InstagramIcon
 } from 'lucide-react'
 
 export const routes = [
@@ -54,17 +54,8 @@ export const routes = [
     ]
   },
   {
-    label: 'Me',
+    label: '',
     items: [
-      // {
-      //   href: '/activity',
-      //   label: 'Activity Heatmap',
-      //   icon: StackIcon,
-      //   trailingAccessory: null,
-      //   isActive: router.asPath.indexOf('/activity') >= 0,
-      //   trailingAction: null,
-      //   isExternal: false
-      // },
       {
         href: '/gallery',
         label: 'Gallery',
@@ -81,7 +72,7 @@ export const routes = [
       {
         href: 'https://openpastpaper.com',
         label: 'Open Past Paper',
-        icon: LayoutGrid,
+        icon: OPPIcon,
         trailingAccessory: ExternalLinkIcon,
         trailingAction: null,
         isExternal: true

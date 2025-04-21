@@ -40,8 +40,8 @@ const Blog = ({ blockMap }: BlogProps) => {
   return (
     <div className='flex flex-col space-y-8'>
       <div className='flex flex-col'>
-        <span className='font-bold text-lg'>Writings</span>
-        <span className='font-regular text-gray-600 dark:text-gray-200'>
+        <span className='font-bold text-[20px]'>Writing</span>
+        <span className='font-regular text-[18px] text-gray-600 dark:text-gray-200'>
           Things I work on and learn about
         </span>
       </div>

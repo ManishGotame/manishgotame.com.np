@@ -6,8 +6,8 @@ const Photos = () => {
   return (
     <div className='flex flex-col'>
       <div className='flex flex-col mb-10'>
-        <span className='font-bold text-lg'>Photos</span>
-        <span className='font-regular text-gray-600 dark:text-gray-200'>
+        <span className='font-bold text-[20px]'>Photos</span>
+        <span className='font-regular text-[18px] text-gray-600 dark:text-gray-200'>
           Few pictures from my travels
         </span>
       </div>
