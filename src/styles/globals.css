@@ -149,3 +149,12 @@
 .notion-link:hover {
   text-decoration: underline !important;
 }
+
+/* quick fix until the main change gets merged into the library */
+.notion-hr {
+  width: 100%;
+  margin: 6px 0;
+  padding: 0;
+  border: none !important;
+  border-bottom: 1px solid var(--bg-color-0) !important;
+}
