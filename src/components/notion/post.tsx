@@ -19,6 +19,9 @@ import { Modal } from 'react-notion-x/build/third-party/modal'
 import { Pdf } from 'react-notion-x/build/third-party/pdf'
 import { Code } from 'react-notion-x/build/third-party/code'
 
+import Image from 'next/image'
+import Link from 'next/link'
+
 interface PostProps {
   blockMap: ExtendedRecordMap
   link: string
@@ -136,6 +139,8 @@ export default function Post({ blockMap, link, title, header }: PostProps) {
             darkMode={theme === 'dark'}
             className='notion-page'
             components={{
+              nextImage: Image,
+              nextLink: Link,
               Code,
               Collection,
               Equation,
