@@ -20,7 +20,8 @@ export const portfolio: IPortfolio[] = [
     mini_description: 'Frontend and Smart Contract',
     year: '2022',
     image: '/portfolio/mdv.png',
-    link: 'NFT-Fever-1d70afa84937800eb73cf34e316c43ce'
+    link: 'Million-Dollar-Vault-1dc0afa8493780239f12c37aa6f9e168',
+    tags: ['Solidity', 'Firebase', 'Python']
   },
   {
     id: 2,
@@ -30,7 +31,8 @@ export const portfolio: IPortfolio[] = [
     mini_description: 'E-Learning Platform',
     year: '2022',
     image: '/portfolio/nftfever.png',
-    link: 'NFT-dev-1d70afa84937800eb73cf34e316c43ce'
+    link: 'NFT-dev-1d70afa84937800eb73cf34e316c43ce',
+    tags: ['React', 'Firebase']
   },
   {
     id: 3,
@@ -40,7 +42,8 @@ export const portfolio: IPortfolio[] = [
     year: '2022',
     image: '/portfolio/artcandie.png',
     link: 'Art-Can-Die-1db0afa84937801c814afde8a024064d',
-    mini_description: 'Smart Contract Optimization'
+    mini_description: 'Smart Contract Optimization',
+    tags: ['Node', 'Solidity']
   },
   {
     id: 4,
@@ -50,6 +53,7 @@ export const portfolio: IPortfolio[] = [
     mini_description: 'Smart Contract Optimization',
     year: '2022',
     image: '/portfolio/researchfundnft.png',
-    link: 'Research-Fund-NFT-1d70afa84937807da6c5e1faa2eca787'
+    link: 'Research-Funding-Club-1dc0afa849378036b508c315a47e9543',
+    tags: ['React', 'Solidity']
   }
 ]
