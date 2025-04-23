@@ -169,3 +169,8 @@
   border: none !important;
   border-bottom: 1px solid var(--bg-color-0) !important;
 }
+
+.notion-full-width {
+  padding-left: calc(min(126px, 8vw)) !important;
+  padding-right: calc(min(126px, 8vw)) !important;
+}

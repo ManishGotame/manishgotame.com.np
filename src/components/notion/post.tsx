@@ -39,6 +39,7 @@ export default function Post({ blockMap, link, title, header }: PostProps) {
   const titleRef = React.useRef<HTMLDivElement>(null)
   const notionRef = React.useRef<HTMLDivElement>(null)
   const [titleMargin, setTitleMargin] = useState<number | null>(null)
+  const [fullWidth, setFullWidth] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -77,11 +78,22 @@ export default function Post({ blockMap, link, title, header }: PostProps) {
   useEffect(() => {
     const updateMargin = () => {
       if (notionRef.current) {
+        // get the margin left of the page
         const notionElement = notionRef.current.querySelector('.notion-page')
         if (notionElement) {
           const computedStyle = window.getComputedStyle(notionElement)
           const marginLeft = parseFloat(computedStyle.marginLeft)
           setTitleMargin(marginLeft)
+        }
+
+        // check if the page is full width
+        const notionFullWidthElement =
+          notionRef.current.querySelector('.notion-full-width')
+
+        if (notionFullWidthElement) {
+          setFullWidth(true)
+        } else {
+          setFullWidth(false)
         }
       }
     }
@@ -122,9 +134,14 @@ export default function Post({ blockMap, link, title, header }: PostProps) {
           className='flex flex-col mt-[62px] mb-8'
           ref={titleRef}
           style={{
-            marginLeft: `calc(${titleMargin}px + 10px)`,
-            paddingLeft: `calc(min(16px, 8vw))`,
-            paddingRight: `calc(min(16px, 8vw))`
+            marginLeft: fullWidth ? '0px' : `calc(${titleMargin}px + 10px)`,
+            marginRight: fullWidth ? '0px' : `calc(${titleMargin}px + 10px)`,
+            paddingLeft: fullWidth
+              ? `calc(min(126px, 8vw))`
+              : `calc(min(16px, 8vw))`,
+            paddingRight: fullWidth
+              ? `calc(min(126px, 8vw))`
+              : `calc(min(16px, 8vw))`
           }}
         >
           {titleMargin !== null ? header : null}
