@@ -155,7 +155,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
                     transition={{ duration: 0.25, delay: index * 0.05 }}
                   >
                     <Link
-                      href={`${item.href}?tab=commercial&id=${index}`}
+                      href={`${item.href}?tab=commercial`}
                       className={cn(
                         'cursor-pointer my-1 gap-1 flex flex-1 flex-col space-x-3 rounded-md px-2 py-[10px] text-[14px] font-medium',
                         isActive
@@ -180,7 +180,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
                               {item.description}
                             </span>
                           )}
-                          {item.tags && item.tags.length > 0 && (
+                          {/* {item.tags && item.tags.length > 0 && (
                             <div className='flex flex-wrap gap-1 mt-1'>
                               {item.tags.map((tag, tagIndex) => (
                                 <span
@@ -191,7 +191,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
                                 </span>
                               ))}
                             </div>
-                          )}
+                          )} */}
                         </div>
                       </div>
                     </Link>
@@ -247,7 +247,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
                           <span className='text-gray-500 dark:text-gray-400 text-[13px]'>
                             {project.description}
                           </span>
-                          {project.tags && project.tags.length > 0 && (
+                          {/* {project.tags && project.tags.length > 0 && (
                             <div className='flex flex-wrap gap-1 mt-1'>
                               {project.tags.map((tag, tagIndex) => (
                                 <span
@@ -258,7 +258,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
                                 </span>
                               ))}
                             </div>
-                          )}
+                          )} */}
                         </div>
                       </div>
                     </Link>
@@ -271,7 +271,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
       </motion.div>
 
       <motion.div
-        className='flex-1 w-full'
+        className='flex-1 w-[20%]' // somehow it works when using the percentage
         initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}

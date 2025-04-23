@@ -1,3 +1,4 @@
+import { PortfolioType } from '@/enums'
 import { IPortfolio } from '@/interfaces'
 
 export const portfolio: IPortfolio[] = [
@@ -10,7 +11,8 @@ export const portfolio: IPortfolio[] = [
     year: '2023',
     image: '/portfolio/actn.png',
     link: 'ACTN-Sports-1d70afa84937807da6c5e1faa2eca787',
-    tags: ['Web3', 'React', 'Moralis']
+    tags: ['Web3', 'React', 'Moralis'],
+    type: PortfolioType.COMMERCIAL
   },
   {
     id: 1,
@@ -21,7 +23,8 @@ export const portfolio: IPortfolio[] = [
     year: '2022',
     image: '/portfolio/mdv.png',
     link: 'Million-Dollar-Vault-1dc0afa8493780239f12c37aa6f9e168',
-    tags: ['Solidity', 'Firebase', 'Python']
+    tags: ['Solidity', 'Firebase', 'Python'],
+    type: PortfolioType.COMMERCIAL
   },
   {
     id: 2,
@@ -32,7 +35,8 @@ export const portfolio: IPortfolio[] = [
     year: '2022',
     image: '/portfolio/nftfever.png',
     link: 'NFT-dev-1d70afa84937800eb73cf34e316c43ce',
-    tags: ['React', 'Firebase']
+    tags: ['React', 'Firebase'],
+    type: PortfolioType.COMMERCIAL
   },
   {
     id: 3,
@@ -43,7 +47,8 @@ export const portfolio: IPortfolio[] = [
     image: '/portfolio/artcandie.png',
     link: 'Art-Can-Die-1db0afa84937801c814afde8a024064d',
     mini_description: 'Smart Contract Optimization',
-    tags: ['Node', 'Solidity']
+    tags: ['Node', 'Solidity'],
+    type: PortfolioType.COMMERCIAL
   },
   {
     id: 4,
@@ -54,6 +59,7 @@ export const portfolio: IPortfolio[] = [
     year: '2022',
     image: '/portfolio/researchfundnft.png',
     link: 'Research-Funding-Club-1dc0afa849378036b508c315a47e9543',
-    tags: ['React', 'Solidity']
+    tags: ['React', 'Solidity'],
+    type: PortfolioType.COMMERCIAL
   }
 ]

@@ -1,3 +1,4 @@
+import { PortfolioType } from '@/enums'
 import { IPortfolio } from '@/interfaces'
 
 export const sideProjects: IPortfolio[] = [
@@ -9,7 +10,8 @@ export const sideProjects: IPortfolio[] = [
     link: 'Open-Past-Paper-1db0afa8493780c2a1b0e92528083cef',
     externalLink: 'https://openpastpaper.com',
     active: true,
-    tags: ['10K+ Users', '100+ countries', 'Active']
+    tags: ['10K+ Users', '100+ countries', 'Active'],
+    type: PortfolioType.PERSONAL
   },
   {
     id: 1,
@@ -21,7 +23,8 @@ export const sideProjects: IPortfolio[] = [
     active: true,
     tags: ['100+ users', 'Active', 'Cycling'],
     height: 40,
-    width: 40
+    width: 40,
+    type: PortfolioType.PERSONAL
   },
   {
     id: 2,
@@ -33,7 +36,8 @@ export const sideProjects: IPortfolio[] = [
     active: false,
     tags: ['AI', 'Keras', 'Machine Learning'],
     height: 40,
-    width: 40
+    width: 40,
+    type: PortfolioType.PERSONAL
   },
   {
     id: 3,
@@ -44,7 +48,8 @@ export const sideProjects: IPortfolio[] = [
     active: true,
     tags: ['Active', 'React', 'i18n'],
     height: 40,
-    width: 40
+    width: 40,
+    type: PortfolioType.PERSONAL
   },
   {
     id: 4,
@@ -55,6 +60,7 @@ export const sideProjects: IPortfolio[] = [
     active: false,
     tags: ['React', 'Blockchain'],
     height: 40,
-    width: 40
+    width: 40,
+    type: PortfolioType.PERSONAL
   }
 ]

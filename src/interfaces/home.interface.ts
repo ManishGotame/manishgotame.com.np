@@ -1,3 +1,5 @@
+import { PortfolioType } from '@/enums'
+
 export interface ICompany {
   title: string
   image: string
@@ -21,6 +23,7 @@ export interface IPortfolio {
   active?: boolean
   height?: number
   width?: number
+  type: PortfolioType
 }
 
 export interface IPhoto {
