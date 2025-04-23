@@ -21,6 +21,7 @@ import { Code } from 'react-notion-x/build/third-party/code'
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 interface PostProps {
   blockMap: ExtendedRecordMap
@@ -103,7 +104,12 @@ export default function Post({ blockMap, link, title, header }: PostProps) {
   }
 
   return (
-    <div className='flex relative'>
+    <motion.div
+      className='flex relative'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.25 }}
+    >
       <div className='overflow-y-scroll h-screen w-full'>
         {/* smaller screen header */}
         <div className='absolute p-5 top-0 left-0'>
@@ -151,6 +157,6 @@ export default function Post({ blockMap, link, title, header }: PostProps) {
         </div>
         <Footer />
       </div>
-    </div>
+    </motion.div>
   )
 }
