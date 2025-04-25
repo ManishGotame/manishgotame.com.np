@@ -47,15 +47,12 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
 
   return (
     <div className='flex flex-row w-full'>
-      <motion.div
+      <div
         className={cn(
           'z-20 flex h-full max-h-screen min-h-screen flex-none transform flex-col overflow-y-auto border-r border-gray-150 bg-lotion pb-10 dark:border-gray-800 dark:bg-gray-900',
           'w-screen lg:relative lg:min-w-[25%] lg:max-w-[350px]',
           !isPortfolioHome && 'hidden lg:flex'
         )}
-        initial={{ x: -300, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ duration: 0.25, ease: 'easeOut' }}
       >
         <div className='sticky top-0 z-10 flex flex-row items-center justify-between gap-2'>
           {!isPortfolioHome && (
@@ -212,7 +209,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
             </TabsContent>
           </Tabs>
         </div>
-      </motion.div>
+      </div>
 
       <motion.div
         className='flex-1 w-[20%]' // somehow it works when using the percentage
