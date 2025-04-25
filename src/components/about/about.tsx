@@ -45,7 +45,7 @@ export default function AboutPage() {
           </div>
 
           {/* Text content section */}
-          <div className='max-w-xl mx-auto mt-[-50] md:mt-24 px-4 md:px-0 text-black dark:text-white'>
+          <div className='max-w-xl mx-auto mt-[-120] sm:mt-[-58] md:mt-24 px-4 md:px-0 text-black dark:text-white'>
             <h1 className='text-[28px] md:text-[35px] font-semibold mb-6 md:mb-8'>
               Hi again, I&apos;m Manish!
             </h1>
