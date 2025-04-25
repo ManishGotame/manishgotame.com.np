@@ -59,7 +59,7 @@ const PersonalProjectsTab = ({ title, details }: ProjectsTabProps) => {
                   <span
                     key={index}
                     className={cn(
-                      'inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ring-1 ring-inset shadow-sm',
+                      'inline-flex items-center rounded-full px-1.5 py-0.5 text-[11px] font-medium ring-1 ring-inset shadow-sm',
                       tag === 'Active'
                         ? 'bg-green-100 text-green-700 ring-green-200 dark:bg-green-900/30 dark:text-green-300 dark:ring-green-700'
                         : 'bg-gray-100 text-gray-600 ring-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:ring-gray-700'
