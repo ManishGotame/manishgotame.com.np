@@ -1,15 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { Footer, Header } from '@/components'
+import { Header } from '@/components'
 import { cn } from '@/lib'
 import { IPortfolio } from '@/interfaces'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { ChevronLeft } from 'lucide-react'
 import { motion } from 'framer-motion'
-import PortfolioCard from '@/components/home/portfolio/PortfolioCard'
-import ProjectCard from '@/components/home/side-projects/ProjectCard'
 import { sideProjects } from '@/constants'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
@@ -35,7 +33,7 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
   const router = useRouter()
   const isPortfolioHome = pathname === '/portfolio'
 
-  const currentTab = searchParams.get('tab') || 'commercial'
+  const currentTab = searchParams.get('tab') || 'personal'
 
   const handleTabChange = (value: string) => {
     const params = new URLSearchParams(searchParams)
@@ -45,60 +43,6 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
 
   if (!portfolioItems) {
     return null
-  }
-
-  if (isPortfolioHome) {
-    return (
-      <>
-        <div className='mt-20 flex flex-col gap-16 px-[30px] md:px-[30px] container max-w-5xl mx-auto'>
-          <div className='flex flex-col'>
-            <div className='flex flex-col mb-10'>
-              <span className='font-bold text-xl'>{title}</span>
-              <span className='font-regular text-gray-600 dark:text-gray-200'>
-                Projects I have worked on, personal and commercial.
-              </span>
-            </div>
-
-            {/* Personal Projects Section */}
-            <div className='flex flex-col mb-16'>
-              <h2 className='text-lg font-semibold mb-6'>Personal</h2>
-              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-                {sideProjects.map((project, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.25, delay: index * 0.1 }}
-                    // quick fix for the project card, somehow adding motion.div to the project card breaks the layout
-                    className='bg-lotion border border-gray-150 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800 relative group rounded-lg dark:bg-erie overflow-hidden max-h-[200px]'
-                  >
-                    <ProjectCard key={index} {...project} />
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Commercial Projects Section */}
-            <div className='flex flex-col'>
-              <h2 className='text-lg font-semibold mb-6'>Commercial</h2>
-              <div className='grid grid-cols-1 sm:grid-cols-2 gap-10'>
-                {portfolioItems.map((project, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.25, delay: index * 0.1 }}
-                  >
-                    <PortfolioCard key={index} {...project} id={index} />
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        <Footer />
-      </>
-    )
   }
 
   return (

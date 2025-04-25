@@ -12,7 +12,7 @@ const PortfolioCard = ({
 }: IPortfolio) => {
   return (
     <Link
-      href={`/portfolio/${link}`}
+      href={`/portfolio/${link}?tab=commercial`}
       className='flex flex-col justify-between h-full'
     >
       <Image
