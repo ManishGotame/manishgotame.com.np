@@ -61,6 +61,7 @@
     --radius: 0.5rem;
     --scroll-thumb: hsl(var(--muted-foreground) / 0.35);
     --scroll-track: hsl(var(--secondary));
+    --notion-text-color: rgb(55 55 55);
   }
 
   .dark {
@@ -90,6 +91,7 @@
     --chart-5: 340 75% 55%;
     --scroll-thumb: hsl(var(--muted-foreground) / 0.35);
     --scroll-track: hsl(var(--secondary));
+    --notion-text-color: rgba(163, 163, 163, 1);
   }
 }
 
@@ -173,4 +175,12 @@
 .notion-full-width {
   padding-left: calc(min(126px, 8vw)) !important;
   padding-right: calc(min(126px, 8vw)) !important;
+}
+
+.notion-text,
+.notion-list {
+  line-height: 1.60 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 1.05rem !important;
+  color: var(--notion-text-color) !important;
 }
