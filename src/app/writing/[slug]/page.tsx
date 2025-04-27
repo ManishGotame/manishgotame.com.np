@@ -22,11 +22,9 @@ export async function generateMetadata({
 
   return {
     title: title,
-    description: title, // Add description for better social card display
     openGraph: {
       type: 'article',
       title: title,
-      description: title, // Add description here as well
       images: [
         {
           url: 'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png',
@@ -42,7 +40,6 @@ export async function generateMetadata({
       site: '@manishgotame',
       creator: '@manishgotame',
       title: title,
-      description: title, // Add description
       images: [
         {
           url: 'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png',
