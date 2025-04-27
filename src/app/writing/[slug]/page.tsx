@@ -14,59 +14,42 @@ export async function generateMetadata({
 }: {
   params: tParams
 }): Promise<Metadata> {
-  try {
-    const { slug } = await params
-    const data = await getPage(slug as string)
-    const keys = Object.keys(data.block || {})
-    const block = data.block?.[keys[0]]?.value
-    const title = getBlockTitle(block, data) || ''
+  const { slug } = await params
+  const data = await getPage(slug as string)
+  const keys = Object.keys(data.block || {})
+  const block = data.block?.[keys[0]]?.value
+  const title = getBlockTitle(block, data) || ''
 
-    return {
+  return {
+    title: title,
+    description: title, // Add description for better social card display
+    openGraph: {
+      type: 'article',
       title: title,
-      openGraph: {
-        type: 'article',
-        title: title,
-        images: [
-          'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png'
-        ],
-        url: 'https://manishgotame.com.np',
-        siteName: 'Manish Gotame'
-      },
-      twitter: {
-        card: 'summary_large_image',
-        site: '@manishgotame',
-        creator: '@manishgotame',
-        title: title,
-        images: [
-          'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png'
-        ]
-      }
-    }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  } catch (_) {
-    return {
-      title: 'Blog Post',
-      description: 'Blog Post',
-      openGraph: {
-        type: 'article',
-        title: 'Blog Post',
-        description: 'Blog Post',
-        images: [
-          'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png'
-        ],
-        url: 'https://manishgotame.com.np',
-        siteName: 'Manish Gotame'
-      },
-      twitter: {
-        card: 'summary_large_image',
-        site: '@manishgotame',
-        creator: '@manishgotame',
-        title: 'Blog Post',
-        description: 'Blog Post',
-        images: [
-          'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png'
-        ]
-      }
+      description: title, // Add description here as well
+      images: [
+        {
+          url: 'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png',
+          width: 1200,
+          height: 630
+        }
+      ],
+      url: `https://manishgotame.com.np/writing/${slug}`, // Add full URL path
+      siteName: 'Manish Gotame'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@manishgotame',
+      creator: '@manishgotame',
+      title: title,
+      description: title, // Add description
+      images: [
+        {
+          url: 'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png',
+          width: 1200,
+          height: 630
+        }
+      ]
     }
   }
 }
