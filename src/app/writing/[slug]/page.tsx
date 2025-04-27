@@ -1,16 +1,80 @@
-import { getTitles, notion } from '@/lib'
+import { getPage, getTitles } from '@/lib'
 import { CloudAlertIcon } from 'lucide-react'
 import { Post } from '@/components'
 import { format } from 'date-fns'
+import { Metadata } from 'next'
+import { getBlockTitle } from 'notion-utils'
 
 type tParams = Promise<{ slug: string }>
 
 export const revalidate = 30
 
+export async function generateMetadata({
+  params
+}: {
+  params: tParams
+}): Promise<Metadata> {
+  try {
+    const { slug } = await params
+    const data = await getPage(slug as string)
+    const keys = Object.keys(data.block || {})
+    const block = data.block?.[keys[0]]?.value
+    const title = getBlockTitle(block, data) || ''
+
+    return {
+      title: title,
+      openGraph: {
+        type: 'article',
+        title: title,
+        images: [
+          'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png'
+        ],
+        url: 'https://manishgotame.com.np',
+        siteName: 'Manish Gotame'
+      },
+      twitter: {
+        card: 'summary_large_image',
+        site: '@manishgotame',
+        creator: '@manishgotame',
+        title: title,
+        images: [
+          'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png'
+        ]
+      }
+    }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (_) {
+    return {
+      title: 'Blog Post',
+      description: 'Blog Post',
+      openGraph: {
+        type: 'article',
+        title: 'Blog Post',
+        description: 'Blog Post',
+        images: [
+          'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png'
+        ],
+        url: 'https://manishgotame.com.np',
+        siteName: 'Manish Gotame'
+      },
+      twitter: {
+        card: 'summary_large_image',
+        site: '@manishgotame',
+        creator: '@manishgotame',
+        title: 'Blog Post',
+        description: 'Blog Post',
+        images: [
+          'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png'
+        ]
+      }
+    }
+  }
+}
+
 export default async function Page({ params }: { params: tParams }) {
   try {
     const { slug } = await params
-    const data = await notion.getPage(slug as string)
+    const data = await getPage(slug as string)
     const postDetails = getTitles(data.block)[0]
 
     return (

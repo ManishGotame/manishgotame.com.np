@@ -6,7 +6,6 @@ import { cn } from '@/lib'
 import { IPortfolio } from '@/interfaces'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { ChevronLeft } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { sideProjects } from '@/constants'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -55,14 +54,6 @@ const PortfolioLayout: React.FC<PortfolioLayoutProps> = ({
         )}
       >
         <div className='sticky top-0 z-10 flex flex-row items-center justify-between gap-2'>
-          {!isPortfolioHome && (
-            <Link
-              href='/portfolio'
-              className='p-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
-            >
-              <ChevronLeft className='w-4 h-4' />
-            </Link>
-          )}
           <div className='flex-1'>
             <Header title={title} />
           </div>

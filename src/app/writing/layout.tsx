@@ -1,6 +1,5 @@
 import { WritingLayout } from '@/components'
-import { getTitles } from '@/lib'
-import { NotionAPI } from 'notion-client'
+import { getPage, getTitles } from '@/lib'
 
 export const revalidate = 30
 
@@ -9,8 +8,7 @@ export default async function Layout({
 }: {
   children: React.ReactNode
 }) {
-  const notion = new NotionAPI()
-  const recordMap = await notion.getPage(process.env.NOTION_PAGE_ID as string)
+  const recordMap = await getPage(process.env.NOTION_PAGE_ID as string)
   const blockMap = recordMap.block
   const articleTitles = getTitles(blockMap)
 

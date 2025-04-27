@@ -8,6 +8,7 @@ import Footer from './footer'
 import Post from './notion/post'
 import HomePage from './home/home'
 import AboutPage from './about/about'
+import WritingPage from './writing'
 
 export * from './Icon'
 export * from './ui/custom'
@@ -23,5 +24,6 @@ export {
   Footer,
   Post,
   HomePage,
-  AboutPage
+  AboutPage,
+  WritingPage
 }
