@@ -1,5 +1,5 @@
 import { getBlockTitle } from 'notion-utils'
-import { cn, notion } from '@/lib'
+import { cn, getPage } from '@/lib'
 import { CloudAlertIcon, ExternalLink } from 'lucide-react'
 import { Post } from '@/components'
 import { Roboto } from 'next/font/google'
@@ -112,7 +112,7 @@ export default async function Page({
 }) {
   try {
     const { slug } = await params
-    const data = await notion.getPage(slug as string)
+    const data = await getPage(slug as string)
 
     const keys = Object.keys(data?.block || {})
     const block = data?.block?.[keys[0]]?.value

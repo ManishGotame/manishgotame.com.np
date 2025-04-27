@@ -1,5 +1,5 @@
 import { getTitles } from './getTitles'
 import { cn } from './utils'
-import { notion } from './notion'
+import { notion, getPage } from './notion'
 
-export { cn, getTitles, notion }
+export { cn, getTitles, notion, getPage }
