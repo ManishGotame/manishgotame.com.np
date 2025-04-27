@@ -5,12 +5,12 @@ import { MainLayout } from '@/components'
 
 export const metadata: Metadata = {
   title: 'Manish Gotame',
-  description: 'Full Stack Developer, cyclist, and occasional essayist.',
+  description: 'Software Developer, Cyclist, and occasional Essayist.',
   openGraph: {
     title: 'Manish Gotame',
-    description: 'Full Stack Developer, cyclist, and occasional essayist.',
+    description: 'Software Developer, Cyclist, and occasional Essayist.',
     images: [
-      'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png'
+      'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg'
     ],
     url: 'https://manishgotame.com.np',
     siteName: 'Manish Gotame',
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
     site: '@manishgotame',
     creator: '@manishgotame',
     title: 'Manish Gotame',
-    description: 'Full Stack Developer, cyclist, and occasional essayist.',
+    description: 'Software Developer, Cyclist, and occasional Essayist.',
     images: [
-      'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_img.png'
+      'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg'
     ]
   }
 }

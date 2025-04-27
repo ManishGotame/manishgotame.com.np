@@ -43,7 +43,7 @@ const Hero: React.FC<HeroProps> = ({ blockMap }) => {
           <span className='text-black dark:text-white font-bold'>Manish!</span>
         </h1>
         <h2 className='text-xl mb-[1px]'>
-          Full Stack Developer, Cyclist, and occasional Essayist.
+          Software Developer, Cyclist, and occasional Essayist.
         </h2>
         <p className='text-gray-600 dark:text-gray-400 text-base'>
           (Money-sh for non-native speakers)
