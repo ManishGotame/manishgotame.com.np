@@ -3,11 +3,7 @@ import { CloudAlertIcon } from 'lucide-react'
 import { Post } from '@/components'
 import { format } from 'date-fns'
 import { Metadata } from 'next'
-import {
-  defaultMapImageUrl,
-  getBlockTitle,
-  getPageProperty
-} from 'notion-utils'
+import { getBlockTitle, getPageProperty } from 'notion-utils'
 
 type tParams = Promise<{ slug: string }>
 
