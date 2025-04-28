@@ -3,7 +3,11 @@ import { CloudAlertIcon } from 'lucide-react'
 import { Post } from '@/components'
 import { format } from 'date-fns'
 import { Metadata } from 'next'
-import { getBlockTitle } from 'notion-utils'
+import {
+  defaultMapImageUrl,
+  getBlockTitle,
+  getPageProperty
+} from 'notion-utils'
 
 type tParams = Promise<{ slug: string }>
 
@@ -20,13 +24,16 @@ export async function generateMetadata({
   const block = data.block?.[keys[0]]?.value
   const title = getBlockTitle(block, data) || ''
 
+  const description =
+    getPageProperty<string>('Description', block, data) || 'Writing'
+
   return {
     title: `Manish Gotame - ${title}`,
-    description: 'Writing',
+    description: description,
     openGraph: {
       type: 'article',
       title: `Manish Gotame - ${title}`,
-      description: 'Writing',
+      description: description,
       images: [
         {
           url: 'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg',
@@ -42,7 +49,7 @@ export async function generateMetadata({
       site: '@manishgotame',
       creator: '@manishgotame',
       title: title,
-      description: 'Writing',
+      description: description,
       images: [
         {
           url: 'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg',

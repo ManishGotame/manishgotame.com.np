@@ -184,3 +184,7 @@
   font-size: 1.05rem !important;
   color: var(--notion-text-color) !important;
 }
+
+.notion-collection-page-properties {
+  display: none !important;
+}
