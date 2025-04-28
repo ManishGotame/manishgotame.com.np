@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
-import { SidebarProvider, ThemeProvider } from '@/Providers'
+import { PostHogProvider, SidebarProvider, ThemeProvider } from '@/Providers'
 import { MainLayout } from '@/components'
 
 export const metadata: Metadata = {
@@ -58,9 +58,11 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <SidebarProvider>
-            <MainLayout>{children}</MainLayout>
-          </SidebarProvider>
+          <PostHogProvider>
+            <SidebarProvider>
+              <MainLayout>{children}</MainLayout>
+            </SidebarProvider>
+          </PostHogProvider>
         </ThemeProvider>
       </body>
     </html>

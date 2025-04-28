@@ -1,6 +1,6 @@
 {
   "name": "personal-site",
-  "version": "0.2.34",
+  "version": "0.2.35",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -22,6 +22,7 @@
     "notion-client": "^7.1.6",
     "notion-types": "^7.1.6",
     "notion-utils": "^7.1.6",
+    "posthog-js": "^1.236.7",
     "prismjs": "^1.29.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

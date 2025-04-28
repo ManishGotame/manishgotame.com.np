@@ -1,6 +1,6 @@
 # Personal Site
 
-This is my personal site. It's built with Next.js and Tailwind CSS.
+This is my personal site. It's built with Next.js App Router + Tailwind CSS + PostHog for Analytics.
 
 ## Development
 
