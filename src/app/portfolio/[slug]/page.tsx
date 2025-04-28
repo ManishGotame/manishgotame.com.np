@@ -8,6 +8,7 @@ import { PortfolioType } from '@/enums'
 import { IPortfolio } from '@/interfaces'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Metadata } from 'next'
 
 const roboto = Roboto({
   weight: '400',
@@ -20,6 +21,61 @@ export const revalidate = 30
 interface ProjectsTabProps {
   title: string
   details: IPortfolio | undefined
+}
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const portfolioProject = portfolio.find((project) => project.link === slug)
+  const sideProject = sideProjects.find((project) => project.link === slug)
+  const project = portfolioProject || sideProject
+  const projectType = portfolioProject
+    ? PortfolioType.COMMERCIAL
+    : PortfolioType.PERSONAL
+
+  return {
+    title: `Manish Gotame - ${project?.title}`,
+    description: project?.description,
+    openGraph: {
+      type: 'article',
+      title: `Manish Gotame - ${project?.title}`,
+      description: project?.description,
+      images: [
+        {
+          url:
+            projectType === PortfolioType.COMMERCIAL
+              ? project?.image ||
+                'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg'
+              : 'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg',
+          width: 1200,
+          height: 630
+        }
+      ],
+      url: `https://manishgotame.com.np/portfolio/${slug}?type=${projectType}`,
+      siteName: 'Manish Gotame'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@manishgotame',
+      creator: '@manishgotame',
+      title: `Manish Gotame - ${project?.title}`,
+      description: project?.description,
+      images: [
+        {
+          url:
+            projectType === PortfolioType.COMMERCIAL
+              ? project?.image ||
+                'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg'
+              : 'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg',
+          width: 1200,
+          height: 630
+        }
+      ]
+    }
+  }
 }
 
 const PersonalProjectsTab = ({ title, details }: ProjectsTabProps) => {

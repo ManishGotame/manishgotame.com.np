@@ -1,8 +1,34 @@
 import { ExtendedRecordMap } from 'notion-types'
 import ClientGalleryContent from './content'
 import { getPage } from '@/lib'
+import { Metadata } from 'next'
 
 export const revalidate = 30
+
+export const metadata: Metadata = {
+  title: 'Manish Gotame - Gallery',
+  description: 'Collection of photos from my trips.',
+  openGraph: {
+    title: 'Manish Gotame - Gallery',
+    description: 'Collection of photos from my trips.',
+    images: [
+      'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg'
+    ],
+    url: 'https://manishgotame.com.np/gallery',
+    siteName: 'Manish Gotame',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@manishgotame',
+    creator: '@manishgotame',
+    title: 'Manish Gotame - Gallery',
+    description: 'Collection of photos from my trips.',
+    images: [
+      'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg'
+    ]
+  }
+}
 
 export default async function Gallery() {
   let recordMap: ExtendedRecordMap | null = null

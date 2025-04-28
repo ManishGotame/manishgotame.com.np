@@ -179,7 +179,7 @@
 
 .notion-text,
 .notion-list {
-  line-height: 1.60 !important;
+  line-height: 1.6 !important;
   font-family: 'Inter', sans-serif !important;
   font-size: 1.05rem !important;
   color: var(--notion-text-color) !important;

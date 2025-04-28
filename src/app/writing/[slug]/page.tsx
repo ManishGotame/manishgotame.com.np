@@ -21,12 +21,12 @@ export async function generateMetadata({
   const title = getBlockTitle(block, data) || ''
 
   return {
-    title: title,
-    description: 'Writing', // Add description for better social card display
+    title: `Manish Gotame - ${title}`,
+    description: 'Writing',
     openGraph: {
       type: 'article',
-      title: title,
-      description: 'Writing', // Add description here as well
+      title: `Manish Gotame - ${title}`,
+      description: 'Writing',
       images: [
         {
           url: 'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg',
@@ -34,7 +34,7 @@ export async function generateMetadata({
           height: 630
         }
       ],
-      url: `https://manishgotame.com.np/writing/${slug}`, // Add full URL path
+      url: `https://manishgotame.com.np/writing/${slug}`,
       siteName: 'Manish Gotame'
     },
     twitter: {
@@ -42,7 +42,7 @@ export async function generateMetadata({
       site: '@manishgotame',
       creator: '@manishgotame',
       title: title,
-      description: 'Writing', // Add description
+      description: 'Writing',
       images: [
         {
           url: 'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg',
