@@ -2,10 +2,10 @@ import { WritingPage } from '@/components'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Manish Gotame - Writing',
+  title: 'Writing - Manish Gotame',
   description: 'Collection of my essays and articles.',
   openGraph: {
-    title: 'Manish Gotame - Writing',
+    title: 'Writing - Manish Gotame',
     description: 'Collection of my essays and articles.',
     images: [
       'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg'
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@manishgotame',
     creator: '@manishgotame',
-    title: 'Manish Gotame - Writing',
+    title: 'Writing - Manish Gotame',
     description: 'Collection of my essays and articles.',
     images: [
       'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg'

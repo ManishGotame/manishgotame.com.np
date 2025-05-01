@@ -24,11 +24,11 @@ export async function generateMetadata({
     getPageProperty<string>('Description', block, data) || 'Writing'
 
   return {
-    title: `Manish Gotame - ${title}`,
+    title: `${title} - Manish Gotame`,
     description: description,
     openGraph: {
       type: 'article',
-      title: `Manish Gotame - ${title}`,
+      title: `${title} - Manish Gotame`,
       description: description,
       images: [
         {
@@ -44,7 +44,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       site: '@manishgotame',
       creator: '@manishgotame',
-      title: title,
+      title: `${title} - Manish Gotame`,
       description: description,
       images: [
         {

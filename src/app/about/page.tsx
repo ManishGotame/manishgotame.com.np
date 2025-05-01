@@ -2,10 +2,10 @@ import { AboutPage } from '@/components'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Manish Gotame - About',
+  title: 'About - Manish Gotame',
   description: 'Software Developer, Cyclist, and occasional Essayist.',
   openGraph: {
-    title: 'Manish Gotame - About',
+    title: 'About - Manish Gotame',
     description: 'Software Developer, Cyclist, and occasional Essayist.',
     images: [
       'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg'
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     site: '@manishgotame',
     creator: '@manishgotame',
-    title: 'Manish Gotame - About',
+    title: 'About - Manish Gotame',
     description: 'Software Developer, Cyclist, and occasional Essayist.',
     images: [
       'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg'

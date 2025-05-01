@@ -37,11 +37,11 @@ export async function generateMetadata({
     : PortfolioType.PERSONAL
 
   return {
-    title: `Manish Gotame - ${project?.title}`,
+    title: `${project?.title} - Manish Gotame`,
     description: project?.description,
     openGraph: {
       type: 'article',
-      title: `Manish Gotame - ${project?.title}`,
+      title: `${project?.title} - Manish Gotame`,
       description: project?.description,
       images: [
         {
@@ -61,7 +61,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       site: '@manishgotame',
       creator: '@manishgotame',
-      title: `Manish Gotame - ${project?.title}`,
+      title: `${project?.title} - Manish Gotame`,
       description: project?.description,
       images: [
         {
