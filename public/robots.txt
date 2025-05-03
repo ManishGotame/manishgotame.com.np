@@ -5,5 +5,4 @@ Disallow: /_next/
 Disallow: /static/
 Allow: /
 
-# Sitemap location (update the URL if your sitemap is elsewhere)
 Sitemap: https://manishgotame.com.np/sitemap.xml
