@@ -9,8 +9,7 @@ export default async function Layout({
   children: React.ReactNode
 }) {
   const recordMap = await getPage(process.env.NOTION_PAGE_ID as string)
-  const blockMap = recordMap.block
-  const articleTitles = getTitles(blockMap)
+  const articleTitles = getTitles(recordMap.block)
 
   return (
     <WritingLayout title='Writing' articleTitles={articleTitles}>
