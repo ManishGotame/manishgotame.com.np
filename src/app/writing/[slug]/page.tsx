@@ -1,9 +1,15 @@
-import { getPage, getTitles } from '@/lib'
+import { extractNotionTableProperties, getPage, getTitles } from '@/lib'
 import { CloudAlertIcon } from 'lucide-react'
 import { Post } from '@/components'
 import { format } from 'date-fns'
 import { Metadata } from 'next'
-import { getBlockTitle, getPageProperty } from 'notion-utils'
+import {
+  defaultMapImageUrl,
+  getBlockTitle,
+  getPageImageUrls,
+  getPageProperty
+} from 'notion-utils'
+import { Client } from '@notionhq/client'
 
 type tParams = Promise<{ slug: string }>
 
@@ -23,6 +29,11 @@ export async function generateMetadata({
   const description =
     getPageProperty<string>('Description', block, data) || 'Writing'
 
+  const socialImage = defaultMapImageUrl(
+    getPageProperty<string>('Social Image', block, data),
+    block
+  )
+
   return {
     title: `${title} - Manish Gotame`,
     description: description,
@@ -32,7 +43,7 @@ export async function generateMetadata({
       description: description,
       images: [
         {
-          url: 'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg',
+          url: socialImage,
           width: 1200,
           height: 630
         }
@@ -48,7 +59,7 @@ export async function generateMetadata({
       description: description,
       images: [
         {
-          url: 'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg',
+          url: socialImage,
           width: 1200,
           height: 630
         }
@@ -62,6 +73,21 @@ export default async function Page({ params }: { params: tParams }) {
     const { slug } = await params
     const data = await getPage(slug as string)
     const postDetails = getTitles(data.block)[0]
+
+    const notion = new Client({
+      auth: ''
+    })
+
+    // const notion = new Client({
+    //   auth: '035d9925-7116-4561-b1c6-f6d7c7cbc4ec'
+    // })
+
+    const { results } = await notion.databases.query({
+      database_id: '1e90afa84937806fa66cec651fba4a0f'
+    })
+
+    console.log('before', results[0])
+    console.log('results', extractNotionTableProperties(results)[0])
 
     return (
       <Post
