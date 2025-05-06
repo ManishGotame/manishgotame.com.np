@@ -188,3 +188,8 @@
 .notion-collection-page-properties {
   display: none !important;
 }
+
+.notion-code {
+  background-color: #131313 !important;
+  border: 0.5px solid #e4e4e449 !important;
+}
