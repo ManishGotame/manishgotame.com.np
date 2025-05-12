@@ -45,8 +45,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   ]
 
-  console.log(projectPages)
-
   // Writing entries (Notion)
   const recordMap = await getPage(process.env.NOTION_PAGE_ID as string)
   const writingEntries = getTitles(recordMap.block)
