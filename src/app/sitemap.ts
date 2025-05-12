@@ -52,18 +52,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `https://manishgotame.com.np/writing/${entry.id}`,
     changeFrequency: 'weekly',
     priority: 0.5,
-    lastModified: new Date(Number(entry.updated_at))
+    lastModified: new Date(Number(entry.created_at))
   }))
 
   // Combine all
   return [
     ...staticPages.map((page) => ({
       ...page,
-      lastModified: new Date()
+      lastModified: '2025-05-13'
     })),
     ...projectPages.map((page) => ({
       ...page,
-      lastModified: new Date()
+      lastModified: '2025-05-13'
     })),
     ...writingPages
   ]
