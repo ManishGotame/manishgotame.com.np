@@ -55,7 +55,7 @@ const Hero: React.FC<HeroProps> = ({ blockMap }) => {
         <div className='flex flex-col gap-[12px]'>
           <PingText color='bg-[#69E5FE]'>
             <span>
-              Working as a Frontend Developer for{' '}
+              Working as a Software Developer for{' '}
               <Link
                 href='https://dgtlpower.com'
                 target='_blank'
