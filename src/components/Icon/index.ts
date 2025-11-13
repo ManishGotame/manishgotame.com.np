@@ -9,6 +9,7 @@ import { GitHubIcon } from './GitHubIcon'
 import { ExternalLinkIcon } from './ExternalLinkIcon'
 import { NotionIcon } from './NotionIcon'
 import { OPPIcon } from './OPP'
+import { RoutetoGPXLogo } from './RoutetoGPXLogo'
 
 export {
   HomeIcon,
@@ -21,5 +22,6 @@ export {
   GitHubIcon,
   ExternalLinkIcon,
   NotionIcon,
-  OPPIcon
+  OPPIcon,
+  RoutetoGPXLogo
 }

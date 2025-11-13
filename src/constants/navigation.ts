@@ -4,7 +4,8 @@ import {
   HomeIcon,
   OPPIcon,
   StackIcon,
-  TwitterIcon
+  TwitterIcon,
+  RoutetoGPXLogo
 } from '@/components/Icon'
 
 import {
@@ -73,6 +74,14 @@ export const routes = [
         href: 'https://openpastpaper.com',
         label: 'Open Past Paper',
         icon: OPPIcon,
+        trailingAccessory: ExternalLinkIcon,
+        trailingAction: null,
+        isExternal: true
+      },
+      {
+        href: 'https://routetogpx.com',
+        label: 'Route to GPX',
+        icon: RoutetoGPXLogo,
         trailingAccessory: ExternalLinkIcon,
         trailingAction: null,
         isExternal: true

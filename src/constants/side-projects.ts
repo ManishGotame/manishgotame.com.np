@@ -17,7 +17,7 @@ export const sideProjects: IPortfolio[] = [
     id: 1,
     title: 'Route to GPX',
     description: 'Convert Google Maps Routes to GPX',
-    image: '/side-projects/route-to-gpx/route-to-gpx.png',
+    image: '/side-projects/route-to-gpx/logo.svg',
     link: 'Route-To-GPX-1db0afa84937801d87efe8c6d544d37d',
     externalLink: 'https://routetogpx.manishgotame.com.np/',
     active: true,
