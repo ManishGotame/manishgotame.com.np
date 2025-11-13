@@ -188,3 +188,9 @@
 .notion-collection-page-properties {
   display: none !important;
 }
+
+.notion-code {
+  background-color: #262626 !important;
+  padding: 20px !important;
+  font-size: 0.75rem !important;
+}
