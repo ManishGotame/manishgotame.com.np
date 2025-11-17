@@ -11,6 +11,7 @@ import { Modal } from 'react-notion-x/build/third-party/modal'
 import { Pdf } from 'react-notion-x/build/third-party/pdf'
 import { Code } from 'react-notion-x/build/third-party/code'
 import { motion } from 'framer-motion'
+import { NotFound } from '@/components'
 
 export default function ClientGalleryContent({
   recordMap
@@ -19,13 +20,7 @@ export default function ClientGalleryContent({
 }) {
   const { theme } = useTheme()
 
-  if (!recordMap) {
-    return (
-      <div className='flex items-center justify-center min-h-screen'>
-        <div className='text-xl font-semibold'>Page not found</div>
-      </div>
-    )
-  }
+  if (!recordMap) return <NotFound />
 
   return (
     <div className='overflow-hidden'>
@@ -41,7 +36,8 @@ export default function ClientGalleryContent({
             }
           `}</style>
           <NotionRenderer
-            recordMap={recordMap}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            recordMap={recordMap as any}
             darkMode={theme === 'dark'}
             disableHeader={true}
             components={{

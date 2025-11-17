@@ -1,27 +1,24 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AnnoucementBanner } from '../../ui/custom'
 import Link from 'next/link'
 import PingText from './PingText'
-import { getTitles } from '@/lib'
-import { BlockMap } from 'notion-types'
 
 interface HeroProps {
-  blockMap: BlockMap
+  latestPost: any
 }
 
-const Hero: React.FC<HeroProps> = ({ blockMap }) => {
+const Hero: React.FC<HeroProps> = ({ latestPost }) => {
   return (
     <div className='pt-32'>
       <div>
-        {!blockMap ? null : (
+        {!latestPost ? null : (
           <>
             {(() => {
-              const articleTitles = getTitles(blockMap)
               const oneMonthAgo = new Date()
               oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 2)
 
               const showBanner =
-                articleTitles[0].created_at &&
-                new Date(articleTitles[0].created_at) > oneMonthAgo
+                latestPost.date && new Date(latestPost.date) > oneMonthAgo
 
               return (
                 <>
@@ -29,8 +26,8 @@ const Hero: React.FC<HeroProps> = ({ blockMap }) => {
                     <AnnoucementBanner
                       variant='default'
                       title='New'
-                      description={articleTitles[0].title}
-                      slug={articleTitles[0].id}
+                      description={latestPost.title}
+                      slug={latestPost.id}
                     />
                   ) : null}
                 </>

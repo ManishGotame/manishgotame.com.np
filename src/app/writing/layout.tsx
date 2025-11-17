@@ -1,5 +1,5 @@
 import { WritingLayout } from '@/components'
-import { getPage, getTitles } from '@/lib'
+import { extractNotionTableProperties, getDatabase } from '@/lib/notion'
 
 export const revalidate = 30
 
@@ -8,11 +8,11 @@ export default async function Layout({
 }: {
   children: React.ReactNode
 }) {
-  const recordMap = await getPage(process.env.NOTION_PAGE_ID as string)
-  const articleTitles = getTitles(recordMap.block)
+  const posts = await getDatabase(process.env.NOTION_BLOG_DATABASE_ID as string)
+  const blogPosts = extractNotionTableProperties(posts)
 
   return (
-    <WritingLayout title='Writing' articleTitles={articleTitles}>
+    <WritingLayout title='Writing' blogPosts={blogPosts}>
       {children}
     </WritingLayout>
   )
