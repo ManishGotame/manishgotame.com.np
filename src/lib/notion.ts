@@ -127,4 +127,5 @@ export const extractNotionTableProperties = (pages: any[]) => {
       }
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .filter((each) => each.published === true)
 }
