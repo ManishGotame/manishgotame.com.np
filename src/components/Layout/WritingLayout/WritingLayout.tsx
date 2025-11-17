@@ -59,7 +59,7 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
                 <TooltipContent>
                   <p>Blog rendered using Notion.</p>
                   <Link
-                    href='/writing/89d9bcb5-8937-465f-96ff-c869ca4c7726'
+                    href='/writing/personal-website-and-notion'
                     className='text-blue-400 underline text-xs'
                     rel='noopener noreferrer'
                   >
@@ -71,40 +71,42 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
           </div>
         </div>
         <div className='px-3 py-2'>
-          {blogPosts.map((each, index) => {
-            const item = {
-              href: `/writing/${each.slug}`,
-              label: each.title,
-              date: each.date
-            }
-            const isActive = pathname === item.href
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.25, delay: index * 0.05 }}
-              >
-                <Link
+          {blogPosts
+            .filter((each) => each.published === true)
+            .map((each, index) => {
+              const item = {
+                href: `/writing/${each.slug}`,
+                label: each.title,
+                date: each.date
+              }
+              const isActive = pathname === item.href
+              return (
+                <motion.div
                   key={index}
-                  href={item.href}
-                  className={cn(
-                    'cursor-pointer my-1 gap-1 flex flex-1 flex-col space-x-3 rounded-md px-2 py-[10px] text-[14px] font-medium',
-                    isActive
-                      ? 'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-white'
-                      : 'text-gray-900 dark:text-white hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white'
-                  )}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.25, delay: index * 0.05 }}
                 >
-                  <div className='flex flex-col'>
-                    <span>{item.label}</span>
-                    <span className='text-gray-500 dark:text-gray-400 text-[13px]'>
-                      {item.date}
-                    </span>
-                  </div>
-                </Link>
-              </motion.div>
-            )
-          })}
+                  <Link
+                    key={index}
+                    href={item.href}
+                    className={cn(
+                      'cursor-pointer my-1 gap-1 flex flex-1 flex-col space-x-3 rounded-md px-2 py-[10px] text-[14px] font-medium',
+                      isActive
+                        ? 'bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-white'
+                        : 'text-gray-900 dark:text-white hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white'
+                    )}
+                  >
+                    <div className='flex flex-col'>
+                      <span>{item.label}</span>
+                      <span className='text-gray-500 dark:text-gray-400 text-[13px]'>
+                        {item.date}
+                      </span>
+                    </div>
+                  </Link>
+                </motion.div>
+              )
+            })}
         </div>
       </div>
 

@@ -119,22 +119,10 @@ export const extractNotionTableProperties = (pages: any[]) => {
           'MMMM dd, yyyy'
         ),
         description: post.properties.description.value,
+        published: post.properties.published?.value ?? true,
         slug:
           post.properties.slug.value.length > 0
             ? post.properties.slug.value[0]
-            : null,
-        author:
-          post.properties?.author?.value?.links?.length > 0
-            ? {
-                name: post.properties.author.value.links.map(
-                  (link: { text: string; url: string }) => {
-                    return {
-                      name: link.text,
-                      url: link.url
-                    }
-                  }
-                )
-              }
             : null
       }
     })
