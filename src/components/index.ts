@@ -9,6 +9,7 @@ import Post from './notion/post'
 import HomePage from './home/home'
 import AboutPage from './about/about'
 import WritingPage from './writing'
+import NotFound from './writing/NotFound'
 
 export * from './Icon'
 export * from './ui/custom'
@@ -25,5 +26,6 @@ export {
   Post,
   HomePage,
   AboutPage,
-  WritingPage
+  WritingPage,
+  NotFound
 }

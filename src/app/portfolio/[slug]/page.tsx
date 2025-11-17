@@ -1,7 +1,7 @@
 import { getBlockTitle } from 'notion-utils'
 import { cn, getPage } from '@/lib'
 import { CloudAlertIcon, ExternalLink } from 'lucide-react'
-import { Post } from '@/components'
+import { NotFound, Post } from '@/components'
 import { Roboto } from 'next/font/google'
 import { portfolio, sideProjects } from '@/constants'
 import { PortfolioType } from '@/enums'
@@ -170,9 +170,11 @@ export default async function Page({
     const { slug } = await params
     const data = await getPage(slug as string)
 
-    const keys = Object.keys(data?.block || {})
+    if (!data) return <NotFound />
+
+    const keys = Object.keys(data?.block ?? {})
     const block = data?.block?.[keys[0]]?.value
-    const title = getBlockTitle(block, data)
+    const title = getBlockTitle(block, data) || ''
     const project =
       portfolio.find((project) => project.link === slug) ||
       sideProjects.find((project) => project.link === slug)

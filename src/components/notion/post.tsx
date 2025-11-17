@@ -9,7 +9,6 @@ import { cn } from '@/lib'
 import { useTheme } from '@/Providers'
 import { ChevronLeft } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
-import { ExtendedRecordMap } from 'notion-types'
 import React, { ReactNode } from 'react'
 import { useEffect, useState } from 'react'
 import { NotionRenderer } from 'react-notion-x'
@@ -22,6 +21,7 @@ import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { ExtendedRecordMap } from 'notion-types'
 
 interface PostProps {
   blockMap: ExtendedRecordMap
@@ -198,7 +198,8 @@ export default function Post({ blockMap, link, title, header }: PostProps) {
         </div>
         <div ref={notionRef} className=''>
           <NotionRenderer
-            recordMap={blockMap}
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            recordMap={blockMap as any}
             darkMode={theme === 'dark'}
             className='notion-page'
             components={{

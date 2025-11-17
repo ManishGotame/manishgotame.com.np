@@ -92,7 +92,7 @@ export const routes = [
     label: 'Online',
     items: [
       {
-        href: 'https://twitter.com/manishgotame',
+        href: 'https://twitter.com/builtbymanish',
         label: 'X',
         icon: TwitterIcon,
         trailingAccessory: ExternalLinkIcon,

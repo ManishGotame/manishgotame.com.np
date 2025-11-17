@@ -39,7 +39,7 @@ const Footer = () => {
         </a>
       </div>
       <div className='text-center text-gray-600 dark:text-gray-400 my-4 text-sm md:text-md'>
-        Made by Manish Gotame
+        End of line.
       </div>
     </footer>
   )

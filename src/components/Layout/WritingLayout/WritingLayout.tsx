@@ -1,10 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 
 import Link from 'next/link'
-import { format } from 'date-fns'
 import { Header, NotionIcon } from '@/components'
 import { cn } from '@/lib'
-import { ITitleResponse } from '@/interfaces'
 import { usePathname } from 'next/navigation'
 import {
   Tooltip,
@@ -18,19 +17,19 @@ import { motion } from 'framer-motion'
 type WritingLayoutProps = {
   title: string
   children: React.ReactNode
-  articleTitles: ITitleResponse[]
+  blogPosts: any[]
 }
 
 const WritingLayout: React.FC<WritingLayoutProps> = ({
   title,
   children,
-  articleTitles
+  blogPosts
 }) => {
   const pathname = usePathname()
   const { theme } = useTheme()
   const isWritingHome = pathname === '/writing'
 
-  if (!articleTitles) {
+  if (!blogPosts) {
     return null
   }
 
@@ -60,7 +59,7 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
                 <TooltipContent>
                   <p>Blog rendered using Notion.</p>
                   <Link
-                    href='/writing/89d9bcb5-8937-465f-96ff-c869ca4c7726'
+                    href='/writing/personal-website-and-notion'
                     className='text-blue-400 underline text-xs'
                     rel='noopener noreferrer'
                   >
@@ -72,11 +71,11 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
           </div>
         </div>
         <div className='px-3 py-2'>
-          {articleTitles.map((each, index) => {
+          {blogPosts.map((each, index) => {
             const item = {
-              href: `/writing/${each.id}`,
+              href: `/writing/${each.slug}`,
               label: each.title,
-              created_at: each.created_at
+              date: each.date
             }
             const isActive = pathname === item.href
             return (
@@ -99,10 +98,7 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
                   <div className='flex flex-col'>
                     <span>{item.label}</span>
                     <span className='text-gray-500 dark:text-gray-400 text-[13px]'>
-                      {format(
-                        new Date(Number(item.created_at)),
-                        'dd MMM, yyyy'
-                      )}
+                      {item.date}
                     </span>
                   </div>
                 </Link>

@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 import { portfolio, sideProjects } from '@/constants'
-import { getPage, getTitles } from '@/lib'
+import { getDatabase, extractNotionTableProperties } from '@/lib/notion'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages
@@ -45,14 +45,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   ]
 
+  const results = await getDatabase(
+    process.env.NOTION_BLOG_DATABASE_ID as string
+  )
+  const posts = extractNotionTableProperties(results)
+
   // Writing entries (Notion)
-  const recordMap = await getPage(process.env.NOTION_PAGE_ID as string)
-  const writingEntries = getTitles(recordMap.block)
-  const writingPages: MetadataRoute.Sitemap = writingEntries.map((entry) => ({
+  const writingPages: MetadataRoute.Sitemap = posts.map((entry) => ({
     url: `https://manishgotame.com.np/writing/${entry.id}`,
     changeFrequency: 'weekly',
     priority: 0.5,
-    lastModified: new Date(Number(entry.created_at))
+    lastModified: entry.date
   }))
 
   // Combine all

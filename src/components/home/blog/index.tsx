@@ -1,19 +1,17 @@
-import { getTitles } from '@/lib'
-import { format } from 'date-fns'
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from 'next/link'
-import { BlockMap } from 'notion-types'
 
 interface TitleProps {
   title: string
   date: string
-  id: string
+  slug: string
 }
 
-const Title = ({ title, date, id }: TitleProps) => {
+const Title = ({ title, date, slug }: TitleProps) => {
   return (
     <div className='cursor-pointer flex sm:items-center flex-col sm:flex-row gap-0.5 sm:gap-4 group'>
       <Link
-        href={`/writing/${id}`}
+        href={`/writing/${slug}`}
         className='line-clamp-2 font-medium text-gray-1000 group-hover:text-blue-600 group-hover:underline dark:text-gray-100 dark:group-hover:text-blue-500'
       >
         {title}
@@ -27,15 +25,13 @@ const Title = ({ title, date, id }: TitleProps) => {
 }
 
 interface BlogProps {
-  blockMap: BlockMap
+  blogPosts: any[]
 }
 
-const Blog = ({ blockMap }: BlogProps) => {
-  if (!blockMap) {
+const Blog = ({ blogPosts }: BlogProps) => {
+  if (!blogPosts) {
     return null
   }
-
-  const articleTitles = getTitles(blockMap)
 
   return (
     <div className='flex flex-col space-y-8'>
@@ -47,12 +43,12 @@ const Blog = ({ blockMap }: BlogProps) => {
       </div>
 
       <div className='flex flex-col space-y-3'>
-        {articleTitles.slice(0, 8).map((each) => (
+        {blogPosts.slice(0, 8).map((each) => (
           <Title
             key={each.id}
             title={each.title}
-            date={format(each.created_at, 'MMM d, yyyy')}
-            id={each.id}
+            date={each.date}
+            slug={each.slug}
           />
         ))}
       </div>

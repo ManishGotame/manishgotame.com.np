@@ -1,9 +1,8 @@
-import { getPage, getTitles } from '@/lib'
-import { CloudAlertIcon } from 'lucide-react'
-import { Post } from '@/components'
-import { format } from 'date-fns'
+import { getPage } from '@/lib'
+import { NotFound, Post } from '@/components'
 import { Metadata } from 'next'
-import { getBlockTitle, getPageProperty } from 'notion-utils'
+import { getBlockTitle } from 'notion-utils'
+import { getDatabase, extractNotionTableProperties } from '@/lib/notion'
 
 type tParams = Promise<{ slug: string }>
 
@@ -15,21 +14,17 @@ export async function generateMetadata({
   params: tParams
 }): Promise<Metadata> {
   const { slug } = await params
-  const data = await getPage(slug as string)
-  const keys = Object.keys(data.block || {})
-  const block = data.block?.[keys[0]]?.value
-  const title = getBlockTitle(block, data) || ''
-
-  const description =
-    getPageProperty<string>('Description', block, data) || 'Writing'
+  const posts = await getDatabase(process.env.NOTION_BLOG_DATABASE_ID as string)
+  const newPosts = extractNotionTableProperties(posts)
+  const matchedPost = newPosts.find((post) => post.slug === slug)
 
   return {
-    title: `${title} - Manish Gotame`,
-    description: description,
+    title: `${matchedPost?.title} - Manish Gotame`,
+    description: matchedPost?.description,
     openGraph: {
       type: 'article',
-      title: `${title} - Manish Gotame`,
-      description: description,
+      title: `${matchedPost?.title} - Manish Gotame`,
+      description: matchedPost?.description,
       images: [
         {
           url: 'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg',
@@ -44,8 +39,8 @@ export async function generateMetadata({
       card: 'summary_large_image',
       site: '@manishgotame',
       creator: '@manishgotame',
-      title: `${title} - Manish Gotame`,
-      description: description,
+      title: `${matchedPost?.title} - Manish Gotame`,
+      description: matchedPost?.description,
       images: [
         {
           url: 'https://personal-site.s3.ap-southeast-2.amazonaws.com/meta_small.jpg',
@@ -60,31 +55,35 @@ export async function generateMetadata({
 export default async function Page({ params }: { params: tParams }) {
   try {
     const { slug } = await params
-    const data = await getPage(slug as string)
-    const postDetails = getTitles(data.block)[0]
+    const posts = await getDatabase(
+      process.env.NOTION_BLOG_DATABASE_ID as string
+    )
+    const newPosts = extractNotionTableProperties(posts)
+    const matchedPost = newPosts.find((post) => post.slug === slug)
+    const pageId = matchedPost?.id
+
+    const data = await getPage(pageId)
+    if (!data) return <NotFound />
+
+    const keys = Object.keys(data?.block ?? {})
+    const block = data.block?.[keys[0]]?.value
+    const title = getBlockTitle(block, data) || ''
 
     return (
       <Post
         blockMap={data}
-        title={postDetails.title}
+        title={title}
         link='/writing'
         header={
           <div className='flex flex-col gap-2'>
-            <h1 className='text-3xl font-bold'>{postDetails.title} </h1>
-            <p className='text-md text-gray-500'>
-              {format(new Date(Number(postDetails.created_at)), 'dd MMM, yyyy')}
-            </p>
+            <h1 className='text-3xl font-bold'>{title} </h1>
+            <p className='text-md text-gray-500'>{matchedPost?.date}</p>
           </div>
         }
       />
     )
   } catch (e) {
     console.error(e)
-    return (
-      <div className='flex min-h-screen items-center justify-center flex-col gap-2'>
-        <CloudAlertIcon className='w-10 h-10' />
-        <h1 className='text-md font-medium'>Post not found</h1>
-      </div>
-    )
+    return <NotFound />
   }
 }

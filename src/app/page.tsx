@@ -1,9 +1,9 @@
-import { getPage } from '@/lib'
 import { HomePage } from '@/components'
+import { getDatabase, extractNotionTableProperties } from '@/lib/notion'
 
 export default async function Home() {
-  const recordMap = await getPage(process.env.NOTION_PAGE_ID as string)
-  const blockMap = recordMap.block
+  const posts = await getDatabase(process.env.NOTION_BLOG_DATABASE_ID as string)
+  const blogPosts = extractNotionTableProperties(posts)
 
-  return <HomePage blockMap={blockMap} />
+  return <HomePage blogPosts={blogPosts} />
 }
