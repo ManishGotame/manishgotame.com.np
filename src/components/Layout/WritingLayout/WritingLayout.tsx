@@ -2,17 +2,11 @@
 'use client'
 
 import Link from 'next/link'
-import { Header, NotionIcon } from '@/components'
+import { Header } from '@/components'
 import { cn } from '@/lib'
 import { usePathname } from 'next/navigation'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
-} from '@/components/ui/tooltip'
-import { useTheme } from '@/Providers'
 import { motion } from 'framer-motion'
+import { getYear } from 'date-fns'
 
 type WritingLayoutProps = {
   title: string
@@ -26,7 +20,6 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
   blogPosts
 }) => {
   const pathname = usePathname()
-  const { theme } = useTheme()
   const isWritingHome = pathname === '/writing'
 
   if (!blogPosts) {
@@ -46,29 +39,6 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
           <div className='flex-1'>
             <Header title={title} />
           </div>
-          <div className='mr-3 z-20 relative group'>
-            <TooltipProvider delayDuration={100}>
-              <Tooltip>
-                <TooltipTrigger>
-                  <NotionIcon
-                    height={20}
-                    width={20}
-                    color={theme === 'dark' ? '#fafafa' : '#000000'}
-                  />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Blog rendered using Notion.</p>
-                  <Link
-                    href='/writing/personal-website-and-notion'
-                    className='text-blue-400 underline text-xs'
-                    rel='noopener noreferrer'
-                  >
-                    Read how I built it
-                  </Link>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </div>
         </div>
         <div className='px-3 py-2'>
           {blogPosts.map((each, index) => {
@@ -78,6 +48,10 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
               date: each.date
             }
             const isActive = pathname === item.href
+            const showYear =
+              index === 0 ||
+              getYear(item.date) !== getYear(blogPosts[index - 1].date)
+
             return (
               <motion.div
                 key={index}
@@ -85,6 +59,11 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.25, delay: index * 0.05 }}
               >
+                {showYear && (
+                  <span className='text-[14px] font-medium px-2 text-gray-500'>
+                    {getYear(item.date)}
+                  </span>
+                )}
                 <Link
                   key={index}
                   href={item.href}
