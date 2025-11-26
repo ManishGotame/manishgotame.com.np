@@ -60,7 +60,7 @@ const WritingLayout: React.FC<WritingLayoutProps> = ({
                 transition={{ duration: 0.25, delay: index * 0.05 }}
               >
                 {showYear && (
-                  <span className='text-[14px] font-medium px-2 text-gray-500'>
+                  <span className='text-[14px] font-medium px-2 text-gray-500 flex justify-end'>
                     {getYear(item.date)}
                   </span>
                 )}
