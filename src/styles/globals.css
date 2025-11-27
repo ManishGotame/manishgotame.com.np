@@ -91,7 +91,7 @@
     --chart-5: 340 75% 55%;
     --scroll-thumb: hsl(var(--muted-foreground) / 0.35);
     --scroll-track: hsl(var(--secondary));
-    --notion-text-color: rgba(163, 163, 163, 1);
+    --notion-text-color: rgb(255, 255, 255);
   }
 }
 
@@ -179,10 +179,17 @@
 
 .notion-text,
 .notion-list {
-  line-height: 1.6 !important;
+  /* line-height: 1.6 !important; */
   font-family: 'Inter', sans-serif !important;
-  font-size: 1.05rem !important;
+  /* font-size: 1.05rem !important; */
   color: var(--notion-text-color) !important;
+}
+
+.notion-blank {
+  min-height: 0px !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  padding: 0px 0px !important;
 }
 
 .notion-collection-page-properties {
